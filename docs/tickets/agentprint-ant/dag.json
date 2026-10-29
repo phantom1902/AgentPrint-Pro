@@ -49,8 +49,9 @@
       "blocked_by": [
         "T02"
       ],
-      "status": "in_progress",
-      "owner": "t05_implement"
+      "status": "complete",
+      "owner": "t05_implement / t05_review",
+      "integrated_commit": "8009052"
     },
     {
       "id": "T06",
@@ -58,7 +59,7 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "review_pending",
+      "status": "complete",
       "owner": "t06_implement / t06_review",
       "integrated_commit": "5593670"
     },
@@ -71,7 +72,8 @@
         "T05",
         "T06"
       ],
-      "status": "blocked"
+      "status": "in_progress",
+      "owner": "t07_implement / root"
     },
     {
       "id": "T08",
