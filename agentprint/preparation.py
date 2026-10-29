@@ -1,10 +1,12 @@
 """Discover official episodes and compose parser, interval MTAM, and cache."""
+import hashlib
+import json
 from pathlib import Path
 
 import numpy as np
 
 from . import FORMAT_VERSION, PREPROCESSING_VERSION
-from .cache import LABEL_MAP, LABEL_MAP_ID, write_json, write_split
+from .cache import CACHE_RECOVERY_VERSION, LABEL_MAP, LABEL_MAP_ID, write_json, write_split
 from .config import ConfigError, fingerprint
 from .parsing import EpisodeExcluded, decode_packet, direction, iter_records, scan_episode
 
@@ -25,9 +27,25 @@ def source_inventory(data_root, splits):
         if split not in splits:
             continue
         stat = path.stat()
+        annotation = path.with_name('messages.jsonl')
+        # Only small identity/endpoint metadata and annotations are content
+        # hashed. PCAP compatibility intentionally uses path, size and mtime.
+        endpoints = [candidate for candidate in sorted(path.parent.iterdir())
+                     if candidate.is_file() and candidate.suffix.lower() in
+                     ('.json', '.jsonl', '.yaml', '.yml') and
+                     ('endpoint' in candidate.stem.lower() or
+                      candidate.name in ('runtime.json', 'identity.json'))]
         result.append({'pcap_relpath': relative.as_posix(), 'size_bytes': stat.st_size,
                        'mtime_ns': stat.st_mtime_ns, 'split': split, 'engine': engine,
-                       'scenario': scenario, 'episode_id': episode_id})
+                       'scenario': scenario, 'episode_id': episode_id,
+                       'annotation_relpath': annotation.relative_to(root).as_posix()
+                       if annotation.is_file() else None,
+                       'annotation_sha256': hashlib.sha256(annotation.read_bytes()).hexdigest()
+                       if annotation.is_file() else None,
+                       'endpoint_metadata': [
+                           {'relpath': candidate.relative_to(root).as_posix(),
+                            'sha256': hashlib.sha256(candidate.read_bytes()).hexdigest()}
+                           for candidate in endpoints]})
     if not result:
         raise ConfigError('no network.pcap episodes found in configured official splits')
     return result
@@ -80,30 +98,73 @@ def scenario_samples(data_root, sources):
             yield record, None
 
 
+def resumed_samples(data_root, sources, generator, task, cursor):
+    """Skip committed PCAPs, replay only an in-progress episode when necessary.
+
+    source_index is split-local. sample_offset counts all generator rows,
+    including exclusions, so an episode spanning shards resumes without gaps.
+    Scenario has exactly one row per source and advances straight to the next.
+    """
+    start = cursor['source_index']
+    for index in range(start, len(sources)):
+        skip = cursor['sample_offset'] if index == start else 0
+        for ordinal, (record, array) in enumerate(generator(data_root, [sources[index]])):
+            if ordinal < skip:
+                continue
+            next_cursor = ({'source_index': index + 1, 'sample_offset': 0}
+                           if task == 'scenario' else
+                           {'source_index': index, 'sample_offset': ordinal + 1})
+            yield record, array, next_cursor
+
+
 def prepare(config):
     if config['task'] != 'scenario':
         raise ConfigError('T01 prepare supports scenario only; primitive preparation requires T02')
     root = Path(config['paths']['cache_root'])
-    # Recovery is deliberately deferred to T04; never silently overwrite outputs.
-    if (root / 'index.json').exists() or (root / config['task']).exists():
-        raise ConfigError('cache already exists; T01 does not yet support cache recovery or overwrite')
     sources = source_inventory(config['paths']['data_root'], config['preprocessing']['splits'])
     # Input transforms/training paths do not change the integer-statistics cache.
     prep_config = {'task': config['task'], 'preprocessing': config['preprocessing']}
     config_id = fingerprint(prep_config)
     root.mkdir(parents=True, exist_ok=True)
+    contract = {'config_fingerprint': config_id, 'sources': sources,
+                'source_inventory_id': fingerprint(sources), 'complete': False}
+    index_path = root / 'index.json'
+    if index_path.exists():
+        index = json.loads(index_path.read_text(encoding='utf-8'))
+        for key, expected in (('format_version', FORMAT_VERSION),
+                              ('preprocessing_version', PREPROCESSING_VERSION),
+                              ('cache_recovery_version', CACHE_RECOVERY_VERSION),
+                              ('label_map_id', LABEL_MAP_ID)):
+            if index.get(key) != expected:
+                raise ConfigError(f'incompatible cache {key}: {index.get(key)!r} != {expected!r}')
+        previous = index['tasks'].get(config['task'])
+        if previous:
+            if previous['config_fingerprint'] != config_id:
+                raise ConfigError('incompatible cache configuration for task ' + config['task'])
+            if previous['source_inventory_id'] != contract['source_inventory_id']:
+                raise ConfigError('incompatible cache source inventory: PCAP path/size/mtime or '
+                                  'annotation/endpoint metadata content changed')
+    else:
+        if (root / config['task']).exists():
+            raise ConfigError('incompatible cache: task artifacts exist without an index')
+        index = {'format_version': FORMAT_VERSION, 'preprocessing_version': PREPROCESSING_VERSION,
+                 'cache_recovery_version': CACHE_RECOVERY_VERSION,
+                 'config_fingerprint': config_id, 'label_map_id': LABEL_MAP_ID,
+                 'sources': sources, 'source_inventory_id': fingerprint(sources),
+                 'tasks': {}, 'datasets': {}, 'complete': False}
     write_json(root / 'label_map.json', LABEL_MAP)
-    index = {'format_version': FORMAT_VERSION, 'preprocessing_version': PREPROCESSING_VERSION,
-             'config_fingerprint': config_id, 'label_map_id': LABEL_MAP_ID,
-             'sources': sources, 'source_inventory_id': fingerprint(sources),
-             'datasets': {}, 'complete': False}
+    index['tasks'][config['task']] = contract
+    index['complete'] = False
     write_json(root / 'index.json', index)
     for split in config['preprocessing']['splits']:
         selected = [source for source in sources if source['split'] == split]
-        metadata = write_split(root, config['task'], split,
-                               scenario_samples(config['paths']['data_root'], selected), config_id)
+        def samples(cursor):
+            return resumed_samples(config['paths']['data_root'], selected,
+                                   scenario_samples, config['task'], cursor)
+        metadata = write_split(root, config['task'], split, samples, config_id)
         index['datasets'][f"{config['task']}/{split}"] = metadata
         write_json(root / 'index.json', index)
-    index['complete'] = True
+    index['tasks'][config['task']]['complete'] = True
+    index['complete'] = all(task['complete'] for task in index['tasks'].values())
     write_json(root / 'index.json', index)
     return index
