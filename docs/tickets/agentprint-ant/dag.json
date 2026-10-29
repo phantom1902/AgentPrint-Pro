@@ -19,8 +19,9 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "in_progress",
-      "owner": "t02_implement"
+      "status": "complete",
+      "owner": "t02_implement",
+      "integrated_commit": "d991900"
     },
     {
       "id": "T03",
@@ -28,8 +29,9 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "in_progress",
-      "owner": "t03_implement"
+      "status": "review_pending",
+      "owner": "t03_review",
+      "integrated_commit": "e8c3167"
     },
     {
       "id": "T04",
@@ -37,8 +39,9 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "in_progress",
-      "owner": "t04_implement"
+      "status": "fix_in_progress",
+      "owner": "t04_cursor_fix",
+      "integrated_commit": "156d689"
     },
     {
       "id": "T05",
@@ -46,7 +49,8 @@
       "blocked_by": [
         "T02"
       ],
-      "status": "blocked"
+      "status": "in_progress",
+      "owner": "t05_implement"
     },
     {
       "id": "T06",
@@ -54,7 +58,8 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "ready"
+      "status": "in_progress",
+      "owner": "t06_implement"
     },
     {
       "id": "T07",
