@@ -110,6 +110,7 @@ def verify_split(root, data_root, task, split, sources, contract, index, scenari
                 f'{name}: {kind} manifest differs from committed records')
     expected: dict[str, dict] = {}
     annotation_starts = {}
+    annotation_start_counts = {}
     for source in sources:
         if task == 'scenario':
             rows = [dict(source, sample_id='scenario:' + source['pcap_relpath'].removesuffix('/network.pcap'),
@@ -117,7 +118,9 @@ def verify_split(root, data_root, task, split, sources, contract, index, scenari
                          annotation_relpath=None, annotation_row=None)]
         else:
             rows = annotation_records(data_root, source)
-            annotation_starts[source['pcap_relpath']] = sorted({r['start_ns'] for r in rows if 'start_ns' in r})
+            counts = Counter(r['start_ns'] for r in rows if 'start_ns' in r)
+            annotation_start_counts[source['pcap_relpath']] = counts
+            annotation_starts[source['pcap_relpath']] = sorted(counts)
         expected.update((row['sample_id'], row) for row in rows)
     actual = valid + excluded
     ids = [r['sample_id'] for r in actual]
@@ -136,7 +139,11 @@ def verify_split(root, data_root, task, split, sources, contract, index, scenari
             require(bool(row['reason']) and 'shard_relpath' not in row and 'row_index' not in row,
                     f'{name}: invalid excluded record {identity}')
             continue
-        require(row['label_id'] == LABEL_MAP[task].get(row['label_name']), f'{name}: invalid label {identity}')
+        if task == 'primitive':
+            require('reason' not in origin and type(origin.get('start_ns')) is int,
+                    f'{name}: invalid annotation origin {identity}: {origin.get("reason", "missing_exact_start")}')
+        require(row['label_name'] in LABEL_MAP[task] and
+                row['label_id'] == LABEL_MAP[task][row['label_name']], f'{name}: invalid label {identity}')
         start, end = row['start_ns'], row['end_ns']
         require(type(start) is int and type(end) is int and end > start and row['duration_ns'] == end - start,
                 f'{name}: invalid interval {identity}')
@@ -148,6 +155,8 @@ def verify_split(root, data_root, task, split, sources, contract, index, scenari
                 and row['runtime_endpoints'] == [evidence['selected_ipv4'], *evidence['associated_ipv6']],
                 f'{name}: invalid endpoint provenance {identity}')
         if task == 'primitive':
+            require(annotation_start_counts[row['pcap_relpath']][start] == 1,
+                    f'{name}: duplicate_annotation_start {identity}')
             episode = scenario_rows[row['pcap_relpath']]
             require('reason' not in episode and episode['start_ns'] <= start < end <= episode['end_ns']
                     and evidence == episode['endpoint_source'], f'{name}: capture provenance mismatch {identity}')

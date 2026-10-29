@@ -107,17 +107,81 @@ class FullCacheReport(unittest.TestCase):
         report = self.run_report(False)
         self.assertIn('incomplete', ' '.join(report['errors']))
 
-    def rewrite_train_valid(self, edit):
+    def rewrite_train_valid(self, edit, task='scenario'):
         """Coherently republish row metadata to exercise semantic checks beyond hashes."""
-        base = self.root / 'cache/scenario/train'
+        name = f'{task}/train'
+        base = self.root / 'cache' / name
         rows = [json.loads(line) for line in (base / 'valid.jsonl').read_text().splitlines()]
         edit(rows)
         (base / 'valid.jsonl').write_text(''.join(json.dumps(r) + '\n' for r in rows))
-        self.edit_json('scenario/train/commits/00000.json', lambda c: c.update(valid=rows))
+        self.edit_json(f'{name}/commits/00000.json', lambda c: c.update(valid=rows))
         manifest_id = hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-        self.edit_json('scenario/train/metadata.json', lambda m: m.update(manifest_id=manifest_id))
+        self.edit_json(f'{name}/metadata.json', lambda m: m.update(manifest_id=manifest_id))
         metadata = json.loads((base / 'metadata.json').read_text())
-        self.edit_json('index.json', lambda i: i['datasets'].update({'scenario/train': metadata}))
+        self.edit_json('index.json', lambda i: i['datasets'].update({name: metadata}))
+
+    def refresh_annotation_inventory(self, path):
+        """Republish the source identity so annotation semantics, not hashes, decide."""
+        relative = path.relative_to(self.root / 'data').as_posix()
+
+        def edit(index):
+            for source in index['sources']:
+                if source['annotation_relpath'] == relative:
+                    source['annotation_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+            source_id = hashlib.sha256(json.dumps(
+                index['sources'], sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+            index['source_inventory_id'] = source_id
+            for contract in index['tasks'].values():
+                contract.update(sources=index['sources'], source_inventory_id=source_id)
+
+        self.edit_json('index.json', edit)
+
+    def test_rejects_valid_primitive_with_invalid_annotation_timestamp(self):
+        path = self.root / 'data/train/engine/artifact_processing/good/messages.jsonl'
+        annotations = [json.loads(line) for line in path.read_text().splitlines()]
+        annotations[0]['start_time'] = 'not-an-exact-timestamp'
+        path.write_text(''.join(json.dumps(row) + '\n' for row in annotations))
+        self.refresh_annotation_inventory(path)
+
+        def invent_interval(rows):
+            row = next(r for r in rows if r['episode_id'] == 'good')
+            row['start_ns'] += 1
+            row['duration_ns'] = row['end_ns'] - row['start_ns']
+            # Coherently replace the payload and its totals for the invented interval.
+            shard = self.root / 'cache' / row['shard_relpath']
+            values = np.load(shard)
+            values[row['row_index']] = 0
+            values[row['row_index'], 0, 0, 0] = 3
+            values[row['row_index'], 1, 0, 0] = 120
+            np.save(shard, values)
+            row.update(packet_count=[3, 0], ip_bytes=[120, 0])
+
+        self.rewrite_train_valid(invent_interval, task='primitive')
+        report = self.run_report(False)
+        self.assertIn('invalid_annotation_time', ' '.join(report['errors']))
+
+    def test_rejects_valid_primitive_in_duplicate_annotation_start_group(self):
+        path = self.root / 'data/train/engine/artifact_processing/good/messages.jsonl'
+        annotations = [json.loads(line) for line in path.read_text().splitlines()]
+        # Invalid labels still contribute boundaries and duplicate-start groups.
+        annotations[1]['start_time'] = annotations[0]['start_time']
+        path.write_text(''.join(json.dumps(row) + '\n' for row in annotations))
+        self.refresh_annotation_inventory(path)
+        base = self.root / 'cache/primitive/train'
+        excluded = [json.loads(line) for line in (base / 'excluded.jsonl').read_text().splitlines()]
+        for row in excluded:
+            if row['annotation_relpath'] == path.relative_to(self.root / 'data').as_posix():
+                row.update(start_ns=row['start_ns'] - 8, duration_ns=12)
+        (base / 'excluded.jsonl').write_text(''.join(json.dumps(row) + '\n' for row in excluded))
+        self.edit_json('primitive/train/commits/00000.json', lambda c: c.update(excluded=excluded))
+
+        def extend_interval(rows):
+            row = next(r for r in rows if r['episode_id'] == 'good')
+            row.update(end_ns=row['start_ns'] + 12, duration_ns=12)
+
+        self.rewrite_train_valid(extend_interval, task='primitive')
+        report = self.run_report(False)
+        self.assertIn('duplicate_annotation_start', ' '.join(report['errors']))
 
     def test_rejects_coherent_metadata_tampering_of_endpoints_time_and_references(self):
         changes = (
