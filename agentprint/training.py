@@ -255,6 +255,8 @@ def evaluate(config, device, checkpoint, split='val'):
         if saved['config'][field] != config[field]:
             raise ConfigError(f'incompatible checkpoint {field}')
     samples, batches = loader(config, split)
+    if samples.metadata['preprocessing_version'] != PREPROCESSING_VERSION:
+        raise ConfigError('incompatible cache preprocessing_version')
     if split == 'val' and saved['val_manifest_id'] != samples.metadata['manifest_id']:
         raise ConfigError('checkpoint validation manifest differs from requested cache')
     model = getRF(len(LABEL_MAP[config['task']])).to(device)

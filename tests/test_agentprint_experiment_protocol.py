@@ -218,6 +218,21 @@ class ExperimentProtocol(unittest.TestCase):
         self.assertIn('validation-best checkpoint', result.stderr)
         self.assertFalse(list((self.root / 'runs').glob('selection-*.json')))
 
+    def test_evaluation_refuses_obsolete_cache_preprocessing_version(self):
+        self.fixture()
+        self.prepare('scenario')
+        run = self.checkpoint('scenario', 'raw', .5)
+        metadata_path = self.root / 'cache' / 'scenario' / 'val' / 'metadata.json'
+        metadata = json.loads(metadata_path.read_text())
+        metadata['preprocessing_version'] = 'obsolete'
+        metadata_path.write_text(json.dumps(metadata), encoding='utf-8')
+        result = self.command('evaluate', '--checkpoint', str(run / 'best.pt'),
+                              '--split', 'val', ok=False)
+        self.assertIn('incompatible cache preprocessing_version', result.stderr)
+        self.assertNotIn('Traceback', result.stderr)
+        self.assertFalse(list((self.root / 'runs').glob('selection-*.json')))
+        self.assertFalse((run / 'evaluation-val').exists())
+
     def test_predeclared_overlay_files_keep_formal_and_smoke_distinct(self):
         from agentprint.config import load_config
         for task in ('scenario', 'primitive'):
