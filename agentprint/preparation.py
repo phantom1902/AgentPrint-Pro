@@ -7,6 +7,7 @@ from . import FORMAT_VERSION, PREPROCESSING_VERSION
 from .cache import LABEL_MAP, LABEL_MAP_ID, write_json, write_split
 from .config import ConfigError, fingerprint
 from .parsing import EpisodeExcluded, decode_packet, direction, iter_records, scan_episode
+from .primitive import annotation_inventory, primitive_samples
 
 
 def source_inventory(data_root, splits):
@@ -81,13 +82,13 @@ def scenario_samples(data_root, sources):
 
 
 def prepare(config):
-    if config['task'] != 'scenario':
-        raise ConfigError('T01 prepare supports scenario only; primitive preparation requires T02')
     root = Path(config['paths']['cache_root'])
     # Recovery is deliberately deferred to T04; never silently overwrite outputs.
     if (root / 'index.json').exists() or (root / config['task']).exists():
         raise ConfigError('cache already exists; T01 does not yet support cache recovery or overwrite')
     sources = source_inventory(config['paths']['data_root'], config['preprocessing']['splits'])
+    if config['task'] == 'primitive':
+        annotation_inventory(config['paths']['data_root'], sources)
     # Input transforms/training paths do not change the integer-statistics cache.
     prep_config = {'task': config['task'], 'preprocessing': config['preprocessing']}
     config_id = fingerprint(prep_config)
@@ -100,8 +101,9 @@ def prepare(config):
     write_json(root / 'index.json', index)
     for split in config['preprocessing']['splits']:
         selected = [source for source in sources if source['split'] == split]
+        samples = primitive_samples if config['task'] == 'primitive' else scenario_samples
         metadata = write_split(root, config['task'], split,
-                               scenario_samples(config['paths']['data_root'], selected), config_id)
+                               samples(config['paths']['data_root'], selected), config_id)
         index['datasets'][f"{config['task']}/{split}"] = metadata
         write_json(root / 'index.json', index)
     index['complete'] = True
