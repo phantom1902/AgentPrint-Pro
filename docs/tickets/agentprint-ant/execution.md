@@ -45,3 +45,5 @@
 - T07 helper0a9e114已合并8feec33，目标Linux6项公开工具测试通过（12.898秒）。真实尝试选择15/6个train/val Episode（64/31条完整标注），有效场景12/6、片段35/22；场景raw训练/验证成功，后续log1p训练SIGKILL(-9)且stderr为空，因此验收未通过、不启动T08。容器内存限额2GB、历史峰值触及限额；正在将父进程依赖探测改为短生命周期进程，保留原batch4/FP32及失败工作区。helper审查记录PyYAML缺失时环境报告捕获较晚的次要问题，最终复核时处理。
 
 - T07最终成功工作区：/root/autodl-tmp/ant-workspace/acceptance/t07-2b9e2c4，提交2b9e2c45c06609d471d3584c66c67319b49816ec。选择ID6f4cfb4f99114df187e335d60be18b8bb31d6998494f79307aad494ed72e08f3。场景12/6、片段35/22有效train/val样本；四配置各1epoch/batch4/CPU全部prepare/train/evaluate成功，最终checkpoint/CSV/TensorBoard/清单核验通过。首轮失败保留；GPU正式训练未运行。
+
+- T08核验工具0e86dd8及修复5756794已合并0a64244，修复复核通过。主agent 10项公开工具测试通过14.740秒、mypy12文件通过；核验器不再接受无效原标注时间或重复起点组被伪造成有效片段。实际全量preparation仍在后台运行，T08尚未标记完成。
