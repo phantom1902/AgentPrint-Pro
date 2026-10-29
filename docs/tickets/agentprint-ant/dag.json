@@ -29,8 +29,8 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "review_pending",
-      "owner": "t03_review",
+      "status": "complete",
+      "owner": "t03_implement / t03_review",
       "integrated_commit": "e8c3167"
     },
     {
