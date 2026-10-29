@@ -1,0 +1,7 @@
+extends: scenario_log1p.yaml
+mode: smoke
+preprocessing:
+  splits: [train, val]
+training:
+  epochs: 1
+  batch_size: 4
