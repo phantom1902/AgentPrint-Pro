@@ -6,7 +6,6 @@ No clock offsets, message bodies, or saved segment captures are used.
 from bisect import bisect_right
 from collections import defaultdict
 from datetime import datetime, timezone
-import hashlib
 import json
 from pathlib import Path
 import re
@@ -20,15 +19,6 @@ from .parsing import EpisodeExcluded, decode_packet, direction, iter_records, sc
 
 ISO_TIME = re.compile(r'(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})(?:\.(\d{1,9}))?(Z|[+-]\d{2}:\d{2})')
 EPOCH = datetime(1970, 1, 1, tzinfo=timezone.utc)
-
-
-def annotation_inventory(data_root, sources):
-    """Attach complete small-log identities; .incomplete files are never inputs."""
-    for source in sources:
-        relative = Path(source['pcap_relpath']).with_name('messages.jsonl')
-        path = Path(data_root) / relative
-        source['annotation_relpath'] = relative.as_posix() if path.is_file() else None
-        source['annotation_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest() if path.is_file() else None
 
 
 def time_ns(value):
