@@ -5,15 +5,84 @@
   "source_spec_commit": "482b3bd",
   "edge_direction": "blocker -> dependent",
   "nodes": [
-    { "id": "T01", "title": "跑通场景分类的最小完整闭环", "blocked_by": [], "status": "in_progress", "owner": "t01_implement" },
-    { "id": "T02", "title": "跑通标注片段的47类独立分类", "blocked_by": ["T01"], "status": "draft" },
-    { "id": "T03", "title": "按完整方向与流量质量规则生成样本", "blocked_by": ["T01"], "status": "draft" },
-    { "id": "T04", "title": "中断后恢复兼容的分片预处理", "blocked_by": ["T01"], "status": "draft" },
-    { "id": "T05", "title": "完成raw/log1p比较与正式实验协议", "blocked_by": ["T02"], "status": "draft" },
-    { "id": "T06", "title": "恢复训练并保留一致的日志与结果", "blocked_by": ["T01"], "status": "draft" },
-    { "id": "T07", "title": "在服务器完成四配置CPU真实数据验收", "blocked_by": ["T03", "T04", "T05", "T06"], "status": "draft" },
-    { "id": "T08", "title": "生成全量缓存与有效数据覆盖报告", "blocked_by": ["T07"], "status": "draft" },
-    { "id": "T09", "title": "复核首次交付并留档复现证据", "blocked_by": ["T08"], "status": "draft" }
+    {
+      "id": "T01",
+      "title": "跑通场景分类的最小完整闭环",
+      "blocked_by": [],
+      "status": "complete",
+      "owner": "t01_implement",
+      "integrated_commit": "13264f0"
+    },
+    {
+      "id": "T02",
+      "title": "跑通标注片段的47类独立分类",
+      "blocked_by": [
+        "T01"
+      ],
+      "status": "in_progress",
+      "owner": "t02_implement"
+    },
+    {
+      "id": "T03",
+      "title": "按完整方向与流量质量规则生成样本",
+      "blocked_by": [
+        "T01"
+      ],
+      "status": "in_progress",
+      "owner": "t03_implement"
+    },
+    {
+      "id": "T04",
+      "title": "中断后恢复兼容的分片预处理",
+      "blocked_by": [
+        "T01"
+      ],
+      "status": "in_progress",
+      "owner": "t04_implement"
+    },
+    {
+      "id": "T05",
+      "title": "完成raw/log1p比较与正式实验协议",
+      "blocked_by": [
+        "T02"
+      ],
+      "status": "blocked"
+    },
+    {
+      "id": "T06",
+      "title": "恢复训练并保留一致的日志与结果",
+      "blocked_by": [
+        "T01"
+      ],
+      "status": "ready"
+    },
+    {
+      "id": "T07",
+      "title": "在服务器完成四配置CPU真实数据验收",
+      "blocked_by": [
+        "T03",
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "status": "blocked"
+    },
+    {
+      "id": "T08",
+      "title": "生成全量缓存与有效数据覆盖报告",
+      "blocked_by": [
+        "T07"
+      ],
+      "status": "blocked"
+    },
+    {
+      "id": "T09",
+      "title": "复核首次交付并留档复现证据",
+      "blocked_by": [
+        "T08"
+      ],
+      "status": "blocked"
+    }
   ],
   "execution": {
     "start_gate": "User explicitly authorized subagents to execute all tickets and the main agent to integrate and test on 2026-10-29; tracker setup/publication remains deferred and does not block this authorization.",
