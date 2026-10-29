@@ -17,14 +17,27 @@
 |---|---|---|
 | Q1 | 已确认 A | 继承 RF 原模型，按 MTAM 双通道和任务类别数作必要适配，并记录差异 |
 | Q2 | 已确认 A | 使用所选样本时间范围内、能够确定方向的运行端全部连接，采用 mixed-flow 设置 |
-| Q3 | 待讨论 | 用户观察到每个片段对应一个 PCAP；先核对该文件是完整 episode 还是已切出的 primitive，再决定是否需要根据标注起点构造区间 |
+| Q3 | 已完成数据核验，区间规则待定 | 当前下载是 episode PCAP，尚未按 primitive 预切；是否采用相邻标注起点定义片段仍待用户决定 |
 | Q4 | 已确认 A | 以 ANT 固定 train/val/test 为首版主基准 |
 
 Q3 尚未采纳相邻起点切片建议；下一轮仅讨论这一项。
 
 ### Q3 的现场事实
 
-当前 raw/ANT 中每个 Axxxx 目录只有一个 network.pcap，配有多条消息标注。例如 train/USA_cc_dpsk/artifact_processing/A1500 对应一个 PCAP、55 条标注、10 个 primitive 类别；A1501 为 56 条、12 类，A1502 为 82 条、10 类。工作区 data/processed 和 data/interim 中均未找到 PCAP。因此本轮检查的 raw 文件是 episode 级，仍需确认用户所指“每个片段一个 PCAP”是否来自其他路径。
+2026-10-29 再次检查服务器目录、已保存的数据快照文件清单，以及四个 PCAP 的记录头时间范围。当前 raw/ANT 有 3114 个 network.pcap，快照也仅列出这 3114 个 PCAP；data/processed、data/interim 为空。在检查的 /root 和数据盘目录中，另一个 probe.pcap 位于 .tmp/aria-speedtest，属于下载测速文件，没有发现已切好的 primitive PCAP。
+
+下表路径均相对于 /root/autodl-tmp/ant-workspace/data/raw/ANT：
+
+| Episode | PCAP 包记录数 | 捕获时长（秒） | 标注行数 | Primitive 类别数 |
+|---|---:|---:|---:|---:|
+| train/USA_cc_dpsk/artifact_processing/A1500 | 29424 | 230.245 | 55 | 10 |
+| train/cc_dpsk/artifact_processing/A1709 | 868 | 7.203 | 2 | 2 |
+| train/cc_mimo/artifact_processing/A1702 | 250 | 10.082 | 2 | 2 |
+| train/codex/artifact_processing/A1724 | 496 | 16.316 | 7 | 5 |
+
+例如 A1709 在同一个 PCAP 内先后包含 N011（2026-05-28T17:09:44.895Z）与 N014（17:09:48.220Z）的标注起点，PCAP 最后包时间为 17:09:48.624Z。文件结束只提供整体捕获的结束位置，不能界定前一个 primitive 的结束。
+
+上述四个文件的 PCAP 包记录未发现截断；这是抽样记录结构核验，不是全部数据的内容完整性或语义边界核验。消息标注没有 end_time，因此按相邻起点划段仍是一项需要明确采用的区间规则。A1724 的 7 条标注只有 5 个不同起点，也说明重复时间不能由文件边界自动解决。
 
 ## 后续依赖
 
