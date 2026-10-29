@@ -41,3 +41,5 @@
 - T03审查通过：普通IPv6长度40+payload length按规格执行。主agent核对T02/T04共享生成器只捕获预期EpisodeExcluded，程序异常继续向上传播；整源聚合后才发布片段；支持边界文档在T09更新。T04修复8e66b21已集成d8ae303，主agent新增3项集成测试全部通过（12.682秒）。
 
 - T05/T06交叉合并核对：保留shuffle generator与完整恢复循环；训练loader后立即缺类门控；保存protocol.json；getRF按任务K；固定47逐epoch指标与验证排除信息；版本v2、正式全split默认及LR/早轮次平分规则保留。主agent合并后片段47类prepare/train/evaluate通过21.510秒，四配置公开闭环通过123.135秒，mypy11文件通过。
+
+- T07 helper0a9e114已合并8feec33，目标Linux6项公开工具测试通过（12.898秒）。真实尝试选择15/6个train/val Episode（64/31条完整标注），有效场景12/6、片段35/22；场景raw训练/验证成功，后续log1p训练SIGKILL(-9)且stderr为空，因此验收未通过、不启动T08。容器内存限额2GB、历史峰值触及限额；正在将父进程依赖探测改为短生命周期进程，保留原batch4/FP32及失败工作区。helper审查记录PyYAML缺失时环境报告捕获较晚的次要问题，最终复核时处理。
