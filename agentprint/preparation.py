@@ -104,18 +104,25 @@ def resumed_samples(data_root, sources, generator, task, cursor):
 
     source_index is split-local. sample_offset counts all generator rows,
     including exclusions, so an episode spanning shards resumes without gaps.
-    Scenario has exactly one row per source and advances straight to the next.
+    One-row lookahead marks the last row as source-complete before it can be
+    committed, without reading the next PCAP or adding an Episode cache.
     """
     start = cursor['source_index']
     for index in range(start, len(sources)):
         skip = cursor['sample_offset'] if index == start else 0
-        for ordinal, (record, array) in enumerate(generator(data_root, [sources[index]])):
-            if ordinal < skip:
-                continue
-            next_cursor = ({'source_index': index + 1, 'sample_offset': 0}
-                           if task == 'scenario' else
-                           {'source_index': index, 'sample_offset': ordinal + 1})
-            yield record, array, next_cursor
+        rows = iter(generator(data_root, [sources[index]]))
+        current = next(rows, None)
+        ordinal = 0
+        while current is not None:
+            following = next(rows, None)
+            if ordinal >= skip:
+                next_cursor = ({'source_index': index + 1, 'sample_offset': 0}
+                               if following is None else
+                               {'source_index': index, 'sample_offset': ordinal + 1})
+                record, array = current
+                yield record, array, next_cursor
+            current = following
+            ordinal += 1
 
 
 def prepare(config):
