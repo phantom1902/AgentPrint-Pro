@@ -10,8 +10,6 @@ from collections import Counter
 import csv
 from datetime import datetime, timezone
 import hashlib
-import importlib
-from importlib.metadata import version
 import json
 import os
 from pathlib import Path
@@ -234,19 +232,13 @@ def verify_selection(work, selection):
 
 
 def environment(threads):
-    packages = {}
-    for module, distribution in [('torch', 'torch'), ('numpy', 'numpy'), ('yaml', 'PyYAML'),
-                                 ('dpkt', 'dpkt'), ('sklearn', 'scikit-learn'),
-                                 ('tensorboard', 'tensorboard'), ('scapy.all', 'scapy'),
-                                 ('unittest', None)]:
-        try:
-            imported = importlib.import_module(module)
-            packages[module] = {'import': 'ok', 'version': version(distribution) if distribution
-                                else platform.python_version()}
-            if module == 'torch':
-                packages[module]['tensor_cpu_probe'] = float(imported.tensor([1.0]).sum())
-        except Exception as exc:
-            packages[module] = {'import': 'failed', 'error': str(exc)}
+    # Importing here retains framework memory throughout all four training runs.
+    # A short-lived process releases it before preparation/training can begin.
+    probe = subprocess.run([sys.executable, str(REPO / 'tools/agentprint_cpu_environment.py')],
+                           cwd=REPO, capture_output=True, text=True, check=True,
+                           env=dict(os.environ, OMP_NUM_THREADS=str(threads),
+                                    MKL_NUM_THREADS=str(threads), CUDA_VISIBLE_DEVICES=''))
+    packages = json.loads(probe.stdout)
     return {'recorded_utc': utc(), 'python': sys.version, 'executable': sys.executable,
             'platform': platform.platform(), 'git': git_state(), 'packages': packages,
             'cpu_count': os.cpu_count(), 'cpu_threads': threads,

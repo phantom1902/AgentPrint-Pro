@@ -1,5 +1,6 @@
 """Acceptance-helper boundaries; tiny captures are synthetic, never ANT evidence."""
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -13,6 +14,7 @@ from tools.agentprint_cpu_acceptance import choose, inventory
 
 REPO = Path(__file__).resolve().parents[1]
 HELPER = REPO / 'tools/agentprint_cpu_acceptance.py'
+ENVIRONMENT_PROBE = REPO / 'tools/agentprint_cpu_environment.py'
 SCENARIOS = ('artifact_processing', 'business_services', 'general_knowledge',
              'scientific_evidence', 'security_testing')
 
@@ -78,6 +80,61 @@ class CPUAcceptanceHelper(unittest.TestCase):
 
     def read(self, name):
         return json.loads((self.work / name).read_text(encoding='utf-8'))
+
+    def test_environment_probe_public_command_records_import_and_tensor_evidence(self):
+        result = subprocess.run([sys.executable, str(ENVIRONMENT_PROBE)], cwd=REPO,
+                                capture_output=True, text=True, timeout=90)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        packages = json.loads(result.stdout)
+        self.assertEqual(set(packages), {'torch', 'numpy', 'yaml', 'dpkt', 'sklearn',
+                                         'tensorboard', 'scapy.all', 'unittest'})
+        for package in packages.values():
+            self.assertIn(package['import'], ('ok', 'failed'))
+            self.assertIn('version' if package['import'] == 'ok' else 'error', package)
+        if packages['torch']['import'] == 'ok':
+            self.assertEqual(packages['torch']['tensor_cpu_probe'], 1.0)
+
+    def test_prepare_public_cli_does_not_retain_probe_frameworks_in_parent(self):
+        self.require_symlinks()
+        for split in ('train', 'val'):
+            self.episode(split, SCENARIOS[0], 'A')
+        audit = self.root / 'audit'
+        audit.mkdir()
+        (audit / 'sitecustomize.py').write_text('''import json
+import os
+import sys
+
+def record_subprocess(event, args):
+    if event == 'subprocess.Popen':
+        with open(os.environ['ACCEPTANCE_IMPORT_AUDIT'], 'a', encoding='utf-8') as handle:
+            handle.write(json.dumps({'pid': os.getpid(), 'argv': args[1],
+                                     'retained': sorted(set(sys.modules) &
+                                                        {'torch', 'sklearn', 'scapy'})}) + '\\n')
+
+sys.addaudithook(record_subprocess)
+''', encoding='utf-8')
+        audit_path = self.root / 'subprocess-audit.jsonl'
+        env = dict(os.environ, ACCEPTANCE_IMPORT_AUDIT=str(audit_path),
+                   PYTHONPATH=os.pathsep.join([str(audit), os.environ.get('PYTHONPATH', '')]))
+        result = subprocess.run([sys.executable, str(HELPER), 'prepare',
+                                 '--data-root', str(self.data), '--work-root', str(self.work)],
+                                cwd=REPO, capture_output=True, text=True, env=env, timeout=90)
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        events = [json.loads(line) for line in audit_path.read_text().splitlines()]
+        preparations = [row for row in events if row['argv'][1:4] ==
+                        ['-m', 'agentprint', 'prepare']]
+        self.assertEqual(len(preparations), 2)
+        self.assertEqual(len({row['pid'] for row in preparations}), 1)
+        self.assertTrue(all(not row['retained'] for row in preparations), preparations)
+        probes = [row for row in events if len(row['argv']) > 1 and
+                  Path(row['argv'][1]).name == ENVIRONMENT_PROBE.name]
+        self.assertEqual(len(probes), 1)
+        self.assertEqual(probes[0]['pid'], preparations[0]['pid'])
+        environment = self.read('environment.json')
+        self.assertTrue(all(package['import'] == 'ok'
+                            for package in environment['packages'].values()))
+        self.assertEqual(environment['packages']['torch']['tensor_cpu_probe'], 1.0)
+        self.assertEqual(self.read('summary.json')['status'], 'prepared_not_accepted')
 
     def test_selection_caps_whole_files_and_ignores_test(self):
         self.require_symlinks()
