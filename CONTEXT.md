@@ -20,6 +20,9 @@ _Avoid_：把 primitive 类别称为五类场景
 消息标注记录的 start_time，是构造给定片段的时间依据。
 _Avoid_：未经对齐核验就称其为工具执行的精确物理起点
 
+**重复起点组（Coincident-start group）**：
+同一 episode 中 start_time 相同的两条或以上标注记录，其内部的时间先后关系无法仅由该字段确定。
+
 **给定片段（Annotated segment）**：
 根据现有标注及明确区间规则构造、带有一个 primitive 类别的流量区间，是片段分类的样本单位。
 _Avoid_：将给定片段与模型自动定位的片段混用
