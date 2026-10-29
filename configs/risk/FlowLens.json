@@ -1,0 +1,43 @@
+{
+  "algorithm": "FlowLens",
+  "data": {
+    "split_random_state": 42
+  },
+  "algorithm_config": {
+    "classifier": {
+      "classifier": {
+        "class_weight": null,
+        "max_depth": null,
+        "n_estimators": 100,
+        "random_state": 42
+      },
+      "flowlens": {
+        "five_tuple_mode": "unidirectional",
+        "five_tuple_timeout_seconds": 120.0,
+        "flowgap_seconds": 300.0,
+        "ipt_bin_width_seconds": 0,
+        "packet_length_source": "orig_len",
+        "packet_size_bin_width": 16,
+        "skip_non_tcp_udp": true,
+        "skip_zero_payload_packets": false,
+        "timegap_seconds": 120.0
+      },
+      "labels": {
+        "benign_values": [
+          "0",
+          "benign",
+          "normal",
+          "false"
+        ],
+        "malicious_values": [
+          "1",
+          "malicious",
+          "attack",
+          "true"
+        ],
+        "superflow_label_policy": "majority_vote"
+      }
+    },
+    "extra_args": []
+  }
+}

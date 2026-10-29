@@ -1,0 +1,89 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2023-AAAI-YaTC",
+  "scope": "Performance-related hyperparameters for YaTC and its ANT native adapter. Epoch count is treated as a training budget; every epoch is evaluated on validation data and the best checkpoint is retained.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "The adapter preserves YaTC's original packet-header plus payload byte representation.",
+      "Payload is retained by default; IP address zeroing is an explicit adapter flag."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "input_representation": "MFR_image",
+      "source_mode": "episode",
+      "scope": "flow",
+      "protocols": "tcp,udp",
+      "packets_per_flow": 5,
+      "header_bytes_per_packet": 80,
+      "payload_bytes_per_packet": 240,
+      "image_shape": [
+        40,
+        40
+      ],
+      "zero_ip_addresses": false,
+      "max_per_split_label": null
+    },
+    "model_training_hyperparameters": {
+      "model": "TraFormer_YaTC",
+      "pretrained_checkpoint": "models/pretrained-model.pth",
+      "patch_size": 2,
+      "embed_dim": 192,
+      "depth": 4,
+      "num_heads": 16,
+      "mlp_ratio": 4,
+      "batch_size": 256,
+      "base_learning_rate": 0.002,
+      "absolute_lr_rule": "blr * effective_batch_size / 256 when --lr is unset",
+      "weight_decay": 0.05,
+      "layer_decay": 0.75,
+      "drop_path": 0.1,
+      "min_lr": 1e-06,
+      "warmup_epochs": 20,
+      "label_smoothing": 0.1,
+      "random_erase_probability": 0.25,
+      "mixup": 0,
+      "cutmix": 0,
+      "training_budget_epochs": 200,
+      "best_checkpoint_metric": "validation_accuracy",
+      "num_workers": 10
+    },
+    "evaluation_hyperparameters": {
+      "test_split": "test",
+      "prediction_level": "flow",
+      "episode_aggregation_required": true,
+      "default_episode_aggregation_rules": [
+        "majority_vote",
+        "mean_soft",
+        "confidence_weighted_mean",
+        "layer_balanced_mean",
+        "layer_priority_mean",
+        "per_layer_topk_confident"
+      ]
+    },
+    "source_files": [
+      "Benchmark/2023-AAAI-YaTC/data_process.py",
+      "Benchmark/2023-AAAI-YaTC/models_YaTC.py",
+      "Benchmark/2023-AAAI-YaTC/fine-tune.py",
+      "Benchmark/2023-AAAI-YaTC/engine.py",
+      "Benchmark/2023-AAAI-YaTC/adapt_ant_pcap.py"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "native_deep_runner",
+      "runner": "Benchmark/scripts/run_ant_deep_native.py",
+      "algorithm": "YaTC"
+    }
+  }
+}

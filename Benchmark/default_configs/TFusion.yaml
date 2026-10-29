@@ -1,0 +1,32 @@
+algorithm: TFusion
+runtime:
+  python: python3
+  cuda_visible_devices: "0"
+  output_root: Benchmark/runs
+  timeout_seconds:
+data:
+  validation_size: 0.1
+  split_random_state: 42
+  label_mode: binary
+  require_train_covers_test_labels: true
+algorithm_config:
+  conversion:
+    max_rows:
+    max_packets_per_source:
+    five_tuple_mode: bidirectional
+    five_tuple_timeout_seconds: 120.0
+    skip_zero_payload_packets: false
+    random_state: 42
+  device: auto
+  infer_batch_size: 256
+  stage1_model_path:
+  detection_model: iforest
+  detector_params: {}
+  data_construct_param:
+    segment_len: 100
+  training:
+    max_epoch: 15
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    contrast_batch_size: 50
+    seed: 777

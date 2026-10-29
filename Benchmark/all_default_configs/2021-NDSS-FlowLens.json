@@ -1,0 +1,63 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2021-NDSS-FlowLens",
+  "scope": "Performance-related hyperparameters for remaining Benchmark baselines and ANT adapters. Pure file paths and output paths are omitted unless they select a model/checkpoint.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow or native flow preparation is required",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "For Tor/WF-style baselines, packet-level ANT traces are mapped to direction/time sequences; this does not synthesize Tor cells.",
+      "For VA fingerprinting, device IP is inferred independently per episode; no global fixed device IP is used."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "packet_size_bin_width": 16,
+      "ipt_bin_width_seconds": 0,
+      "timegap_seconds": 120.0,
+      "flowgap_seconds": 300.0,
+      "packet_length_source": "orig_len",
+      "skip_non_tcp_udp": true,
+      "skip_zero_payload_packets": false,
+      "five_tuple_mode": "unidirectional in original config; benchmark runner maps outputs to bidirectional five-tuple flows",
+      "five_tuple_timeout_seconds": 120.0
+    },
+    "model_training_hyperparameters": {
+      "classifier": "RandomForestClassifier",
+      "random_state": 42,
+      "n_estimators": 100,
+      "max_depth": null,
+      "class_weight": null
+    },
+    "evaluation_hyperparameters": {
+      "superflow_label_policy": "majority_vote",
+      "five_tuple_label_policy": "majority_vote",
+      "binary_threshold_selection_metric": "malicious_f1 when validation labels exist"
+    },
+    "split_hyperparameters": {
+      "test_size": 0.33,
+      "random_state": 42,
+      "stratify": true
+    },
+    "source_files": [
+      "Benchmark/default_configs/FlowLens.yaml",
+      "Benchmark/2021-NDSS-FlowLens/run_unified_classifier.py",
+      "Benchmark/algorithms.py"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "integrated_benchmark_runner",
+      "algorithm": "FlowLens",
+      "runner": "Benchmark/run_benchmark.py"
+    }
+  }
+}

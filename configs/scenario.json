@@ -1,0 +1,55 @@
+{
+  "name": "scenario_task_groups_v1",
+  "groups": [
+    {
+      "id": "artifact_processing",
+      "name_zh": "程序与数据工件处理",
+      "tasks": [
+        15,
+        16,
+        17,
+        33
+      ]
+    },
+    {
+      "id": "general_knowledge",
+      "name_zh": "通用知识问答",
+      "tasks": [
+        21,
+        23,
+        24,
+        25,
+        26,
+        27
+      ]
+    },
+    {
+      "id": "scientific_evidence",
+      "name_zh": "科研文献与证据任务",
+      "tasks": [
+        28,
+        29,
+        30,
+        31,
+        32
+      ]
+    },
+    {
+      "id": "business_services",
+      "name_zh": "业务应用操作与服务",
+      "tasks": [
+        18,
+        20
+      ]
+    },
+    {
+      "id": "security_testing",
+      "name_zh": "安全约束测试与突破",
+      "tasks": [
+        34,
+        35,
+        40
+      ]
+    }
+  ]
+}

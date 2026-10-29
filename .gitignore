@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+outputs/
+weights/
+Benchmark/data/
+*.pcap
+*.pcapng
+*.pth
+*.pt
+*.bin
+*.so
+*.egg-info/
+build/
+dist/
+command_history.md

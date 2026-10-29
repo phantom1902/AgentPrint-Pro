@@ -1,0 +1,9 @@
+task_id: collection_smoke
+task_family: agent
+user_prompt: "Collection infrastructure smoke test; use the supplied fixture CLI."
+input_files: []
+raw_source: {}
+requires_network: true
+requires_browser: false
+requires_shell: true
+requires_filesystem: true

@@ -1,0 +1,27 @@
+algorithm: FlowLens
+runtime:
+  python: python3
+  cuda_visible_devices: "0"
+  output_root: Benchmark/runs
+  timeout_seconds:
+algorithm_config:
+  classifier:
+    labels:
+      benign_values: ["0", benign, normal, "false"]
+      malicious_values: ["1", malicious, attack, "true"]
+      superflow_label_policy: majority_vote
+    flowlens:
+      packet_size_bin_width: 16
+      ipt_bin_width_seconds: 0
+      timegap_seconds: 120.0
+      flowgap_seconds: 300.0
+      packet_length_source: orig_len
+      skip_non_tcp_udp: true
+      skip_zero_payload_packets: false
+      five_tuple_mode: unidirectional
+      five_tuple_timeout_seconds: 120.0
+    classifier:
+      random_state: 42
+      n_estimators: 100
+      max_depth:
+      class_weight:

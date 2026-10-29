@@ -1,0 +1,43 @@
+algorithm: NetMamba
+runtime:
+  python: python3
+  cuda_visible_devices: "0"
+  output_root: Benchmark/runs
+  timeout_seconds:
+data:
+  validation_size: 0.1
+  split_random_state: 42
+  label_mode: auto
+  require_train_covers_test_labels: true
+algorithm_config:
+  conversion:
+    input_representation: native_5hp_image
+    use_native_5hp_image: true
+    five_tuple_mode: bidirectional
+    five_tuple_timeout_seconds: 120.0
+    remove_ip: true
+    keep_payload: true
+    if_augment: false
+    cache_dir: Benchmark/cache/netmamba_native
+    image_cache_dir: Benchmark/cache/netmamba_native/image_cache
+    max_packets_per_source:
+    max_flows_per_source:
+  checkpoint: Benchmark/2024-ICNP-NetMamba/output/pretrain/pre-train.pth
+  finetune:
+    blr: 0.00267053000740083
+    weight_decay: 0.05
+    drop_path: 0.1
+    max_epoch: 40
+    batch_size: 128
+    nb_classes: 2
+    model: net_mamba_classifier
+    device: cuda
+    num_workers: 10
+    no_amp: true
+  early_stop:
+    validation_threshold: 0.99
+    test_threshold: 0.99
+    metrics:
+      - accuracy
+      - macro_f1
+  extra_args: []

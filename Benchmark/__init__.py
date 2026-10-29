@@ -1,0 +1,1 @@
+"""Modular benchmark entry points."""

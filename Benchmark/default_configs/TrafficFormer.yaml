@@ -1,0 +1,41 @@
+algorithm: TrafficFormer
+runtime:
+  python: python3
+  cuda_visible_devices: "0"
+  output_root: Benchmark/runs
+  timeout_seconds:
+data:
+  validation_size: 0.1
+  split_random_state: 42
+  label_mode: auto
+  require_train_covers_test_labels: true
+algorithm_config:
+  conversion:
+    input_representation: native_datagram
+    use_native_datagram: true
+    payload_length: 32
+    payload_packet: 5
+    start_index: 76
+    five_tuple_mode: bidirectional
+    five_tuple_timeout_seconds: 120.0
+    random_seed: 10
+    cache_dir: Benchmark/cache/trafficformer_native
+    require_feature_cache: true
+    max_rows:
+  pretrained_model_path: Benchmark/2025-SP-TrafficFormer/models/finetuned_model.bin
+  finetune:
+    max_epoch: 4
+    batch_size: 64
+    embedding: word_pos_seg
+    encoder: transformer
+    mask: fully_visible
+    seq_length: 320
+    learning_rate: 0.00004543239428925799
+    dropout: 0.5
+    warmup: 0.1
+    vocab_path: models/encryptd_vocab.txt
+  early_stop:
+    validation_threshold: 0.99
+    test_threshold: 0.99
+    metrics: [accuracy, macro_f1, auc]
+  extra_args: []

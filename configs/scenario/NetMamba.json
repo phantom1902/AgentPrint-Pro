@@ -1,0 +1,38 @@
+{
+  "algorithm": "NetMamba",
+  "data": {
+    "validation_size": 0.1,
+    "split_random_state": 42,
+    "label_mode": "auto",
+    "require_train_covers_test_labels": true
+  },
+  "algorithm_config": {
+    "conversion": {
+      "input_representation": "native_5hp_image",
+      "use_native_5hp_image": true,
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "remove_ip": true,
+      "keep_payload": true,
+      "if_augment": false,
+      "max_packets_per_source": null,
+      "max_flows_per_source": null
+    },
+    "finetune": {
+      "blr": 0.00267053000740083,
+      "weight_decay": 0.05,
+      "drop_path": 0.1,
+      "max_epoch": 40,
+      "batch_size": 3072,
+      "nb_classes": 2,
+      "model": "net_mamba_classifier",
+      "device": "cuda",
+      "num_workers": 4,
+      "no_amp": true
+    },
+    "extra_args": [
+      "--lr",
+      "0.01068212002960332"
+    ]
+  }
+}

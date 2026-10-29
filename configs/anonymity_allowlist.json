@@ -1,0 +1,264 @@
+{
+  "scope": "Reviewed third-party attribution and dependency URLs, reserved example identities, and the owner-approved anonymous ANT dataset release URL. This is not a list of benchmark authors.",
+  "emails": {
+    "Benchmark/2023-AAAI-YaTC/readme.md": [
+      "mw.zhan@sjtu.edu.cn",
+      "ruijiezhao@sjtu.edu.cn"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/README.md": [
+      "wangtz23@mails.tsinghua.edu.cn"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/AUTHORS": [
+      "agu@andrew.cmu.edu",
+      "tri@tridao.me"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/setup.py": [
+      "agu@cs.cmu.edu",
+      "tri@tridao.me"
+    ],
+    "Benchmark/2024_CCS_WFlib_Early_Stage_WF/README.md": [
+      "git@github.com",
+      "xinhaodeng.thu@gmail.com",
+      "zhangyix24@mails.tsinghua.edu.cn"
+    ],
+    "audit_anonymity.py": [
+      "anonymous@example.invalid"
+    ]
+  },
+  "urls": {
+    "Benchmark/2023-AAAI-YaTC/readme.md": [
+      "https://drive.google.com/file/d/1wWmZN87NgwujSd2-o5nm3HaQUIzWlv16/view?usp=drive_link",
+      "https://drive.google.com/file/d/1znKQpZ704Bh4EkaHUBJwztYgflFXPnHI/view?usp=sharing",
+      "https://github.com/NSSL-SJTU",
+      "https://github.com/iZRJ",
+      "https://github.com/zmw1216"
+    ],
+    "Benchmark/2023-AAAI-YaTC/util/crop.py": [
+      "https://github.com/deepmind/deepmind-research/blob/master/byol/utils/dataset.py#L206"
+    ],
+    "Benchmark/2023-AAAI-YaTC/util/lars.py": [
+      "https://github.com/facebookresearch/moco-v3"
+    ],
+    "Benchmark/2023-AAAI-YaTC/util/lr_decay.py": [
+      "https://github.com/microsoft/unilm/blob/master/beit/optim_factory.py#L33",
+      "https://github.com/microsoft/unilm/blob/master/beit/optim_factory.py#L58"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/README.md": [
+      "https://arxiv.org/abs/2405.11449",
+      "https://arxiv.org/abs/2601.21792",
+      "https://download.pytorch.org/whl/cu121",
+      "https://drive.google.com/drive/folders/1C1urXBhk09V7Z80Kk5JYuP7QeXiedUIl?usp=sharing",
+      "https://github.com/Judy456abc",
+      "https://github.com/Viz7",
+      "https://github.com/wangtz19",
+      "https://github.com/wangtz19/NetMamba/tree/main/dataset",
+      "https://github.com/wangtz19/NetMambaPlus",
+      "https://huggingface.co/wangtz/NetMamba",
+      "https://thuxiexiaohui.github.io/",
+      "https://www.cs.tsinghua.edu.cn/info/1126/3576.htm",
+      "https://www.cuiyong.net/index.html"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/LICENSE": [
+      "http://www.apache.org/licenses/",
+      "http://www.apache.org/licenses/LICENSE-2.0"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/README.md": [
+      "https://arxiv.org/abs/2312.00752",
+      "https://github.com/Dao-AILab/flash-attention",
+      "https://github.com/EleutherAI/lm-evaluation-harness/tree/big-refactor",
+      "https://github.com/bigscience-workshop/promptsource.git",
+      "https://github.com/state-spaces/mamba/blob/f0affcf69f06d1d06cef018ff640bf080a11c421/mamba_ssm/modules/mamba_simple.py#L102",
+      "https://github.com/state-spaces/mamba/blob/f0affcf69f06d1d06cef018ff640bf080a11c421/mamba_ssm/modules/mamba_simple.py#L104",
+      "https://github.com/state-spaces/s4",
+      "https://huggingface.co/datasets/EleutherAI/pile",
+      "https://huggingface.co/state-spaces",
+      "https://pytorch.org/docs/stable/amp.html"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/csrc/selective_scan/selective_scan_common.h": [
+      "https://forums.developer.nvidia.com/t/complex-number-exponential-function/24696",
+      "https://stackoverflow.com/questions/9860711/cucomplex-h-and-exp"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/csrc/selective_scan/static_switch.h": [
+      "https://github.com/NVIDIA/DALI/blob/main/include/dali/core/static_switch.h",
+      "https://github.com/pytorch/pytorch/blob/master/aten/src/ATen/Dispatch.h"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/mamba_ssm/models/mixer_seq_simple.py": [
+      "https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/model/gpt_model.py",
+      "https://github.com/huggingface/transformers/blob/c28d04e9e252a1a099944e325685f14d242ecdcd/src/transformers/models/gpt2/modeling_gpt2.py#L454",
+      "https://openai.com/blog/better-language-models/"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/mamba_ssm/modules/mamba_simple.py": [
+      "https://arxiv.org/abs/2002.04745]",
+      "https://github.com/pytorch/pytorch/issues/72759"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/mamba_ssm/ops/triton/layernorm.py": [
+      "https://triton-lang.org/main/getting-started/tutorials/05-layer-norm.html"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/mamba_ssm/utils/generation.py": [
+      "https://arxiv.org/abs/1909.05858",
+      "https://github.com/NVIDIA/Megatron-LM/blob/0bb597b42c53355a567aba2a1357cc34b9d99ddd/megatron/text_generation/sampling.py",
+      "https://github.com/huggingface/transformers/blob/a44985b41cfa2de48a5e1de7f1f93b7483da25d1/src/transformers/generation/logits_process.py#L170",
+      "https://github.com/huggingface/transformers/blob/a44985b41cfa2de48a5e1de7f1f93b7483da25d1/src/transformers/generation/logits_process.py#L231"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/mamba-1p1p1/setup.py": [
+      "https://github.com/pypa/wheel/blob/cf71108ff9f6ffc36978069acb28824b44ae028e/src/wheel/bdist_wheel.py#LL381C9-L381C85",
+      "https://github.com/pytorch/pytorch/blob/8472c24e3b5b60150096486616d98b7bea01500b/torch/utils/cpp_extension.py#L920",
+      "https://github.com/state-spaces/mamba",
+      "https://github.com/state-spaces/mamba/releases/download/{tag_name}/{wheel_name}",
+      "https://hub.docker.com/r/pytorch/pytorch,"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/src/models_mamba.py": [
+      "https://arxiv.org/abs/2002.04745]"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/src/models_net_mamba.py": [
+      "https://github.com/NVIDIA/Megatron-LM/blob/main/megatron/model/gpt_model.py",
+      "https://github.com/huggingface/transformers/blob/c28d04e9e252a1a099944e325685f14d242ecdcd/src/transformers/models/gpt2/modeling_gpt2.py#L454",
+      "https://openai.com/blog/better-language-models/"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/src/util/crop.py": [
+      "https://github.com/deepmind/deepmind-research/blob/master/byol/utils/dataset.py#L206"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/src/util/lars.py": [
+      "https://github.com/facebookresearch/moco-v3"
+    ],
+    "Benchmark/2024-ICNP-NetMamba/src/util/lr_decay.py": [
+      "https://github.com/microsoft/unilm/blob/master/beit/optim_factory.py#L33",
+      "https://github.com/microsoft/unilm/blob/master/beit/optim_factory.py#L58"
+    ],
+    "Benchmark/2024_CCS_WFlib_Early_Stage_WF/README.md": [
+      "http://www.thucsnet.com/wp-content/papers/xinhao_sp2023.pdf",
+      "https://arxiv.org/pdf/1512.00524",
+      "https://arxiv.org/pdf/1708.06376",
+      "https://arxiv.org/pdf/1802.10215",
+      "https://arxiv.org/pdf/2309.10147",
+      "https://arxiv.org/pdf/2407.00918",
+      "https://arxiv.org/pdf/2501.12622",
+      "https://dl.acm.org/doi/abs/10.1145/3576915.3623107",
+      "https://dl.acm.org/doi/pdf/10.1145/3243734.3243768",
+      "https://dl.acm.org/doi/pdf/10.1145/3319535.3354217",
+      "https://dl.acm.org/doi/pdf/10.1145/3485832.3485891",
+      "https://github.com/DistriNet/DLWF",
+      "https://github.com/SPIN-UMass/Realistic-Website-Fingerprinting-By-Augmenting-Network-Traces",
+      "https://github.com/Xinhao-Deng/Adaptive-WF-Attack",
+      "https://github.com/Xinhao-Deng/Multitab-WF-Datasets",
+      "https://github.com/Xinhao-Deng/Website-Fingerprinting-Library",
+      "https://github.com/deep-fingerprinting/df",
+      "https://github.com/jzx-bupt/TMWF",
+      "https://github.com/msrocean/Tik_Tok",
+      "https://github.com/robust-fingerprinting/RF",
+      "https://github.com/sanjit-bhat/Var-CNN",
+      "https://github.com/triplet-fingerprinting/tf",
+      "https://petsymposium.org/popets/2020/popets-2020-0043.pdf",
+      "https://sebastianreuter.info/publications/pdf/ccs-trafficsliver.pdf",
+      "https://www.usenix.org/system/files/conference/usenixsecurity17/sec17-wang-tao.pdf",
+      "https://www.usenix.org/system/files/sec20-gong.pdf",
+      "https://www.usenix.org/system/files/sec23fall-prepub-621_shen-meng.pdf",
+      "https://xinhao-deng.github.io/",
+      "https://zenodo.org/records/13732130"
+    ],
+    "Benchmark/2025-CCS-TFusion/LICENSE": [
+      "https://fsf.org/",
+      "https://www.gnu.org/licenses/",
+      "https://www.gnu.org/licenses/why-not-lgpl.html"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/README.md": [
+      "https://drive.google.com/file/d/1pR6ZaWE7MWFDQWiF4LDzSyjSq0Gj3kV7/view?usp=sharing",
+      "https://github.com/dbiir/UER-py",
+      "https://github.com/linwhitehat/ET-BERT"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/fine-tuning/run_classifier.py": [
+      "https://www.github.com/nvidia/apex"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/fine-tuning/run_mlm.py": [
+      "https://www.github.com/nvidia/apex"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/layers/moe_layer.py": [
+      "https://github.com/SimiaoZuo/MoEBERT/blob/cd21f571ae25e4483c77d8b5bae1d0803deb5a89/src/transformers/moebert/moe_layer.py"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/layers/multi_headed_attn.py": [
+      "https://arxiv.org/pdf/1706.03762.pdf"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/layers/position_ffn.py": [
+      "https://arxiv.org/abs/2002.05202"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/layers/relative_position_embedding.py": [
+      "https://arxiv.org/abs/1910.10683",
+      "https://github.com/bojone/bert4keras/blob/db236eac110a67a587df7660f6a1337d5b2ef07e/bert4keras/layers.py#L663",
+      "https://github.com/huggingface/transformers/blob/master/src/transformers/models/t5/modeling_t5.py#L344",
+      "https://github.com/tensorflow/mesh/blob/0cb87fe07da627bf0b7e60475d59f95ed6b5be3d/mesh_tensorflow/transformer/transformer_layers.py#L593"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/layers/synthesizer.py": [
+      "https://arxiv.org/abs/2005.00743"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/opts.py": [
+      "https://nvidia.github.io/apex/amp.html"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/trainer.py": [
+      "https://github.com/google/sentencepiece",
+      "https://www.github.com/nvidia/apex"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/utils/act_fun.py": [
+      "https://arxiv.org/abs/1606.08415",
+      "https://arxiv.org/abs/1702.03118",
+      "https://arxiv.org/abs/1710.05941v1"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/utils/optimizers.py": [
+      "http://www.apache.org/licenses/LICENSE-2.0",
+      "https://arxiv.org/abs/1711.05101",
+      "https://arxiv.org/abs/1804.04235",
+      "https://arxiv.org/abs/2004.14546",
+      "https://github.com/google-research/bert/blob/f39e881b169b9d53bea03d2d341b31707a6c052b/optimization.py#L37",
+      "https://github.com/pytorch/fairseq/blob/master/fairseq/optim/adafactor.py"
+    ],
+    "Benchmark/2025-SP-TrafficFormer/uer/utils/tokenizers.py": [
+      "https://en.wikipedia.org/wiki/CJK_Unified_Ideographs_(Unicode_block",
+      "https://github.com/google/sentencepiece"
+    ],
+    "README.md": [
+      "https://download.pytorch.org/whl/cu117",
+      "https://download.pytorch.org/whl/cu128",
+      "https://huggingface.co/datasets/benzenenene/ANT"
+    ],
+    "README.zh-CN.md": [
+      "https://download.pytorch.org/whl/cu117",
+      "https://download.pytorch.org/whl/cu128",
+      "https://huggingface.co/datasets/benzenenene/ANT"
+    ],
+    "SOURCES.md": [
+      "https://github.com/IDP-code/TrafficFormer",
+      "https://github.com/NSSL-SJTU/YaTC",
+      "https://github.com/Xinhao-Deng/Website-Fingerprinting-Library",
+      "https://github.com/dmbb/FlowLens",
+      "https://github.com/fuchuanpu/TFusion",
+      "https://github.com/wangtz19/NetMamba"
+    ],
+    "WEIGHTS.json": [
+      "https://drive.google.com/file/d/1pR6ZaWE7MWFDQWiF4LDzSyjSq0Gj3kV7/view?usp=sharing",
+      "https://drive.google.com/file/d/1wWmZN87NgwujSd2-o5nm3HaQUIzWlv16/view?usp=drive_link",
+      "https://huggingface.co/wangtz/NetMamba"
+    ],
+    "LICENSE": [
+      "https://fsf.org/",
+      "https://www.gnu.org/licenses/",
+      "https://www.gnu.org/licenses/why-not-lgpl.html"
+    ],
+    "LICENSING.md": [
+      "https://creativecommons.org/licenses/by/4.0/"
+    ],
+    "data_collection/tools/fixture_agent.py": [
+      "http://127.0.0.1:{port}{path}"
+    ],
+    "data_collection/scripts/batch_run_agent_mimo.py": [
+      "https://token-plan-cn.xiaomimimo.com/anthropic"
+    ],
+    "data_collection/scripts/batch_run_agent_mimo_pro.py": [
+      "https://token-plan-cn.xiaomimimo.com/anthropic"
+    ],
+    "data_collection/scripts/batch_run_agent_xiaoai.py": [
+      "https://xiaoai.plus/"
+    ],
+    "ANONYMITY.md": [
+      "https://huggingface.co/datasets/benzenenene/ANT"
+    ]
+  }
+}

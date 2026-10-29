@@ -1,0 +1,147 @@
+{
+  "schema_version": 1,
+  "runtime_complete": false,
+  "task_inputs_included": false,
+  "files": [
+    {
+      "path": ".gitignore",
+      "size": 120,
+      "sha256": "ad7342a9e9e52a8ee751b1acec4a38d2f2d71dbcfc88118950e393e415bd0014"
+    },
+    {
+      "path": "IMPORT_REPORT.json",
+      "size": 35394,
+      "sha256": "77c8afbc40288e059f17f9453ce810540602293a1a585d91bec1fcadf8fca6de"
+    },
+    {
+      "path": "README.md",
+      "size": 6010,
+      "sha256": "bc1195953be82025ad0655ee56a843359021f64e759b968b658b09c97f496314"
+    },
+    {
+      "path": "README.zh-CN.md",
+      "size": 5156,
+      "sha256": "60d4000f194c7bcab3bec7ec00d84cc0664732c021ff2adeae3cbc45b831203e"
+    },
+    {
+      "path": "examples/mock_smoke.yaml",
+      "size": 253,
+      "sha256": "db9f336059f99d52b9fa4de2970c0d82fd02fd0dfc108507f922d0f374b18e28"
+    },
+    {
+      "path": "requirements-task-environment.txt",
+      "size": 2057,
+      "sha256": "7c55effc1b44a6f02b0a935ef2478bade4ea2beb4cef1820d96902e67741832b"
+    },
+    {
+      "path": "requirements.txt",
+      "size": 169,
+      "sha256": "2508d3a3e16055178eafc30d93f477882d6c3092bf0d3f9c62d169e5f732c040"
+    },
+    {
+      "path": "scripts/batch_run_agent.py",
+      "size": 11789,
+      "sha256": "da7d8569af9be048bc235a2df166c920a854f085f983a601f53b71f747f8558c"
+    },
+    {
+      "path": "scripts/batch_run_agent_mimo.py",
+      "size": 11968,
+      "sha256": "aba1975e07fb631fe6fadbbf13e89757558e784560327ffdb8cbc99827953779"
+    },
+    {
+      "path": "scripts/batch_run_agent_mimo_parallel.py",
+      "size": 6962,
+      "sha256": "04aeb3faf00bc91c6bff2209cdd51ff45858d50bcd6427c649d42bb462496a88"
+    },
+    {
+      "path": "scripts/batch_run_agent_mimo_pro.py",
+      "size": 11972,
+      "sha256": "085f89fe1c86fb9ad4146f15dfb1db9b76bcab7601f7c4d8351b7db73233c14f"
+    },
+    {
+      "path": "scripts/batch_run_agent_multi.py",
+      "size": 11989,
+      "sha256": "91ea8f2f157dd305361fb15426ecf144958e695adbed6475b9a67a84d5344400"
+    },
+    {
+      "path": "scripts/batch_run_agent_parallel.py",
+      "size": 12995,
+      "sha256": "a1afa8973f276b24b7654454ddc0d5f79cd788e1716689ef1b01ab581f02b73d"
+    },
+    {
+      "path": "scripts/batch_run_agent_xiaoai.py",
+      "size": 11913,
+      "sha256": "b677f279ab6f64bd7941d1cd14d9d054a66f47f7a18b080438f93138c815e609"
+    },
+    {
+      "path": "scripts/batch_run_agent_xiaoai_parallel.py",
+      "size": 6981,
+      "sha256": "17f89967c757e986bd3ce23290470370bbcac3648811b529acbb80f4c83da410"
+    },
+    {
+      "path": "scripts/batch_run_all.py",
+      "size": 6668,
+      "sha256": "7af19ff02cf8daed3abc96adfb3058c8ef47425e0e3f636fd580108771a0f5ed"
+    },
+    {
+      "path": "scripts/batch_run_codex.py",
+      "size": 12585,
+      "sha256": "ed868c1122f04d79545f40c458e6c0c7c7c057900a9cf36758ce72765834a699"
+    },
+    {
+      "path": "scripts/batch_run_qwen.py",
+      "size": 10839,
+      "sha256": "0ae9691fccdca39f3fc4595bfc229d07c949c138b765fdc00dbfcaa65d56d9d5"
+    },
+    {
+      "path": "scripts/batch_run_spear_phishing.py",
+      "size": 10932,
+      "sha256": "9031be09e588b82d0300328758a65d81d589bce7718d38bc52d0a7707917f926"
+    },
+    {
+      "path": "scripts/batch_run_web.py",
+      "size": 12101,
+      "sha256": "854e642109687048df14dc4f10462a1a2bedcb3c2014fb9b2072d87ad4c97613"
+    },
+    {
+      "path": "scripts/codex_session_utils.py",
+      "size": 3416,
+      "sha256": "3c2c7b19423795c73ed152b968f2400c620a5e437a0e3121dbb4beaa748fc4f6"
+    },
+    {
+      "path": "scripts/copy_cc_mimo_sessions.py",
+      "size": 13727,
+      "sha256": "1d9abba74e720091da3c3afb6bfc80c45e3ff5893d918dbbcc3f43266754f570"
+    },
+    {
+      "path": "scripts/copy_codex_sessions.py",
+      "size": 8725,
+      "sha256": "f3ec6b36fcce45750ab1667363f8f47f9072d144252f09b80b043d76f8794102"
+    },
+    {
+      "path": "tasks/index.yaml",
+      "size": 5796,
+      "sha256": "451ad07fafc3143d73d44dbdf26e35e812d51d85fb869fb89c444388923f7a4d"
+    },
+    {
+      "path": "tools/check_runtime.py",
+      "size": 3280,
+      "sha256": "87383878d5b8e8b20d657c8fb253c910e3b5fdb709a89ac84a1ffe9ab89aca72"
+    },
+    {
+      "path": "tools/fixture_agent.py",
+      "size": 630,
+      "sha256": "baf9fc870b4032bc64bb51d477551959ecf9ff07550c1123a425bd4c5967cbbe"
+    },
+    {
+      "path": "tools/import_tasks.py",
+      "size": 1837,
+      "sha256": "ec6347e4d399fb94eef9009eb2ac64eb48bfe00e8a9cd2cc46607c9c5e839ce5"
+    },
+    {
+      "path": "tools/smoke_collection.py",
+      "size": 3973,
+      "sha256": "8df9d765cecfe832e9b27c5acb280e2af859c90bcadb578e3ee2402839489e06"
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "algorithm": "TFusion",
+  "data": {
+    "validation_size": 0.1,
+    "split_random_state": 42,
+    "label_mode": "binary",
+    "require_train_covers_test_labels": true
+  },
+  "algorithm_config": {
+    "conversion": {
+      "max_rows": null,
+      "max_packets_per_source": null,
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "skip_zero_payload_packets": false,
+      "random_state": 42
+    },
+    "device": "auto",
+    "infer_batch_size": 1024,
+    "detection_model": "rforest",
+    "detector_params": {
+      "class_weight": "balanced",
+      "max_depth": 10,
+      "min_samples_leaf": 5,
+      "n_estimators": 200
+    },
+    "data_construct_param": {
+      "segment_len": 200
+    },
+    "training": {
+      "max_epoch": 15,
+      "learning_rate": 2.2585783528771854e-05,
+      "weight_decay": 3.292500732706245e-05,
+      "contrast_batch_size": 200,
+      "seed": 777
+    },
+    "extra_args": []
+  }
+}

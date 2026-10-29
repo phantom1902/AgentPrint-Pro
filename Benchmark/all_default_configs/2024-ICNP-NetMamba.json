@@ -1,0 +1,96 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2024-ICNP-NetMamba",
+  "scope": "Performance-related hyperparameters for remaining Benchmark baselines and ANT adapters. Pure file paths and output paths are omitted unless they select a model/checkpoint.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow or native flow preparation is required",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "For Tor/WF-style baselines, packet-level ANT traces are mapped to direction/time sequences; this does not synthesize Tor cells.",
+      "For VA fingerprinting, device IP is inferred independently per episode; no global fixed device IP is used."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "input_representation": "native_5hp_image",
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "packets_per_flow": 5,
+      "header_bytes_per_packet": 80,
+      "payload_bytes_per_packet": 240,
+      "image_shape": [
+        40,
+        40
+      ],
+      "remove_ip": true,
+      "keep_payload": true,
+      "if_augment": false,
+      "max_packets_per_source": null,
+      "max_flows_per_source": null
+    },
+    "model_training_hyperparameters": {
+      "model": "net_mamba_classifier",
+      "checkpoint": "pre-train.pth",
+      "base_learning_rate": 0.00267053000740083,
+      "weight_decay": 0.05,
+      "drop_path": 0.1,
+      "max_epoch": 40,
+      "batch_size": 256,
+      "num_workers": 10,
+      "no_amp": true
+    },
+    "original_finetune_defaults": {
+      "epochs_default": 400,
+      "save_steps_freq": 5000,
+      "accum_iter": 1,
+      "input_size": 40,
+      "base_learning_rate_default": 0.002,
+      "absolute_lr_rule": "blr * effective_batch_size / 256 when --lr is unset",
+      "layer_decay": 0.75,
+      "min_lr": 1e-06,
+      "warmup_epochs": 20,
+      "label_smoothing": 0.1,
+      "random_erase_probability": 0.25,
+      "mixup": 0,
+      "cutmix": 0,
+      "class_balance_beta": 0.999,
+      "ldam_defaults": {
+        "max_m": 0.5,
+        "s": 30
+      }
+    },
+    "evaluation_hyperparameters": {
+      "early_stop_validation_threshold": 0.99,
+      "early_stop_test_threshold": 0.99,
+      "early_stop_metrics": [
+        "accuracy",
+        "macro_f1"
+      ],
+      "cpu_smoke_fallback_classifier": {
+        "classifier": "RandomForestClassifier",
+        "n_estimators": 25,
+        "random_state": 42
+      }
+    },
+    "source_files": [
+      "Benchmark/default_configs/NetMamba.yaml",
+      "Benchmark/algorithms.py",
+      "Benchmark/2024-ICNP-NetMamba/adapt_ant_pcap.py"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "integrated_benchmark_runner",
+      "algorithm": "NetMamba",
+      "runner": "Benchmark/run_benchmark.py"
+    }
+  }
+}

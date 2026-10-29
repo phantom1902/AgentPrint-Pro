@@ -1,0 +1,29 @@
+[
+  {
+    "model": "YaTC",
+    "suite_filename": "yatc-pretrained.pth",
+    "experimental_source_path": "Benchmark/2023-AAAI-YaTC/models/pretrained-model.pth",
+    "sha256": "66314aa57d4364bad0228835a181158f819d10c857936fbbdbae6dc483211fc6",
+    "bytes": 27037981,
+    "upstream_download_entry": "https://drive.google.com/file/d/1wWmZN87NgwujSd2-o5nm3HaQUIzWlv16/view?usp=drive_link",
+    "provenance_note": "Official checkpoint source recorded in the local provenance file."
+  },
+  {
+    "model": "NetMamba",
+    "suite_filename": "netmamba-pretrained.pth",
+    "experimental_source_path": "Benchmark/2024-ICNP-NetMamba/output/pretrain/pre-train.pth",
+    "sha256": "30537edbff2f7db69fe4c9bd157a5e50d932278beb7f70de7eb995a35fce35e3",
+    "bytes": 26188650,
+    "upstream_download_entry": "https://huggingface.co/wangtz/NetMamba",
+    "provenance_note": "Upstream download entry from the local README; require the recorded hash to identify the actual file."
+  },
+  {
+    "model": "TrafficFormer",
+    "suite_filename": "trafficformer-pretrained.bin",
+    "experimental_source_path": "Benchmark/2025-SP-TrafficFormer/models/finetuned_model.bin",
+    "sha256": "4a8f0422a74e950d8e60966c27871da01c8ed1413e4858fec4209c3d39e01599",
+    "bytes": 528600071,
+    "upstream_download_entry": "https://drive.google.com/file/d/1pR6ZaWE7MWFDQWiF4LDzSyjSq0Gj3kV7/view?usp=sharing",
+    "provenance_note": "Upstream pretraining link is NOT a verified source of this experimental file. Actual finetuned_model.bin must be supplied separately; upstream pretrained file has a different hash."
+  }
+]

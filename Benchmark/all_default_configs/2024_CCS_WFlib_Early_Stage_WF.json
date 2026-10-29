@@ -1,0 +1,182 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2024_CCS_WFlib_Early_Stage_WF",
+  "scope": "Performance-related hyperparameters for remaining Benchmark baselines and ANT adapters. Pure file paths and output paths are omitted unless they select a model/checkpoint.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow or native flow preparation is required",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "For Tor/WF-style baselines, packet-level ANT traces are mapped to direction/time sequences; this does not synthesize Tor cells.",
+      "For VA fingerprinting, device IP is inferred independently per episode; no global fixed device IP is used."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "raw_npz_keys": [
+        "X",
+        "y"
+      ],
+      "trace_value": "direction * relative_time_seconds",
+      "scope": "episode",
+      "seq_len_default": 5000,
+      "protocols": "tcp"
+    },
+    "smoke_runner_hyperparameters": {
+      "epochs": 1,
+      "batch_size": 8,
+      "learning_rate": 0.001,
+      "optimizer": "Adam",
+      "device": "cuda with cpu fallback",
+      "seed": 42,
+      "feature_workers": 2
+    },
+    "shared_training_hyperparameters": {
+      "default_loss": "CrossEntropyLoss unless script overrides loss_name",
+      "triplet_margin_loss": {
+        "margin": 0.1,
+        "miner": "TripletMarginMiner",
+        "miner_margin": 0.1,
+        "miner_triplet_type": "semihard"
+      },
+      "supcon_loss": {
+        "temperature": 0.1
+      },
+      "netclr_info_nce": {
+        "views": 2,
+        "temperature": 0.5,
+        "feature_normalization": "L2 normalize before similarity matrix"
+      },
+      "step_lr_when_enabled": {
+        "step_size": 30,
+        "gamma": 0.74
+      },
+      "dataloader_num_workers_default": 8,
+      "train_drop_last": true,
+      "train_shuffle": true
+    },
+    "submodels": {
+      "DF": {
+        "feature": "DIR",
+        "seq_len": 5000,
+        "raw_seq_len": 5000,
+        "train_epochs": 30,
+        "batch_size": 128,
+        "learning_rate": 0.002,
+        "optimizer": "Adamax"
+      },
+      "AWF": {
+        "feature": "DIR",
+        "seq_len": 3000,
+        "raw_seq_len": 3000,
+        "train_epochs": 30,
+        "batch_size": 256,
+        "learning_rate": 0.0008,
+        "optimizer": "RMSprop"
+      },
+      "TikTok": {
+        "feature": "DT",
+        "seq_len": 5000,
+        "raw_seq_len": 5000,
+        "train_epochs": 30,
+        "batch_size": 128,
+        "learning_rate": 0.002,
+        "optimizer": "Adamax"
+      },
+      "VarCNN": {
+        "feature": "DT2",
+        "seq_len": 5000,
+        "raw_seq_len": 5000,
+        "train_epochs": 30,
+        "batch_size": 50,
+        "learning_rate": 0.001,
+        "optimizer": "Adam"
+      },
+      "NetCLR": {
+        "pretrain_epochs": 100,
+        "pretrain_batch_size": 256,
+        "pretrain_learning_rate": 0.0003,
+        "feature": "DIR",
+        "seq_len": 5000,
+        "raw_seq_len": 5000,
+        "train_epochs": 30,
+        "batch_size": 256,
+        "learning_rate": 0.0003,
+        "optimizer": "Adam",
+        "pretrain_loss": {
+          "type": "InfoNCE",
+          "temperature": 0.5,
+          "views": 2
+        }
+      },
+      "TMWF": {
+        "feature": "DIR",
+        "seq_len": 30720,
+        "raw_seq_len": 30720,
+        "num_tab": 1,
+        "train_epochs": 30,
+        "batch_size": 80,
+        "learning_rate": 0.0005,
+        "optimizer": "Adam"
+      },
+      "ARES": {
+        "precompute_feature": "MTAF",
+        "precompute_seq_len": 10000,
+        "feature": "MTAF",
+        "seq_len": 8000,
+        "raw_seq_len": 10000,
+        "train_epochs": 30,
+        "batch_size": 512,
+        "learning_rate": 0.002,
+        "optimizer": "AdamW",
+        "lr_adjustment": "StepLR"
+      },
+      "BAPM": {
+        "feature": "DIR",
+        "seq_len": 8500,
+        "raw_seq_len": 8500,
+        "num_tab": 1,
+        "train_epochs": 30,
+        "batch_size": 128,
+        "learning_rate": 0.0005,
+        "optimizer": "Adam"
+      }
+    },
+    "source_files": [
+      "Benchmark/2024_CCS_WFlib_Early_Stage_WF/adapt_ant_pcap.py",
+      "Benchmark/2024_CCS_WFlib_Early_Stage_WF/scripts/*.sh",
+      "Benchmark/2024_CCS_WFlib_Early_Stage_WF/WFlib/models/*.py",
+      "Benchmark/2024_CCS_WFlib_Early_Stage_WF/WFlib/tools/data_processor.py",
+      "Benchmark/2024_CCS_WFlib_Early_Stage_WF/WFlib/tools/model_utils.py",
+      "Benchmark/scripts/run_ant_wf_scenario_smoke.py"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "wflib_all_submodels_runner",
+      "runner": "Benchmark/scripts/run_ant_wf_scenario_smoke.py",
+      "models": [
+        "DF",
+        "AWF",
+        "TikTok",
+        "VarCNN",
+        "RF",
+        "ARES",
+        "NetCLR",
+        "TMWF",
+        "BAPM"
+      ],
+      "unsupported_without_semantic_change": [
+        "TF",
+        "Holmes"
+      ]
+    }
+  }
+}

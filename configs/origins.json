@@ -1,0 +1,57 @@
+{
+  "risk/FlowLens": {
+    "source": "Recorded risk run configuration for FlowLens",
+    "source_sha256": "2136530563a70f79223a120b0f516f570d5c7c5ebe096244f966f1be41ee2e6e",
+    "source_path_withheld": true
+  },
+  "risk/NetMamba": {
+    "source": "Recorded risk run configuration for NetMamba",
+    "source_sha256": "fcf2fbc061eb9843c42e44822831150647e2e7cb67a3cac2e7e1790dc84e632f",
+    "source_path_withheld": true
+  },
+  "risk/TrafficFormer": {
+    "source": "Best-trial parameters combined with local defaults for risk/TrafficFormer",
+    "source_sha256": "4ada7a3140dc52c5ce631e155410fd48059479da1a1ddd71ad08046bf621fcbf",
+    "source_path_withheld": true
+  },
+  "risk/TFusion": {
+    "source": "Best-trial parameters combined with local defaults for risk/TFusion",
+    "source_sha256": "2ff4f090b9b29a0435c8a5f96e2df81fba4ba1ef2231029d9b5350ddb1306d3b",
+    "source_path_withheld": true
+  },
+  "scenario/FlowLens": {
+    "source": "Recorded five-class scenario run configuration for FlowLens",
+    "source_sha256": "e8bbb03867d3d8eca089607929491ee99deb7549619218510ed1d2373b460400",
+    "source_path_withheld": true
+  },
+  "scenario/NetMamba": {
+    "source": "Recorded five-class scenario run configuration for NetMamba",
+    "source_sha256": "887a81f35fa1ef123d21733cb4cc84ba6d458082303411210d40020b691490c3",
+    "source_path_withheld": true
+  },
+  "scenario/TrafficFormer": {
+    "source": "Recorded five-class scenario run configuration for TrafficFormer",
+    "source_sha256": "2ddb6093696e501f1c49f8c85c06e3b1bbc958098b93edd412caafc79d3227eb",
+    "source_path_withheld": true
+  },
+  "scenario/TFusion": {
+    "source": "Recorded risk run configuration for TFusion benign encoder reused by scenario",
+    "source_sha256": "3d99fc0faf828c06625df43df6f981972055973825a3cbf5c3fed7934fdcb0a3",
+    "source_path_withheld": true
+  },
+  "risk+scenario/YaTC": {
+    "source": "Benchmark/all_default_configs/2023-AAAI-YaTC.json",
+    "source_sha256": "d6e581c957254b07ee8f6d923600809a5b201ac2466b241c89e723f4edd6d0ca",
+    "source_path_withheld": false
+  },
+  "risk+scenario/WFlib": {
+    "source": "Benchmark/all_default_configs/2024_CCS_WFlib_Early_Stage_WF.json",
+    "source_sha256": "39464cbabccc14eef0fdd6a9020598415e8b603076ca3469e3cfe31747cdf368",
+    "source_path_withheld": false
+  },
+  "scenario_label_mapping": {
+    "source": "Benchmark/experiment_configs/scenario_task_groups_v1.json",
+    "source_sha256": "431b7f676f945a6ed704d8d7f9e97fa4167c44a26b88324fa0e7c9878d57fdbd",
+    "source_path_withheld": false
+  }
+}

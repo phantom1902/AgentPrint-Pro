@@ -1,0 +1,76 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2025-SP-TrafficFormer",
+  "scope": "Performance-related hyperparameters for remaining Benchmark baselines and ANT adapters. Pure file paths and output paths are omitted unless they select a model/checkpoint.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow or native flow preparation is required",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "For Tor/WF-style baselines, packet-level ANT traces are mapped to direction/time sequences; this does not synthesize Tor cells.",
+      "For VA fingerprinting, device IP is inferred independently per episode; no global fixed device IP is used."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "input_representation": "native_datagram",
+      "payload_length": 32,
+      "payload_packet": 5,
+      "start_index": 76,
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "random_seed": 10,
+      "max_rows": null
+    },
+    "model_training_hyperparameters": {
+      "pretrained_model_path": "finetuned_model.bin by default config",
+      "max_epoch": 4,
+      "earlystop": "min(config earlystop, max_epoch); defaults to max_epoch when not set",
+  "batch_size": 128,
+      "embedding": "word_pos_seg",
+      "encoder": "transformer",
+      "mask": "fully_visible",
+      "seq_length": 320,
+      "learning_rate": 4.543239428925799e-05,
+      "dropout": 0.5,
+      "warmup": 0.1,
+      "pooling_default": "first",
+      "tokenizer_default": "bert",
+      "optimizer_default": "adamw",
+      "scheduler_default": "linear",
+      "soft_targets": false,
+      "soft_alpha": 0.5
+    },
+    "evaluation_hyperparameters": {
+      "early_stop_validation_threshold": 0.99,
+      "early_stop_test_threshold": 0.99,
+      "early_stop_metrics": [
+        "accuracy",
+        "macro_f1",
+        "auc"
+      ]
+    },
+    "source_files": [
+      "Benchmark/default_configs/TrafficFormer.yaml",
+      "Benchmark/2025-SP-TrafficFormer/adapt_ant_pcap.py",
+      "Benchmark/2025-SP-TrafficFormer/fine-tuning/run_classifier.py",
+      "Benchmark/2025-SP-TrafficFormer/models/bert/*.json",
+      "Benchmark/2025-SP-TrafficFormer/uer/opts.py",
+      "Benchmark/algorithms.py"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "integrated_benchmark_runner",
+      "algorithm": "TrafficFormer",
+      "runner": "Benchmark/run_benchmark.py"
+    }
+  }
+}

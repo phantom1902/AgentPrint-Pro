@@ -1,0 +1,35 @@
+{
+  "algorithm": "TrafficFormer",
+  "data": {
+    "validation_size": 0.1,
+    "split_random_state": 42,
+    "label_mode": "auto",
+    "require_train_covers_test_labels": true
+  },
+  "algorithm_config": {
+    "conversion": {
+      "input_representation": "native_datagram",
+      "use_native_datagram": true,
+      "payload_length": 32,
+      "payload_packet": 5,
+      "start_index": 76,
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "random_seed": 10,
+      "max_rows": null
+    },
+    "finetune": {
+      "max_epoch": 4,
+      "batch_size": 32,
+      "embedding": "word_pos_seg",
+      "encoder": "transformer",
+      "mask": "fully_visible",
+      "seq_length": 256,
+      "learning_rate": 2.033281656757398e-05,
+      "dropout": 0.45466020103939103,
+      "warmup": 0.05175599632000338,
+      "vocab_path": "models/encryptd_vocab.txt"
+    },
+    "extra_args": []
+  }
+}

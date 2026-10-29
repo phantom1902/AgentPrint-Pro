@@ -1,0 +1,106 @@
+{
+  "schema_version": "1.0",
+  "baseline": "2025-CCS-TFusion",
+  "scope": "Performance-related hyperparameters for remaining Benchmark baselines and ANT adapters. Pure file paths and output paths are omitted unless they select a model/checkpoint.",
+  "common_ant_defaults": {
+    "flow_definition": "bidirectional five-tuple when scope=flow or native flow preparation is required",
+    "flow_timeout_seconds": 120.0,
+    "default_label_field": "Scenario",
+    "notes": [
+      "For Tor/WF-style baselines, packet-level ANT traces are mapped to direction/time sequences; this does not synthesize Tor cells.",
+      "For VA fingerprinting, device IP is inferred independently per episode; no global fixed device IP is used."
+    ]
+  },
+  "performance_hyperparameters": {
+    "adapter_hyperparameters": {
+      "segment_len": 100,
+      "five_tuple_mode": "bidirectional",
+      "five_tuple_timeout_seconds": 120.0,
+      "protocols": [
+        "tcp",
+        "udp",
+        "icmp",
+        "icmpv6"
+      ],
+      "skip_zero_payload_packets": false,
+      "conversion_status": "ANT custom pcap-derived feature construction; original pcap-to-feature parameters are not fully public"
+    },
+    "model_training_hyperparameters": {
+      "stage1_contrastive": {
+        "max_epoch": 15,
+        "learning_rate": 0.001,
+        "weight_decay": 0.0001,
+        "contrast_batch_size": 50,
+        "seed": 777,
+        "segment_len": 100
+      },
+      "original_configs_train_test": {
+        "num_epoch": 5,
+        "learning_rate": 0.001,
+        "segment_len": 100,
+        "contrast_batch_size": "50 for most tasks, 100 for amplification/malware"
+      }
+    },
+    "evaluation_hyperparameters": {
+      "detection_model": "iforest",
+      "kmeans_detector": {
+        "n_clusters": 10
+      },
+      "isolation_forest_random_state": 42,
+      "one_class_svm_detector": {
+        "kernel": "rbf",
+        "gamma": "auto",
+        "nu": 0.1
+      },
+      "infer_batch_size": 256,
+      "train_contrast_internal_infer_batch_size": 300,
+      "alternative_rf_detector": {
+        "n_estimators": 20,
+        "max_depth": 50
+      },
+      "knn_detector": {
+        "n_neighbors": 3
+      },
+      "logistic_regression_detector": "sklearn LogisticRegression default parameters",
+      "gaussian_nb_detector": "sklearn GaussianNB default parameters"
+    },
+    "pretrain_config_hyperparameters": {
+      "MAWI_F": {
+        "contrast_batch_size": 100,
+        "segment_len": 100,
+        "learning_rate": 0.001,
+        "num_epoch": 1
+      },
+      "MAWI_G": {
+        "contrast_batch_size": 100,
+        "segment_len": 100,
+        "learning_rate": 0.001,
+        "num_epoch": 1
+      }
+    },
+    "source_files": [
+      "Benchmark/default_configs/TFusion.yaml",
+      "Benchmark/2025-CCS-TFusion/adapt_ant_pcap.py",
+      "Benchmark/2025-CCS-TFusion/train_contrast.py",
+      "Benchmark/2025-CCS-TFusion/data_contrast.py",
+      "Benchmark/2025-CCS-TFusion/model/trafformer.py",
+      "Benchmark/2025-CCS-TFusion/model/traffusion.py",
+      "Benchmark/2025-CCS-TFusion/model/detection/all_detectors.py",
+      "Benchmark/2025-CCS-TFusion/config/train-test/*.json"
+    ]
+  },
+  "unified_evaluation": {
+    "evaluator": "Benchmark.evaluation.evaluate_predictions",
+    "primary_prediction_input": "soft_predictions.npy",
+    "ground_truth_input": "test_labels.txt",
+    "label_mapping": "label_mapping.json",
+    "prediction_source": "soft_predictions_argmax",
+    "native_metrics_preserved": true,
+    "hard_prediction_role": "audit_only_when_soft_predictions_exist",
+    "strategy": {
+      "type": "integrated_benchmark_runner",
+      "algorithm": "TFusion",
+      "runner": "Benchmark/run_benchmark.py"
+    }
+  }
+}

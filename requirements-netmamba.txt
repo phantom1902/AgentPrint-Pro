@@ -1,0 +1,19 @@
+# Versions observed in the NetMamba smoke-test environment, Python 3.9.
+# torch/torchvision and the two CUDA extensions are installed separately.
+numpy==1.23.0
+pandas==2.2.3
+scipy==1.13.1
+scikit-learn==1.5.2
+PyYAML==6.0.2
+Pillow==10.4.0
+timm==0.4.12
+scapy==2.6.0
+einops==0.8.2
+tensorboard==2.20.0
+matplotlib==3.9.2
+transformers==4.35.2
+tqdm==4.66.5
+joblib==1.4.2
+packaging==24.1
+ninja
+wheel==0.44.0

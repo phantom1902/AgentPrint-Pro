@@ -1,0 +1,14 @@
+.venv/
+episodes/
+__pycache__/
+scripts/.mock_pids/
+*.pyc
+.env
+.env.*
+.claude/
+.codex/
+*.jsonl
+*.log
+*.key
+*.pem
+*.pcapng
