@@ -13,3 +13,8 @@ Benchmark/data/
 build/
 dist/
 command_history.md
+# AgentPrint generated caches and runs (lightweight evidence is copied explicitly).
+agentprint-cache/
+agentprint-runs/
+*.npy
+events.out.tfevents.*

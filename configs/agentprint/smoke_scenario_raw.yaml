@@ -1,0 +1,7 @@
+extends: scenario_raw.yaml
+mode: smoke
+preprocessing:
+  splits: [train, val]
+training:
+  epochs: 1
+  batch_size: 4

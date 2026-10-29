@@ -1,0 +1,21 @@
+schema_version: 1
+task: scenario
+transform: raw
+mode: formal
+seed: 42
+paths:
+  data_root: /root/autodl-tmp/ant-workspace/data/raw/ANT
+  cache_root: /root/autodl-tmp/ant-workspace/data/processed/agentprint
+  output_root: /root/autodl-tmp/ant-workspace/runs/agentprint
+preprocessing:
+  bins: 1800
+  shard_size: 1024
+  splits: [train, val, test]
+training:
+  epochs: 30
+  batch_size: 200
+  learning_rate: 0.0005
+  weight_decay: 0.001
+  optimizer: adam
+  lr_decay: 0.2
+  num_workers: 0

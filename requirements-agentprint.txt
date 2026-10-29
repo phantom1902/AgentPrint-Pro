@@ -1,0 +1,8 @@
+# Independent module; install into the selected existing Python/PyTorch environment.
+torch
+numpy
+PyYAML
+dpkt
+scikit-learn
+tensorboard
+# Synthetic-fixture tests additionally use scapy; unittest is in the stdlib.
