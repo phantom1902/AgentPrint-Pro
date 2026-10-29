@@ -11,9 +11,9 @@
 | T01 | 已完成并集成 | t01_implement / t01_review | 实现e265a2b，集成13264f0；7定向测试、compileall、mypy通过；审查无重要问题 |
 | T02 | 已完成并集成 | t02_implement / t02_review | 实现7e18e7b，集成d991900；片段6项及T01 7项通过，审查通过 |
 | T03 | 已完成并集成，审查通过 | t03_implement / t03_review | 实现afc04da，集成e8c3167；8项质量测试与T01 7项通过 |
-| T04 | 修复已集成，待复核 | t04_cursor_fix / t04_fix_review | 实现5c2fceb，集成156d689；补充源结尾游标恢复测试与修复 |
+| T04 | 已完成并集成，复核通过 | t04_cursor_fix / t04_fix_review | 5c2fceb及8e66b21，集成d8ae303；新增3项集成测试通过 |
 | T05 | 执行中 | t05_implement | 分支codex/ant-t05；正式协议、变换与指标 |
-| T06 | 执行中 | t06_implement | 分支codex/ant-t06；训练恢复与日志 |
+| T06 | 已集成，任务审查中 | t06_implement / t06_review | 实现e8f7993，集成5593670；4项恢复测试通过，合并后mypy11文件通过 |
 | T07 | 等待T03/T04/T05/T06 | 未派发 | |
 | T08 | 等待T07 | 未派发 | |
 | T09 | 等待T08 | 未派发 | |

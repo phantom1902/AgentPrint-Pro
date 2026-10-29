@@ -39,9 +39,9 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "fix_in_progress",
-      "owner": "t04_cursor_fix",
-      "integrated_commit": "156d689"
+      "status": "complete",
+      "owner": "t04_cursor_fix / t04_fix_review",
+      "integrated_commit": "d8ae303"
     },
     {
       "id": "T05",
@@ -58,8 +58,9 @@
       "blocked_by": [
         "T01"
       ],
-      "status": "in_progress",
-      "owner": "t06_implement"
+      "status": "review_pending",
+      "owner": "t06_implement / t06_review",
+      "integrated_commit": "5593670"
     },
     {
       "id": "T07",
