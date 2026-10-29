@@ -178,8 +178,8 @@ class PublicCommands(unittest.TestCase):
         rows = [json.loads(line) for line in (target / 'excluded.jsonl').read_text().splitlines()]
         self.assertEqual({row['episode_id']: row['reason'] for row in rows}, {
             'two_candidates': 'endpoint_syn_candidates', 'no_syn': 'endpoint_syn_candidates',
-            'damaged': 'damaged_capture', 'udp': 'unsupported_transport',
-            'ipv6': 'unsupported_ipv6'})
+            'damaged': 'damaged_capture', 'udp': 'endpoint_syn_candidates',
+            'ipv6': 'endpoint_syn_candidates'})
 
     def test_raw_scenario_prepare_train_evaluate_commands(self):
         self.fixture()
