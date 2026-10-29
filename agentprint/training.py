@@ -12,7 +12,7 @@ from torch.utils.data import DataLoader, Dataset
 import yaml
 
 from . import MODEL_VERSION, PREPROCESSING_VERSION
-from .cache import CachedSamples, LABEL_MAP_ID
+from .cache import CachedSamples, LABEL_MAP, LABEL_MAP_ID
 from .config import ConfigError
 from .metrics import classification_metrics, write_metrics
 from .model import getRF
@@ -35,8 +35,8 @@ def setup_execution(seed):
 
 
 def supported(config):
-    if config['task'] != 'scenario' or config['transform'] != 'raw':
-        raise ConfigError('T01 training/evaluation supports scenario/raw; other protocols require T05')
+    if config['transform'] != 'raw':
+        raise ConfigError('training/evaluation supports raw inputs; log1p protocol requires T05')
 
 
 def loader(config, split, shuffle=False):
@@ -80,7 +80,7 @@ def train(config, device='cpu', resume=None):
     root.mkdir(parents=True, exist_ok=False)
     with (root / 'resolved_config.yaml').open('w', encoding='utf-8') as handle:
         yaml.safe_dump(config, handle, sort_keys=False)
-    model = getRF(5).to(device)
+    model = getRF(len(LABEL_MAP[config['task']])).to(device)
     settings = config['training']
     optimizer = torch.optim.Adam(model.parameters(), lr=settings['learning_rate'],
                                  weight_decay=settings['weight_decay'])
@@ -141,7 +141,7 @@ def evaluate(config, device, checkpoint, split='val'):
     samples, batches = loader(config, split)
     if split == 'val' and saved['val_manifest_id'] != samples.metadata['manifest_id']:
         raise ConfigError('checkpoint validation manifest differs from requested cache')
-    model = getRF(5).to(device)
+    model = getRF(len(LABEL_MAP[config['task']])).to(device)
     model.load_state_dict(saved['model'])
     summary, per_class, matrix = evaluate_model(model, batches, device, config['task'])
     summary.update(split=split, epoch=saved['epoch'], task=config['task'],
