@@ -1,6 +1,6 @@
 # AgentPrint 适配 ANT：设计磋商
 
-状态：Q1–Q20、Q22–Q62 已记录确认，Q21 已撤回，Q20 已经 Q54/Q58/Q59 修订。完整规格与开发启动待最终确认，未开始实现或正式训练。合并材料见 [开发规格](2026-10-29-agentprint-development-spec.md)；按to-spec模板整理的 [issue规格草稿](2026-10-29-agentprint-issue-spec.md) 尚未发布，tracker配置与测试边界核对状态见该稿。
+状态：Q1–Q20、Q22–Q62 已记录确认，Q21 已撤回，Q20 已经 Q54/Q58/Q59 修订。完整规格与开发启动待最终确认，未开始实现或正式训练。合并材料见 [开发规格](2026-10-29-agentprint-development-spec.md)；按to-spec模板整理的 [issue规格草稿](2026-10-29-agentprint-issue-spec.md) 测试边界已获用户确认，尚待tracker配置后发布。
 
 磋商方式：按用户最新要求，恢复一轮多个问题，每题编号、给出备选及推荐，等待用户逐项决定。
 
