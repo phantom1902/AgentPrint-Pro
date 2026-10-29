@@ -14,8 +14,8 @@
 | T04 | 已完成并集成，复核通过 | t04_cursor_fix / t04_fix_review | 5c2fceb及8e66b21，集成d8ae303；新增3项集成测试通过 |
 | T05 | 已完成并集成，审查通过 | t05_implement / t05_review | 实现94069dd，集成8009052；主agent合并后四配置命令测试通过123.135秒 |
 | T06 | 已完成并集成，审查通过 | t06_implement / t06_review | 实现e8f7993，集成5593670；4项恢复测试通过，合并后mypy11文件通过 |
-| T07 | 执行中 | t07_implement / root | 子agent实现可复现验收工具，root独占服务器执行 |
-| T08 | 等待T07 | 未派发 | |
+| T07 | 已完成，真实四配置CPU验收通过 | t07_implement / t07_review / root | 2b9e2c4；Linux8项工具测试通过35.387秒；真实验收116.010秒 |
+| T08 | 执行中 | t08_implement / root | root串行全量prepare；子agent覆盖/一致性报告 |
 | T09 | 等待T08 | 未派发 | |
 
 ## 工作区与测试
@@ -43,3 +43,5 @@
 - T05/T06交叉合并核对：保留shuffle generator与完整恢复循环；训练loader后立即缺类门控；保存protocol.json；getRF按任务K；固定47逐epoch指标与验证排除信息；版本v2、正式全split默认及LR/早轮次平分规则保留。主agent合并后片段47类prepare/train/evaluate通过21.510秒，四配置公开闭环通过123.135秒，mypy11文件通过。
 
 - T07 helper0a9e114已合并8feec33，目标Linux6项公开工具测试通过（12.898秒）。真实尝试选择15/6个train/val Episode（64/31条完整标注），有效场景12/6、片段35/22；场景raw训练/验证成功，后续log1p训练SIGKILL(-9)且stderr为空，因此验收未通过、不启动T08。容器内存限额2GB、历史峰值触及限额；正在将父进程依赖探测改为短生命周期进程，保留原batch4/FP32及失败工作区。helper审查记录PyYAML缺失时环境报告捕获较晚的次要问题，最终复核时处理。
+
+- T07最终成功工作区：/root/autodl-tmp/ant-workspace/acceptance/t07-2b9e2c4，提交2b9e2c45c06609d471d3584c66c67319b49816ec。选择ID6f4cfb4f99114df187e335d60be18b8bb31d6998494f79307aad494ed72e08f3。场景12/6、片段35/22有效train/val样本；四配置各1epoch/batch4/CPU全部prepare/train/evaluate成功，最终checkpoint/CSV/TensorBoard/清单核验通过。首轮失败保留；GPU正式训练未运行。

@@ -72,8 +72,9 @@
         "T05",
         "T06"
       ],
-      "status": "in_progress",
-      "owner": "t07_implement / root"
+      "status": "complete",
+      "owner": "t07_implement / root",
+      "integrated_commit": "2b9e2c4"
     },
     {
       "id": "T08",
@@ -81,7 +82,8 @@
       "blocked_by": [
         "T07"
       ],
-      "status": "blocked"
+      "status": "in_progress",
+      "owner": "t08_implement / root"
     },
     {
       "id": "T09",
