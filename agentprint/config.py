@@ -78,7 +78,8 @@ def load_config(path, overrides=None):
     prep, train = config['preprocessing'], config['training']
     if prep['bins'] != 1800 or prep['shard_size'] != 1024:
         raise ConfigError('preprocessing requires bins=1800 and shard_size=1024')
-    if (not prep['splits'] or len(set(prep['splits'])) != len(prep['splits'])
+    if (not prep['splits'] or any(not isinstance(s, str) for s in prep['splits'])
+            or len(set(prep['splits'])) != len(prep['splits'])
             or any(s not in ('train', 'val', 'test') for s in prep['splits'])):
         raise ConfigError('preprocessing.splits must contain unique official split names')
     if train['epochs'] < 1 or train['batch_size'] < 1:
@@ -91,6 +92,12 @@ def load_config(path, overrides=None):
         raise ConfigError('learning_rate must be positive and lr_decay in (0,1]')
     if train['optimizer'] != 'adam' or train['num_workers'] != 0:
         raise ConfigError('training requires optimizer=adam and num_workers=0')
+    if config['mode'] == 'formal':
+        formal = {'epochs': 30, 'batch_size': 200, 'learning_rate': 5e-4,
+                  'weight_decay': 1e-3, 'lr_decay': 0.2}
+        if config['seed'] != 42 or any(train[key] != value for key, value in formal.items()):
+            raise ConfigError('formal protocol requires seed=42, epochs=30, batch_size=200, '
+                              'learning_rate=0.0005, weight_decay=0.001, lr_decay=0.2')
     for key, value in (overrides or {}).items():
         if key not in ('data_root', 'cache_root', 'output_root'):
             raise ConfigError(f'unsupported runtime override: {key}')

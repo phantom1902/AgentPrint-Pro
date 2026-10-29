@@ -1,0 +1,3 @@
+extends: common.yaml
+task: primitive
+transform: log1p

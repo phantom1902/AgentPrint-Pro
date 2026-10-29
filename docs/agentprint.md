@@ -119,3 +119,46 @@ TensorBoard rather than changing the RF model or cache representation.
 Reference source: https://github.com/robust-fingerprinting/RF/blob/master/RF/models/RF.py
 (UTF-8/LF SHA256 `4cf9ff1a71a3601aeab61756327467add251475fa3bfd9c19eeb43e658effa19`).
 This is a source-traceable RF adaptation, not a claim of exact AgentPrint replication.
+
+## T05 experiment protocol
+
+Training and evaluation support both independent tasks and both `raw`/`log1p`
+inputs. Formal overlays are `scenario_raw.yaml`, `scenario_log1p.yaml`,
+`primitive_raw.yaml`, and `primitive_log1p.yaml`; they inherit `common.yaml`.
+The corresponding `smoke_` overlays use one epoch, batch four, and train/val
+only. These CPU checks are separate from the four formal seed-42 experiments.
+Formal YAML rejects changes to the agreed 30 epochs, batch 200, Adam LR 5e-4,
+weight decay 1e-3, and exponential factor 0.2. No experiment CLI flags are added.
+Raw and log1p read the same uint64 shards and manifests, converting to float32
+before the configured transform; no transformed cache is written.
+
+Before model allocation, formal training counts the actual valid training
+manifest and stops with `missing_training_classes`, fixed-head support, and
+missing label names if any of the five or 47 classes is absent. Smoke runs
+permit intentionally incomplete class coverage. Each run writes `protocol.json`
+with FP32, deterministic execution, disabled AMP/TF32/cuDNN benchmark, zero
+loader workers, the formal serial-execution requirement, and validation tie
+rules. The ordinary unweighted cross-entropy and fixed model heads are shared.
+
+Evaluation works on val/test for every overlay. Main Macro-F1 averages only
+classes with true support in the evaluated manifest, including when predictions
+contain a class absent from that manifest. Reports retain all five/47 labels,
+support and class coverage; primitive also reports missing-as-zero fixed-47
+Macro-F1. Test evaluation reports the evaluated split's exclusion counts/reasons.
+
+Each public `evaluate` additionally updates
+`OUTPUT_ROOT/selection-TASK-COHORT.json`. The cohort identifies task, mode, seed,
+training settings, model/preprocessing/label-map versions, and training and
+validation manifest identities. Its raw/log1p candidates store the explicitly
+evaluated checkpoint's saved best validation Macro-F1. The latest explicitly
+evaluated checkpoint for each transform is its candidate; use a common output
+root to pair the comparison. The artifact is marked complete after both
+transforms have been evaluated, irrespective of evaluation order or val/test
+choice. It marks the validation-selected main candidate, choosing raw on ties.
+Every checkpoint remains independently evaluable on test. Test scores never
+enter this selection. Evaluation summaries link this artifact and contain a
+selection snapshot; the aggregate artifact is authoritative after later
+evaluations update the pair. Epoch ties retain the earliest checkpoint.
+Evaluation rejects recovery states whose explicit `best_epoch` differs from
+their model `epoch`; use `best.pt` so the saved validation score matches the
+evaluated model.

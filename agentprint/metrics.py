@@ -18,7 +18,12 @@ def classification_metrics(truth, predicted, task):
     summary = {'accuracy': float(accuracy_score(truth, predicted)),
                'macro_f1': float(f1[active].mean()),
                'support': support.tolist(), 'evaluated_classes': active,
-               'sample_count': len(truth)}
+               'sample_count': len(truth),
+               'coverage': {'supported_class_count': len(active),
+                            'expected_class_count': len(classes),
+                            'class_fraction': len(active) / len(classes),
+                            'missing_classes': [name for name, index in LABEL_MAP[task].items()
+                                                if not support[index]]}}
     if task == 'primitive':
         summary['fixed47_macro_f1'] = float(f1.mean())
     per_class = [{'label_id': index, 'label_name': name,
