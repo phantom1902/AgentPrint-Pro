@@ -91,6 +91,10 @@ class DFConvergence(unittest.TestCase):
                 run(raw,root/'rejected',parent,device='cpu',policy=self.policy())
             self.assertFalse((root/'rejected/last.pt').exists())
             self.assertFalse((root/'rejected/result.json').exists())
+            # A separately identified fresh experiment must not pretend to replay the parent.
+            fresh=run(raw,root/'fresh',parent,device='cpu',policy=self.policy(),fresh=True)
+            self.assertEqual(fresh['identity']['initialization'],'fresh_deterministic_run')
+            self.assertFalse(fresh['baseline_parity_passed'])
 
 
 if __name__=='__main__':unittest.main()
