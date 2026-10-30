@@ -1,0 +1,9 @@
+{
+  "batch_size": 200,
+  "decay_per_30": 0.5,
+  "dropout_1d": 0.1,
+  "dropout_2d": 0.05,
+  "learning_rate": 0.001,
+  "weight_decay": 0.001,
+  "width": 2.0
+}

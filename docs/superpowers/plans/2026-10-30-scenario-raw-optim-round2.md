@@ -23,11 +23,15 @@ First new point: learning_rate .0015 with all other incumbent parameters unchang
 
 ## Execution and acceptance
 
-- [ ] Record Git branch and preserve source/configuration identity.
-- [ ] Establish baseline and validate round-1 trajectory/environment/cache parity.
-- [ ] Sequentially run informed new configurations inside the count/time limit.
-- [ ] Complete top-two new-config seed 43/44 replication when the budget permits.
-- [ ] Independently audit checkpoints, metrics, stopping, ask/tell, and final selection against incumbent.
-- [ ] Back up results with hashes; commit the report and reproduction parameters; confirm training has stopped.
+- [x] Record Git branch and preserve source/configuration identity.
+- [x] Establish baseline and validate round-1 trajectory/environment/cache parity.
+- [x] Sequentially run informed new configurations inside the count/time limit.
+- [x] Complete top-two new-config seed 43/44 replication when the budget permits.
+- [x] Independently audit checkpoints, metrics, stopping, ask/tell, and final selection against incumbent.
+- [x] Back up results with hashes; commit the report and reproduction parameters; confirm training has stopped.
 
 Operational scripts may reuse the prior round's orchestration with a new study/development directory. Production code and old artifacts are preserved. No additional GPU work is authorized after this round's deadline.
+
+## Outcome
+
+12 complete trials in 3324.08 seconds; no failed/pruned. Both challengers completed three seeds. Retained round-1 incumbent (.785323 ± .016825), ahead of new challengers (.770611 ± .006130 and .756170 ± .033291). Source, environment and cache parity passed; 9 checkpoints independently re-evaluated; related 14 tests passed. See `docs/experiments/2026-10-30-scenario-raw-tuning-round2/README.md`.

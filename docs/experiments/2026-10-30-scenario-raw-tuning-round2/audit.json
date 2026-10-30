@@ -1,0 +1,507 @@
+{
+  "audit_unix": 1793358753.3405025,
+  "baseline_parity": {
+    "epochs": 90,
+    "fields_per_epoch": 9,
+    "passed": true
+  },
+  "direction": "maximize",
+  "failed": 0,
+  "finalists": [
+    {
+      "mean_accuracy": 0.7491749174917491,
+      "mean_macro_f1": 0.7706108472331593,
+      "origin": "round2",
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "sample_std_macro_f1": 0.006130355652156031,
+      "scores": [
+        0.7771391177939044,
+        0.7649765805141946,
+        0.769716843391379
+      ],
+      "trials": [
+        "trial-02",
+        "trial-10",
+        "trial-11"
+      ]
+    },
+    {
+      "mean_accuracy": 0.7343234323432344,
+      "mean_macro_f1": 0.7561698908989616,
+      "origin": "round2",
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "sample_std_macro_f1": 0.0332910411371254,
+      "scores": [
+        0.7791487947728981,
+        0.7179920350652058,
+        0.7713688428587809
+      ],
+      "trials": [
+        "trial-04",
+        "trial-08",
+        "trial-09"
+      ]
+    }
+  ],
+  "incumbent": {
+    "mean_accuracy": 0.7722772277227723,
+    "mean_macro_f1": 0.785322530774364,
+    "origin": "round1",
+    "params": {
+      "batch_size": 200,
+      "decay_per_30": 0.5,
+      "dropout_1d": 0.1,
+      "dropout_2d": 0.05,
+      "learning_rate": 0.001,
+      "weight_decay": 0.001,
+      "width": 2.0
+    },
+    "sample_std_macro_f1": 0.016825087012757266,
+    "scores": [
+      0.8025304272460534,
+      0.7689083471226328,
+      0.7845288179544058
+    ],
+    "trials": [
+      "trial-07",
+      "trial-09",
+      "trial-10"
+    ]
+  },
+  "objective": "three_seed_mean_best_validation_macro_f1",
+  "passed": true,
+  "phase_counts": {
+    "baseline": 1,
+    "repeat": 4,
+    "search": 7
+  },
+  "pruned": 0,
+  "ranked": [
+    {
+      "mean_accuracy": 0.7722772277227723,
+      "mean_macro_f1": 0.785322530774364,
+      "origin": "round1",
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "sample_std_macro_f1": 0.016825087012757266,
+      "scores": [
+        0.8025304272460534,
+        0.7689083471226328,
+        0.7845288179544058
+      ],
+      "trials": [
+        "trial-07",
+        "trial-09",
+        "trial-10"
+      ]
+    },
+    {
+      "mean_accuracy": 0.7491749174917491,
+      "mean_macro_f1": 0.7706108472331593,
+      "origin": "round2",
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "sample_std_macro_f1": 0.006130355652156031,
+      "scores": [
+        0.7771391177939044,
+        0.7649765805141946,
+        0.769716843391379
+      ],
+      "trials": [
+        "trial-02",
+        "trial-10",
+        "trial-11"
+      ]
+    },
+    {
+      "mean_accuracy": 0.7343234323432344,
+      "mean_macro_f1": 0.7561698908989616,
+      "origin": "round2",
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "sample_std_macro_f1": 0.0332910411371254,
+      "scores": [
+        0.7791487947728981,
+        0.7179920350652058,
+        0.7713688428587809
+      ],
+      "trials": [
+        "trial-04",
+        "trial-08",
+        "trial-09"
+      ]
+    }
+  ],
+  "reloaded_checkpoints": 9,
+  "search_wall_seconds": 3324.0777747631073,
+  "seed42_best": {
+    "accuracy": 0.7623762376237624,
+    "best_epoch": 74,
+    "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-04/best.pt",
+    "checkpoint_sha256": "5affc135f4dcaf4d3bbcbf8ca691c88f4bea485c54816d96a6465ed156ecb4dd",
+    "epochs": 100,
+    "macro_f1": 0.7791487947728981,
+    "parameters": 3540879,
+    "params": {
+      "batch_size": 200,
+      "decay_per_30": 0.75,
+      "dropout_1d": 0.1,
+      "dropout_2d": 0.05,
+      "learning_rate": 0.0007,
+      "weight_decay": 0.001,
+      "width": 2.0
+    },
+    "phase": "search",
+    "seed": 42,
+    "state": "complete",
+    "stop_reason": "validation_plateau",
+    "trial": "trial-04"
+  },
+  "selected_mean_macro_f1": 0.785322530774364,
+  "selected_origin": "round1",
+  "selected_params": {
+    "batch_size": 200,
+    "decay_per_30": 0.5,
+    "dropout_1d": 0.1,
+    "dropout_2d": 0.05,
+    "learning_rate": 0.001,
+    "weight_decay": 0.001,
+    "width": 2.0
+  },
+  "selected_sample_std_macro_f1": 0.016825087012757266,
+  "selected_seed42_checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030/trial-07/best.pt",
+  "selected_seed42_macro_f1": 0.8025304272460534,
+  "selection_status": "complete_three_seed_comparison",
+  "source_environment_manifest_parity": true,
+  "study_protocol": {
+    "cache_root": "/root/autodl-tmp/ant-workspace/data/processed/agentprint-full-v2",
+    "deadline_unix": 1793359011.6103683,
+    "direction": "maximize",
+    "manifests": {
+      "train": "97e6509b7b81f186c4e447f27ae98a568b7d909efc2f8d2f7fef61cb0fc971d9",
+      "val": "88d8fc08724d28acd727c655ecde68c66ce073a0847739c7704194d7997ed784"
+    },
+    "max_search_trials": 12,
+    "max_trials": 17,
+    "objective": "best_validation_macro_f1",
+    "started_unix": 1793355411.6103683,
+    "uses_test": false
+  },
+  "trial_count": 12,
+  "trials": [
+    {
+      "accuracy": 0.6237623762376238,
+      "best_epoch": 70,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-00/best.pt",
+      "checkpoint_sha256": "7927737d1ef13acc406238c474ea0da2b6fe510b0a5c15a6c457a2cc6d933dd9",
+      "epochs": 90,
+      "macro_f1": 0.6491311330896246,
+      "parameters": 891855,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.2,
+        "dropout_1d": 0.3,
+        "dropout_2d": 0.1,
+        "learning_rate": 0.0005,
+        "weight_decay": 0.001,
+        "width": 1.0
+      },
+      "phase": "baseline",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-00"
+    },
+    {
+      "accuracy": 0.7128712871287128,
+      "best_epoch": 74,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-01/best.pt",
+      "checkpoint_sha256": "75f5bf5b12a6a51b7b812fcd11be92281ac2002fe395baea208eac51e2b5f440",
+      "epochs": 97,
+      "macro_f1": 0.7552559671161361,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0015,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-01"
+    },
+    {
+      "accuracy": 0.7574257425742574,
+      "best_epoch": 79,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-02/best.pt",
+      "checkpoint_sha256": "c292434a80d5885b1a68875fd8460e5ff0fef471817e53b8b77f3e514d7880d1",
+      "epochs": 100,
+      "macro_f1": 0.7771391177939044,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-02"
+    },
+    {
+      "accuracy": 0.7623762376237624,
+      "best_epoch": 88,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-03/best.pt",
+      "checkpoint_sha256": "116b917f887cff31b5dd6e9340a77eeee68caf6088038957e4696ed0a3848dcc",
+      "epochs": 94,
+      "macro_f1": 0.7675059765641423,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-03"
+    },
+    {
+      "accuracy": 0.7623762376237624,
+      "best_epoch": 74,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-04/best.pt",
+      "checkpoint_sha256": "5affc135f4dcaf4d3bbcbf8ca691c88f4bea485c54816d96a6465ed156ecb4dd",
+      "epochs": 100,
+      "macro_f1": 0.7791487947728981,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-04"
+    },
+    {
+      "accuracy": 0.7376237623762376,
+      "best_epoch": 83,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-05/best.pt",
+      "checkpoint_sha256": "37ef50a2e23c36d0e718a2a232fd5e58869355b3022dba6610936831d07c00c5",
+      "epochs": 85,
+      "macro_f1": 0.748250243680938,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.9,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-05"
+    },
+    {
+      "accuracy": 0.7376237623762376,
+      "best_epoch": 81,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-06/best.pt",
+      "checkpoint_sha256": "7b9a33daf32fd6c3023486cec8f4ea159570cb555e982701e394511dbc8ad26e",
+      "epochs": 101,
+      "macro_f1": 0.754444041356793,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0011,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-06"
+    },
+    {
+      "accuracy": 0.7425742574257426,
+      "best_epoch": 73,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-07/best.pt",
+      "checkpoint_sha256": "07bff7c0757a7e499ef96bb0922f3830841db87238bc28e43727739436b6a2ff",
+      "epochs": 93,
+      "macro_f1": 0.7676659038901603,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.05,
+        "dropout_2d": 0.025,
+        "learning_rate": 0.001,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "search",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-07"
+    },
+    {
+      "accuracy": 0.6782178217821783,
+      "best_epoch": 39,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-08/best.pt",
+      "checkpoint_sha256": "de524de7cebf3590349f401a17bd783a7bb24d657826bf6b0ee7ff4abe0553b8",
+      "epochs": 60,
+      "macro_f1": 0.7179920350652058,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "repeat",
+      "seed": 43,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-08"
+    },
+    {
+      "accuracy": 0.7623762376237624,
+      "best_epoch": 83,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-09/best.pt",
+      "checkpoint_sha256": "0e6e0b3426b5673cd10bd493e62268a42714a843b6294a5f69094637561487c2",
+      "epochs": 109,
+      "macro_f1": 0.7713688428587809,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.75,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "repeat",
+      "seed": 44,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-09"
+    },
+    {
+      "accuracy": 0.7475247524752475,
+      "best_epoch": 56,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-10/best.pt",
+      "checkpoint_sha256": "00a5c411e2b7b178a7fd4e62f7b701316f51ec55365752ea7525c6b5061a5f1a",
+      "epochs": 77,
+      "macro_f1": 0.7649765805141946,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "repeat",
+      "seed": 43,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-10"
+    },
+    {
+      "accuracy": 0.7425742574257426,
+      "best_epoch": 68,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/.optim-agent-runs/scenario-raw-20261030-round2/trial-11/best.pt",
+      "checkpoint_sha256": "18a0e11127d9de32e3a718f26d907690ffcc2896809ca0c975b2f477979e9567",
+      "epochs": 101,
+      "macro_f1": 0.769716843391379,
+      "parameters": 3540879,
+      "params": {
+        "batch_size": 200,
+        "decay_per_30": 0.5,
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0007,
+        "weight_decay": 0.001,
+        "width": 2.0
+      },
+      "phase": "repeat",
+      "seed": 44,
+      "state": "complete",
+      "stop_reason": "validation_plateau",
+      "trial": "trial-11"
+    }
+  ],
+  "uses_test": false
+}

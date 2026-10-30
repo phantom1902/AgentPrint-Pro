@@ -1,0 +1,8 @@
+{
+  "archive": "/root/autodl-tmp/ant-workspace/tuning-development-20261030-round2/scenario-raw-round2-results.tar.gz",
+  "sha256": "7f4e155543480a0399b936550d2e72179f7f8cf4e1e49d8408f9cd8041e82fd8",
+  "bytes": 228521316,
+  "files": 145,
+  "contains": "All round-2 metadata/epoch metrics/best.pt; round-1 incumbent metadata and 3 best.pt; selected seed42 last.pt",
+  "excludes": "Historical immutable best snapshots and other last.pt remain on server"
+}
