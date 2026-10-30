@@ -1,0 +1,16 @@
+{
+  "id_to_label": {
+    "0": "artifact_processing",
+    "1": "business_services",
+    "2": "general_knowledge",
+    "3": "scientific_evidence",
+    "4": "security_testing"
+  },
+  "label_to_id": {
+    "artifact_processing": 0,
+    "business_services": 1,
+    "general_knowledge": 2,
+    "scientific_evidence": 3,
+    "security_testing": 4
+  }
+}

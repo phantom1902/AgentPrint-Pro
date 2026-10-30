@@ -1,0 +1,326 @@
+{
+  "passed": true,
+  "audit_unix": 1793359935.5994174,
+  "spec": {
+    "name": "DF",
+    "class_name": "DF",
+    "source_work": "2018_CCS_DF",
+    "feature": "DIR",
+    "seq_len": 5000,
+    "raw_seq_len": 5000,
+    "precompute_seq_len": null,
+    "num_tab": null,
+    "train_epochs": 30,
+    "batch_size": 128,
+    "learning_rate": 0.002,
+    "optimizer": "Adamax",
+    "loss": null,
+    "unsupported_reason": null
+  },
+  "seed": 42,
+  "parameters": 3668613,
+  "coverage": {
+    "train": {
+      "expected": 2703,
+      "evaluated": 2703,
+      "missing": [],
+      "support": {
+        "artifact_processing": 445,
+        "business_services": 272,
+        "general_knowledge": 871,
+        "scientific_evidence": 734,
+        "security_testing": 381
+      }
+    },
+    "val": {
+      "expected": 202,
+      "evaluated": 202,
+      "missing": [],
+      "support": {
+        "artifact_processing": 36,
+        "business_services": 21,
+        "general_knowledge": 71,
+        "scientific_evidence": 59,
+        "security_testing": 15
+      }
+    },
+    "test": {
+      "expected": 209,
+      "evaluated": 209,
+      "missing": [],
+      "support": {
+        "artifact_processing": 35,
+        "business_services": 22,
+        "general_knowledge": 72,
+        "scientific_evidence": 60,
+        "security_testing": 20
+      }
+    }
+  },
+  "input_statistics": {
+    "train": {
+      "shape": [
+        2703,
+        5000
+      ],
+      "nonzero_direction_slots": {
+        "minimum": 77,
+        "median": 4999.0,
+        "maximum": 4999
+      },
+      "all_zero_rows": 0,
+      "note": "Zero slots include the first packet at relative time zero, equal-time packets, and padding; nonzero count is not packet count"
+    },
+    "val": {
+      "shape": [
+        202,
+        5000
+      ],
+      "nonzero_direction_slots": {
+        "minimum": 89,
+        "median": 4999.0,
+        "maximum": 4999
+      },
+      "all_zero_rows": 0,
+      "note": "Zero slots include the first packet at relative time zero, equal-time packets, and padding; nonzero count is not packet count"
+    },
+    "test": {
+      "shape": [
+        209,
+        5000
+      ],
+      "nonzero_direction_slots": {
+        "minimum": 234,
+        "median": 4999.0,
+        "maximum": 4999
+      },
+      "all_zero_rows": 0,
+      "note": "Zero slots include the first packet at relative time zero, equal-time packets, and padding; nonzero count is not packet count"
+    }
+  },
+  "selected_checkpoint_epoch": 27,
+  "checkpoint_metric": "validation accuracy; latest epoch wins ties",
+  "metrics": {
+    "val": {
+      "accuracy": 0.5643564356435643,
+      "balanced_accuracy": 0.6083762082854945,
+      "macro_f1": 0.5855819499516979,
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          17,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          6,
+          34,
+          23,
+          4
+        ],
+        [
+          3,
+          5,
+          19,
+          32,
+          0
+        ],
+        [
+          2,
+          0,
+          4,
+          0,
+          9
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.6875,
+          "recall": 0.6111111111111112,
+          "f1": 0.6470588235294118,
+          "support": 36
+        },
+        {
+          "label": "business_services",
+          "precision": 0.6071428571428571,
+          "recall": 0.8095238095238095,
+          "f1": 0.6938775510204082,
+          "support": 21
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.53125,
+          "recall": 0.4788732394366197,
+          "f1": 0.5037037037037037,
+          "support": 71
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5333333333333333,
+          "recall": 0.5423728813559322,
+          "f1": 0.5378151260504201,
+          "support": 59
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.5,
+          "recall": 0.6,
+          "f1": 0.5454545454545454,
+          "support": 15
+        }
+      ]
+    },
+    "test": {
+      "accuracy": 0.5789473684210527,
+      "balanced_accuracy": 0.6113997113997114,
+      "macro_f1": 0.6048514045707158,
+      "confusion_matrix": [
+        [
+          26,
+          1,
+          2,
+          4,
+          2
+        ],
+        [
+          0,
+          14,
+          5,
+          2,
+          1
+        ],
+        [
+          8,
+          5,
+          38,
+          18,
+          3
+        ],
+        [
+          1,
+          3,
+          26,
+          30,
+          0
+        ],
+        [
+          3,
+          2,
+          1,
+          1,
+          13
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.6842105263157895,
+          "recall": 0.7428571428571429,
+          "f1": 0.7123287671232876,
+          "support": 35
+        },
+        {
+          "label": "business_services",
+          "precision": 0.56,
+          "recall": 0.6363636363636364,
+          "f1": 0.5957446808510638,
+          "support": 22
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.5277777777777778,
+          "recall": 0.5277777777777778,
+          "f1": 0.5277777777777778,
+          "support": 72
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5454545454545454,
+          "recall": 0.5,
+          "f1": 0.5217391304347826,
+          "support": 60
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.6842105263157895,
+          "recall": 0.65,
+          "f1": 0.6666666666666666,
+          "support": 20
+        }
+      ]
+    }
+  },
+  "highest_val_macro_f1_over_all_epochs": 0.5855819499516979,
+  "highest_val_macro_f1_epoch": 27,
+  "train_drop_last": true,
+  "training_samples_per_epoch": 2688,
+  "environment": {
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+    "torch": "2.12.1+cu130",
+    "numpy": "2.4.6",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti"
+  },
+  "execution": {
+    "command": [
+      "/root/autodl-tmp/ant-workspace/envs/optim-agent/bin/python",
+      "Benchmark/scripts/run_ant_wf_scenario_smoke.py",
+      "--data-root",
+      "/root/autodl-tmp/ant-workspace/data/raw/ANT",
+      "--out-dir",
+      "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030",
+      "--per-engine-scenario",
+      "1000000",
+      "--label-field",
+      "Scenario",
+      "--protocols",
+      "all",
+      "--models",
+      "DF",
+      "--device",
+      "cuda:0",
+      "--seed",
+      "42",
+      "--feature-workers",
+      "4",
+      "--epoch-metrics-path",
+      "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/progress.json",
+      "--use-default-config-training"
+    ],
+    "cwd": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro",
+    "source_commit": "4cb3494f03bbec00d5ff865b2968d95b91d393d8",
+    "source_dirty": false,
+    "started_unix": 1793359642.2434778,
+    "env_threads": 4,
+    "seed": 42,
+    "checkpoint_selection": "validation accuracy, latest tie",
+    "splits": {
+      "train": 2703,
+      "val": 202,
+      "test": 209
+    },
+    "uses_test": "single evaluation after validation checkpoint selection",
+    "input": "first up to 5000 parseable IP packets, all protocols, direction relative to first packet source",
+    "notes": "Direct existing WF runner; suite.py risk gate does not match coarse scenario directory labels; no model/code edits"
+  },
+  "hashes": {
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/train.npz": "22f7a5f5452b714d61cd5830164dfe99426ef6429d1d2736df60e580b9b542a4",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/val.npz": "d2c94d71b68a39b9f9b1a2b477c0a62c42f0602dbd0f70ca255cf13a36a03d72",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/test.npz": "0b032d8707813c523b81d30718bb5b317fad7892aac5383064962053de0c0196",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF/checkpoint-best.pt": "5858adc247e83a1bbe2c9b587bca6de434b9312f05270f43d3742e4bd1ad0634",
+    "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/Benchmark/2024_CCS_WFlib_Early_Stage_WF/WFlib/models/DF.py": "da10f388d4c473da52ce6f1cd1ea00347808b8984a5dbde7347feb37d3dfb9d2",
+    "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/Benchmark/scripts/run_ant_wf_scenario_smoke.py": "fd2622196938844c1b6e7f49a60154c5da49b80779190cbd17fbf7f2ef22d164",
+    "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro/Benchmark/2024_CCS_WFlib_Early_Stage_WF/WFlib/tools/data_processor.py": "895e8339747e0c1871e8129c994f4855094a081d2c8d4eebba66bfd1606fba5e"
+  },
+  "wall_seconds": 288.07012605667114,
+  "native_training_and_evaluation_seconds": 15.905
+}

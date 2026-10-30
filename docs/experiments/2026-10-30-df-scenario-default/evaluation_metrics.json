@@ -1,0 +1,132 @@
+{
+  "accuracy": 0.5789473684210527,
+  "balanced_accuracy": 0.6113997113997114,
+  "confusion_matrix": [
+    [
+      26,
+      1,
+      2,
+      4,
+      2
+    ],
+    [
+      0,
+      14,
+      5,
+      2,
+      1
+    ],
+    [
+      8,
+      5,
+      38,
+      18,
+      3
+    ],
+    [
+      1,
+      3,
+      26,
+      30,
+      0
+    ],
+    [
+      3,
+      2,
+      1,
+      1,
+      13
+    ]
+  ],
+  "derived_hard_predictions": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF/derived_hard_predictions.txt",
+  "evaluated_sample_count": 209,
+  "label_names": [
+    "artifact_processing",
+    "business_services",
+    "general_knowledge",
+    "scientific_evidence",
+    "security_testing"
+  ],
+  "labels": [
+    "0",
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "macro_f1": 0.6048514045707157,
+  "macro_fpr": 0.11509909915605128,
+  "macro_precision": 0.6003306751727804,
+  "macro_recall": 0.6113997113997114,
+  "micro_f1": 0.5789473684210527,
+  "micro_precision": 0.5789473684210527,
+  "micro_recall": 0.5789473684210527,
+  "original_sample_count": 209,
+  "per_label": {
+    "artifact_processing": {
+      "f1": 0.7123287671232876,
+      "false_positive_rate": 0.06896551724137931,
+      "fpr": 0.06896551724137931,
+      "label_id": "0",
+      "precision": 0.6842105263157895,
+      "recall": 0.7428571428571429,
+      "support": 35
+    },
+    "business_services": {
+      "f1": 0.5957446808510638,
+      "false_positive_rate": 0.058823529411764705,
+      "fpr": 0.058823529411764705,
+      "label_id": "1",
+      "precision": 0.56,
+      "recall": 0.6363636363636364,
+      "support": 22
+    },
+    "general_knowledge": {
+      "f1": 0.5277777777777778,
+      "false_positive_rate": 0.24817518248175183,
+      "fpr": 0.24817518248175183,
+      "label_id": "2",
+      "precision": 0.5277777777777778,
+      "recall": 0.5277777777777778,
+      "support": 72
+    },
+    "scientific_evidence": {
+      "f1": 0.5217391304347826,
+      "false_positive_rate": 0.16778523489932887,
+      "fpr": 0.16778523489932887,
+      "label_id": "3",
+      "precision": 0.5454545454545454,
+      "recall": 0.5,
+      "support": 60
+    },
+    "security_testing": {
+      "f1": 0.6666666666666666,
+      "false_positive_rate": 0.031746031746031744,
+      "fpr": 0.031746031746031744,
+      "label_id": "4",
+      "precision": 0.6842105263157895,
+      "recall": 0.65,
+      "support": 20
+    }
+  },
+  "prediction_source": "soft_predictions_argmax",
+  "provided_hard_mismatch_count": 0,
+  "provided_hard_predictions": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF/hard_predictions.txt",
+  "roc_auc_ovr_macro": 0.8654469605850892,
+  "roc_auc_ovr_micro": 0.8861060873148509,
+  "roc_auc_ovr_per_label": {
+    "artifact_processing": 0.925615763546798,
+    "business_services": 0.9081186193485659,
+    "general_knowledge": 0.7842660178426601,
+    "scientific_evidence": 0.8073825503355704,
+    "security_testing": 0.9018518518518518
+  },
+  "roc_auc_ovr_weighted": 0.8388627018739195,
+  "roc_curves": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF/roc_curves.json",
+  "skipped_invalid_soft_rows": 0,
+  "soft_predictions": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF/soft_predictions.npy",
+  "weighted_f1": 0.577395076495018,
+  "weighted_fpr": 0.15444286420130907,
+  "weighted_precision": 0.5774107735628764,
+  "weighted_recall": 0.5789473684210527
+}

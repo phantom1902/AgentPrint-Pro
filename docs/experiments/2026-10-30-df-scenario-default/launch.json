@@ -1,0 +1,42 @@
+{
+  "command": [
+    "/root/autodl-tmp/ant-workspace/envs/optim-agent/bin/python",
+    "Benchmark/scripts/run_ant_wf_scenario_smoke.py",
+    "--data-root",
+    "/root/autodl-tmp/ant-workspace/data/raw/ANT",
+    "--out-dir",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030",
+    "--per-engine-scenario",
+    "1000000",
+    "--label-field",
+    "Scenario",
+    "--protocols",
+    "all",
+    "--models",
+    "DF",
+    "--device",
+    "cuda:0",
+    "--seed",
+    "42",
+    "--feature-workers",
+    "4",
+    "--epoch-metrics-path",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/progress.json",
+    "--use-default-config-training"
+  ],
+  "cwd": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro",
+  "source_commit": "4cb3494f03bbec00d5ff865b2968d95b91d393d8",
+  "source_dirty": false,
+  "started_unix": 1793359642.2434778,
+  "env_threads": 4,
+  "seed": 42,
+  "checkpoint_selection": "validation accuracy, latest tie",
+  "splits": {
+    "train": 2703,
+    "val": 202,
+    "test": 209
+  },
+  "uses_test": "single evaluation after validation checkpoint selection",
+  "input": "first up to 5000 parseable IP packets, all protocols, direction relative to first packet source",
+  "notes": "Direct existing WF runner; suite.py risk gate does not match coarse scenario directory labels; no model/code edits"
+}

@@ -1,0 +1,106 @@
+{
+  "manifests": {
+    "direction_rule": "first packet source IP in the episode is positive; the opposite direction is negative",
+    "engine_policy": "same Scenario across all engines is one class",
+    "label_field": "Scenario",
+    "protocols": "all_csv_protocols",
+    "raw_seq_len": 5000,
+    "splits": {
+      "test": {
+        "counts_by_engine": {
+          "USA_cc_dpsk": 40,
+          "cc_dpsk": 40,
+          "cc_mimo": 27,
+          "cc_xiaoai": 28,
+          "codex": 34,
+          "qwen": 40
+        },
+        "counts_by_label": {
+          "artifact_processing": 35,
+          "business_services": 22,
+          "general_knowledge": 72,
+          "scientific_evidence": 60,
+          "security_testing": 20
+        },
+        "counts_by_scenario": {
+          "artifact_processing": 35,
+          "business_services": 22,
+          "general_knowledge": 72,
+          "scientific_evidence": 60,
+          "security_testing": 20
+        },
+        "path": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/test.npz",
+        "samples": 209
+      },
+      "train": {
+        "counts_by_engine": {
+          "USA_cc_dpsk": 566,
+          "cc_dpsk": 553,
+          "cc_mimo": 295,
+          "cc_xiaoai": 326,
+          "codex": 418,
+          "qwen": 545
+        },
+        "counts_by_label": {
+          "artifact_processing": 445,
+          "business_services": 272,
+          "general_knowledge": 871,
+          "scientific_evidence": 734,
+          "security_testing": 381
+        },
+        "counts_by_scenario": {
+          "artifact_processing": 445,
+          "business_services": 272,
+          "general_knowledge": 871,
+          "scientific_evidence": 734,
+          "security_testing": 381
+        },
+        "path": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/train.npz",
+        "samples": 2703
+      },
+      "val": {
+        "counts_by_engine": {
+          "USA_cc_dpsk": 36,
+          "cc_dpsk": 39,
+          "cc_mimo": 27,
+          "cc_xiaoai": 28,
+          "codex": 32,
+          "qwen": 40
+        },
+        "counts_by_label": {
+          "artifact_processing": 36,
+          "business_services": 21,
+          "general_knowledge": 71,
+          "scientific_evidence": 59,
+          "security_testing": 15
+        },
+        "counts_by_scenario": {
+          "artifact_processing": 36,
+          "business_services": 21,
+          "general_knowledge": 71,
+          "scientific_evidence": 59,
+          "security_testing": 15
+        },
+        "path": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw/val.npz",
+        "samples": 202
+      }
+    },
+    "trace_value": "direction * relative_time_seconds"
+  },
+  "results": [
+    {
+      "accuracy": 0.5789473684210527,
+      "algorithm": "WFlib-DF",
+      "balanced_accuracy": 0.6113997113997114,
+      "elapsed_seconds": 15.905,
+      "feature": "DIR",
+      "macro_f1": 0.6048514045707157,
+      "prediction_source": "soft_predictions_argmax",
+      "run_dir": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF",
+      "seq_len": 5000,
+      "source_work": "2018_CCS_DF",
+      "status": "completed",
+      "weighted_f1": 0.577395076495018
+    }
+  ]
+}

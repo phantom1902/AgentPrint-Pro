@@ -1,0 +1,7 @@
+{
+  "archive": "/root/autodl-tmp/ant-workspace/df-development-20261030/df-scenario-default-results.tar.gz",
+  "sha256": "0c40eb791173d4d6e9b17c65c334f80cddddf901b18d5b9e7c3ad3cef6b4cc78",
+  "bytes": 40987499,
+  "files": 27,
+  "contains": "Complete DF experiment: raw input cache, checkpoint, curves, predictions, audit and provenance"
+}
