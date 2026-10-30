@@ -1,0 +1,76 @@
+{
+  "state": "complete",
+  "epochs": 60,
+  "stopping": {
+    "stop": true,
+    "converged": true,
+    "reason": "validation_plateau",
+    "total_epochs": 60,
+    "additional_epochs": 30,
+    "last_significant_epoch": 35,
+    "epochs_without_significant_gain": 24,
+    "significant_best_macro_f1": 0.5896509279215716,
+    "previous_mean_val_loss": 1.4830864594714477,
+    "recent_mean_val_loss": 1.7134147701877178,
+    "relative_val_loss_improvement": -0.1553033602628643,
+    "loss_plateau": true,
+    "policy": {
+      "baseline_epochs": 30,
+      "min_additional_epochs": 30,
+      "patience": 20,
+      "f1_min_delta": 0.001,
+      "loss_window": 10,
+      "loss_relative_delta": 0.01,
+      "max_total_epochs": 200
+    }
+  },
+  "baseline_parity_passed": false,
+  "best_epoch": 36,
+  "validation": {
+    "accuracy": 0.5742574257425742,
+    "balanced_accuracy": 0.6270701421334031,
+    "macro_f1": 0.5896509279215716,
+    "loss": 1.2664059199909172
+  },
+  "test": {
+    "accuracy": 0.6602870813397129,
+    "balanced_accuracy": 0.6825108225108225,
+    "macro_f1": 0.6891695536846961,
+    "loss": 0.9132344691376937
+  },
+  "highest_val_macro_f1": 0.5896509279215716,
+  "checkpoint_metric": "validation accuracy, latest tie",
+  "identity": {
+    "parent": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF",
+    "parent_metrics_sha256": "43de10a5758f633bbb78a541849b5cd5a29ca731b2513add4072b1958898b7b3",
+    "parent_checkpoint_sha256": "5858adc247e83a1bbe2c9b587bca6de434b9312f05270f43d3742e4bd1ad0634",
+    "seed": 42,
+    "policy": {
+      "baseline_epochs": 30,
+      "min_additional_epochs": 30,
+      "patience": 20,
+      "f1_min_delta": 0.001,
+      "loss_window": 10,
+      "loss_relative_delta": 0.01,
+      "max_total_epochs": 200
+    },
+    "input_hashes": {
+      "train.npz": "22f7a5f5452b714d61cd5830164dfe99426ef6429d1d2736df60e580b9b542a4",
+      "val.npz": "d2c94d71b68a39b9f9b1a2b477c0a62c42f0602dbd0f70ca255cf13a36a03d72",
+      "label_mapping.json": "e06cfbfb2794a74bf17422845e575bc27e62558e0a8b97ee215f740486a8200a"
+    },
+    "batch_size": 128,
+    "learning_rate": 0.002,
+    "optimizer": "Adamax",
+    "checkpoint_metric": "accuracy",
+    "input": "DIR-5000",
+    "version": 1,
+    "initialization": "fresh_deterministic_run"
+  },
+  "parameters": 3668613,
+  "train_samples": 2703,
+  "val_samples": 202,
+  "test_samples": 209,
+  "test_cache_sha256": "0b032d8707813c523b81d30718bb5b317fad7892aac5383064962053de0c0196",
+  "elapsed_seconds": 262.1592487320304
+}

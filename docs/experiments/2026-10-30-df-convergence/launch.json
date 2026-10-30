@@ -1,0 +1,22 @@
+{
+  "command": [
+    "/root/autodl-tmp/ant-workspace/envs/optim-agent/bin/python",
+    "tools/df_convergence.py",
+    "--raw-root",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/wflib_raw",
+    "--parent-root",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF",
+    "--output",
+    "/root/autodl-tmp/ant-workspace/runs/df-scenario-convergence-fresh-20261030",
+    "--device",
+    "cuda:0",
+    "--fresh"
+  ],
+  "cwd": "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro",
+  "source_commit": "9a101d67d9320c56c1b7334bed1b6ab25ec73529",
+  "started_unix": 1793360520.3862524,
+  "pid": 18808,
+  "threads": 4,
+  "CUBLAS_WORKSPACE_CONFIG": ":4096:8",
+  "kind": "fresh_deterministic_run"
+}

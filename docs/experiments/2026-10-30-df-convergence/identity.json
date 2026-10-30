@@ -1,0 +1,27 @@
+{
+  "parent": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF",
+  "parent_metrics_sha256": "43de10a5758f633bbb78a541849b5cd5a29ca731b2513add4072b1958898b7b3",
+  "parent_checkpoint_sha256": "5858adc247e83a1bbe2c9b587bca6de434b9312f05270f43d3742e4bd1ad0634",
+  "seed": 42,
+  "policy": {
+    "baseline_epochs": 30,
+    "min_additional_epochs": 30,
+    "patience": 20,
+    "f1_min_delta": 0.001,
+    "loss_window": 10,
+    "loss_relative_delta": 0.01,
+    "max_total_epochs": 200
+  },
+  "input_hashes": {
+    "train.npz": "22f7a5f5452b714d61cd5830164dfe99426ef6429d1d2736df60e580b9b542a4",
+    "val.npz": "d2c94d71b68a39b9f9b1a2b477c0a62c42f0602dbd0f70ca255cf13a36a03d72",
+    "label_mapping.json": "e06cfbfb2794a74bf17422845e575bc27e62558e0a8b97ee215f740486a8200a"
+  },
+  "batch_size": 128,
+  "learning_rate": 0.002,
+  "optimizer": "Adamax",
+  "checkpoint_metric": "accuracy",
+  "input": "DIR-5000",
+  "version": 1,
+  "initialization": "fresh_deterministic_run"
+}

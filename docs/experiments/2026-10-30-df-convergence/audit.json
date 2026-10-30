@@ -1,0 +1,425 @@
+{
+  "passed": true,
+  "audit_unix": 1793360804.9825416,
+  "experiment": "independent fresh deterministic DF run",
+  "baseline_replay_failed": true,
+  "baseline_parity_passed": false,
+  "original_parent_preserved": true,
+  "epochs": 60,
+  "best_epoch": 36,
+  "stopping": {
+    "stop": true,
+    "converged": true,
+    "reason": "validation_plateau",
+    "total_epochs": 60,
+    "additional_epochs": 30,
+    "last_significant_epoch": 35,
+    "epochs_without_significant_gain": 24,
+    "significant_best_macro_f1": 0.5896509279215716,
+    "previous_mean_val_loss": 1.4830864594714477,
+    "recent_mean_val_loss": 1.7134147701877178,
+    "relative_val_loss_improvement": -0.1553033602628643,
+    "loss_plateau": true,
+    "policy": {
+      "baseline_epochs": 30,
+      "min_additional_epochs": 30,
+      "patience": 20,
+      "f1_min_delta": 0.001,
+      "loss_window": 10,
+      "loss_relative_delta": 0.01,
+      "max_total_epochs": 200
+    }
+  },
+  "metrics": {
+    "val": {
+      "accuracy": 0.5742574257425742,
+      "balanced_accuracy": 0.6270701421334031,
+      "macro_f1": 0.5896509279215716,
+      "loss": 1.2664059199909172,
+      "confusion_matrix": [
+        [
+          20,
+          0,
+          4,
+          6,
+          6
+        ],
+        [
+          2,
+          17,
+          0,
+          2,
+          0
+        ],
+        [
+          7,
+          2,
+          23,
+          34,
+          5
+        ],
+        [
+          3,
+          3,
+          5,
+          46,
+          2
+        ],
+        [
+          2,
+          0,
+          3,
+          0,
+          10
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.5882352941176471,
+          "recall": 0.5555555555555556,
+          "f1": 0.5714285714285714,
+          "support": 36
+        },
+        {
+          "label": "business_services",
+          "precision": 0.7727272727272727,
+          "recall": 0.8095238095238095,
+          "f1": 0.7906976744186046,
+          "support": 21
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.6571428571428571,
+          "recall": 0.323943661971831,
+          "f1": 0.4339622641509434,
+          "support": 71
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5227272727272727,
+          "recall": 0.7796610169491526,
+          "f1": 0.6258503401360545,
+          "support": 59
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.43478260869565216,
+          "recall": 0.6666666666666666,
+          "f1": 0.5263157894736842,
+          "support": 15
+        }
+      ]
+    },
+    "test": {
+      "accuracy": 0.6602870813397129,
+      "balanced_accuracy": 0.6825108225108225,
+      "macro_f1": 0.6891695536846961,
+      "loss": 0.9132344691376937,
+      "confusion_matrix": [
+        [
+          26,
+          0,
+          1,
+          6,
+          2
+        ],
+        [
+          0,
+          14,
+          4,
+          2,
+          2
+        ],
+        [
+          4,
+          2,
+          36,
+          29,
+          1
+        ],
+        [
+          2,
+          0,
+          11,
+          47,
+          0
+        ],
+        [
+          2,
+          1,
+          1,
+          1,
+          15
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.7647058823529411,
+          "recall": 0.7428571428571429,
+          "f1": 0.7536231884057971,
+          "support": 35
+        },
+        {
+          "label": "business_services",
+          "precision": 0.8235294117647058,
+          "recall": 0.6363636363636364,
+          "f1": 0.717948717948718,
+          "support": 22
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.6792452830188679,
+          "recall": 0.5,
+          "f1": 0.576,
+          "support": 72
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5529411764705883,
+          "recall": 0.7833333333333333,
+          "f1": 0.6482758620689655,
+          "support": 60
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.75,
+          "recall": 0.75,
+          "f1": 0.75,
+          "support": 20
+        }
+      ]
+    }
+  },
+  "highest_val_macro_f1": 0.5896509279215716,
+  "checkpoint_metric": "validation accuracy, latest tie",
+  "baseline30_current_run": {
+    "elapsed_seconds": 4.409744099713862,
+    "epoch": 29,
+    "learning_rate": 0.002,
+    "train_loss": 0.6370089990752084,
+    "val_accuracy": 0.504950495049505,
+    "val_balanced_accuracy": 0.5667533638743951,
+    "val_loss": 1.1884466716558626,
+    "val_macro_f1": 0.5144732779962137
+  },
+  "baseline30_current_best_accuracy": 0.5594059405940595,
+  "baseline30_current_best_macro_f1": 0.5737037037037037,
+  "baseline30_original_metrics": {
+    "val": {
+      "accuracy": 0.5643564356435643,
+      "balanced_accuracy": 0.6083762082854945,
+      "macro_f1": 0.5855819499516979,
+      "confusion_matrix": [
+        [
+          22,
+          0,
+          5,
+          4,
+          5
+        ],
+        [
+          1,
+          17,
+          2,
+          1,
+          0
+        ],
+        [
+          4,
+          6,
+          34,
+          23,
+          4
+        ],
+        [
+          3,
+          5,
+          19,
+          32,
+          0
+        ],
+        [
+          2,
+          0,
+          4,
+          0,
+          9
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.6875,
+          "recall": 0.6111111111111112,
+          "f1": 0.6470588235294118,
+          "support": 36
+        },
+        {
+          "label": "business_services",
+          "precision": 0.6071428571428571,
+          "recall": 0.8095238095238095,
+          "f1": 0.6938775510204082,
+          "support": 21
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.53125,
+          "recall": 0.4788732394366197,
+          "f1": 0.5037037037037037,
+          "support": 71
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5333333333333333,
+          "recall": 0.5423728813559322,
+          "f1": 0.5378151260504201,
+          "support": 59
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.5,
+          "recall": 0.6,
+          "f1": 0.5454545454545454,
+          "support": 15
+        }
+      ]
+    },
+    "test": {
+      "accuracy": 0.5789473684210527,
+      "balanced_accuracy": 0.6113997113997114,
+      "macro_f1": 0.6048514045707158,
+      "confusion_matrix": [
+        [
+          26,
+          1,
+          2,
+          4,
+          2
+        ],
+        [
+          0,
+          14,
+          5,
+          2,
+          1
+        ],
+        [
+          8,
+          5,
+          38,
+          18,
+          3
+        ],
+        [
+          1,
+          3,
+          26,
+          30,
+          0
+        ],
+        [
+          3,
+          2,
+          1,
+          1,
+          13
+        ]
+      ],
+      "per_class": [
+        {
+          "label": "artifact_processing",
+          "precision": 0.6842105263157895,
+          "recall": 0.7428571428571429,
+          "f1": 0.7123287671232876,
+          "support": 35
+        },
+        {
+          "label": "business_services",
+          "precision": 0.56,
+          "recall": 0.6363636363636364,
+          "f1": 0.5957446808510638,
+          "support": 22
+        },
+        {
+          "label": "general_knowledge",
+          "precision": 0.5277777777777778,
+          "recall": 0.5277777777777778,
+          "f1": 0.5277777777777778,
+          "support": 72
+        },
+        {
+          "label": "scientific_evidence",
+          "precision": 0.5454545454545454,
+          "recall": 0.5,
+          "f1": 0.5217391304347826,
+          "support": 60
+        },
+        {
+          "label": "security_testing",
+          "precision": 0.6842105263157895,
+          "recall": 0.65,
+          "f1": 0.6666666666666666,
+          "support": 20
+        }
+      ]
+    }
+  },
+  "optimizer": "Adamax",
+  "learning_rate": 0.002,
+  "batch_size": 128,
+  "seed": 42,
+  "optimizer_steps": 1260,
+  "parameters": 3668613,
+  "samples": {
+    "train": 2703,
+    "val": 202,
+    "test": 209
+  },
+  "elapsed_seconds": 262.1592487320304,
+  "hashes": {
+    "best.pt": "7da7e492c337118adf393cd7e389e65e42a813b7cd457d03eee23d27c2bdf7ee",
+    "last.pt": "00ec1e481b3267df96912499bfab8e2c05e8dff689c653057af1c72e6b785be4",
+    "metrics.jsonl": "245a801230f06093e501f4d6f9535e3fa7d4f8b5cfa0e5bf7aa6e6c28233db7f",
+    "result.json": "d99166e2f74dd33c23ff2dcd9c22debbedde4bb43dac926426c22a3753744c7b"
+  },
+  "environment": {
+    "torch": "2.12.1+cu130",
+    "numpy": "2.4.6",
+    "python": "3.12.3 | packaged by Anaconda, Inc. | (main, May  6 2024, 19:46:43) [GCC 11.2.0]",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "precision": "FP32",
+    "deterministic_algorithms": true,
+    "TF32": false,
+    "cudnn_benchmark": false,
+    "CUBLAS_WORKSPACE_CONFIG": ":4096:8"
+  },
+  "identity": {
+    "parent": "/root/autodl-tmp/ant-workspace/runs/df-scenario-default-20261030/WFlib-DF",
+    "parent_metrics_sha256": "43de10a5758f633bbb78a541849b5cd5a29ca731b2513add4072b1958898b7b3",
+    "parent_checkpoint_sha256": "5858adc247e83a1bbe2c9b587bca6de434b9312f05270f43d3742e4bd1ad0634",
+    "seed": 42,
+    "policy": {
+      "baseline_epochs": 30,
+      "min_additional_epochs": 30,
+      "patience": 20,
+      "f1_min_delta": 0.001,
+      "loss_window": 10,
+      "loss_relative_delta": 0.01,
+      "max_total_epochs": 200
+    },
+    "input_hashes": {
+      "train.npz": "22f7a5f5452b714d61cd5830164dfe99426ef6429d1d2736df60e580b9b542a4",
+      "val.npz": "d2c94d71b68a39b9f9b1a2b477c0a62c42f0602dbd0f70ca255cf13a36a03d72",
+      "label_mapping.json": "e06cfbfb2794a74bf17422845e575bc27e62558e0a8b97ee215f740486a8200a"
+    },
+    "batch_size": 128,
+    "learning_rate": 0.002,
+    "optimizer": "Adamax",
+    "checkpoint_metric": "accuracy",
+    "input": "DIR-5000",
+    "version": 1,
+    "initialization": "fresh_deterministic_run"
+  }
+}

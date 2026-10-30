@@ -10,7 +10,9 @@ Files: independent `tools/df_convergence.py`, tests in `tests/test_df_convergenc
 
 GPU replay audit: the first-epoch training loss failed exact comparison (.0013 difference); a one-epoch run through the original native entry point also did not reproduce the original metric. No extension was performed from this failed replay. The user was informed that the old checkpoint cannot support exact continuation. Fulfill the existing request with a separately identified `--fresh` deterministic training experiment instead: disable TF32 and cuDNN benchmarking, enable deterministic algorithms and CUBLAS workspace configuration; retain model/optimizer/LR/batch/splits. In this mode the first30 are a new baseline, `baseline_parity_passed=false`, and parent metrics are a historical comparison only. Never label it as exact continuation of the old30.
 
-- [ ] Write real CPU integration tests for baseline replay/checkpoint parity, parent preservation, cap reporting, idempotence, input identity rejection, and interrupted optimizer/RNG continuation. Observe failure before implementation.
-- [ ] Implement the independent runner, run new tests and existing convergence rule tests, commit and sync the source.
-- [ ] Run GPU replay and extension on the data disk; independently verify first-stop rule, checkpoint selection and metrics. Report cap as not converged.
-- [ ] Back up and verify model/metrics/state, commit results and reproduction command, confirm GPU stopped.
+- [x] Write real CPU integration tests for baseline replay/checkpoint parity, parent preservation, cap reporting, idempotence, input identity rejection, and interrupted optimizer/RNG continuation. Observe failure before implementation.
+- [x] Implement the independent runner, run new tests and existing convergence rule tests, commit and sync the source.
+- [x] Run GPU replay and extension on the data disk; independently verify first-stop rule, checkpoint selection and metrics. Report cap as not converged.
+- [x] Back up and verify model/metrics/state, commit results and reproduction command, confirm GPU stopped.
+
+Outcome: independent deterministic run completed 60 epochs; reason=validation_plateau, converged=True. Selected epoch 36; test accuracy=0.660287, macro-F1=0.689170. Exact old-GPU replay failed and was not used as continuation. Audit, backup and related 9 tests passed.

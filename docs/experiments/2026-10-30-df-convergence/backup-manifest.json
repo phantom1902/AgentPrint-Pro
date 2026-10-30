@@ -1,0 +1,8 @@
+{
+  "archive": "/root/autodl-tmp/ant-workspace/df-convergence-development-20261030/df-convergence-results.tar.gz",
+  "sha256": "0b4bfc0c02a5b069090feddd3b8b5f1a1d43f28e446a41e8b407d42b2873b6ef",
+  "bytes": 54099916,
+  "files": 16,
+  "contains": "Best/last complete training state, epoch metrics, test predictions, audit, launch, failed replay and test logs",
+  "excludes": "Historical best snapshots and original DF raw cache remain on server; original cache has its own local backup"
+}
