@@ -1,0 +1,8 @@
+{
+  "archive": "/root/autodl-tmp/ant-workspace/tuning-development-20261030/scenario-raw-results.tar.gz",
+  "sha256": "3aa92bd4bc7f351737b9ad539585f767d80ad3281c1bd54ac64507cb217100ea",
+  "bytes": 176074660,
+  "files": 125,
+  "contains": "All study/trial metadata, epoch metrics, validation metrics, every best.pt, trial-07/last.pt",
+  "excludes": "Immutable historical best snapshots and nonselected last.pt remain on server"
+}
