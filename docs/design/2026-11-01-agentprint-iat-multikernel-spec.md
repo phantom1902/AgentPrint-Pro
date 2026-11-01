@@ -4,6 +4,8 @@
 
 决策来源：[逐轮访谈Q1–Q43](2026-11-01-agentprint-iat-multikernel-interview.md)。术语见根目录CONTEXT.md，分桶取舍见[ADR 0005](../adr/0005-fit-shared-iat-bins-with-equal-episode-weights.md)。本稿汇总已确认方案，不增加新的实验预算。
 
+to-spec产物：[Issue规格正文](2026-11-01-agentprint-iat-multikernel-issue-spec.md)。用户已在to-spec阶段确认公共命令全流程及必要公开模型接口的测试边界；正文已整理，发布仍待项目tracker配置，不代表已发布Issue或开始实现。
+
 ## 1. 目标、范围与实验矩阵
 
 在五类完整episode场景分类上，增加IAT直方图输入和并行多核时间卷积。保持原始完整捕获时间范围、1800个时间槽、官方train/val划分、包纳入条件与方向定义。
