@@ -1,0 +1,14 @@
+{
+  "status": "blocked_by_instance_memory",
+  "exit_code": 137,
+  "signal": "SIGKILL",
+  "completed_configurations": 0,
+  "failed_phase": "first configuration training, before first epoch checkpoint",
+  "container_memory_limit_bytes": 2147483648,
+  "container_peak_memory_bytes": 2147483648,
+  "container_memory_events": "oom_kill_disable 0\nunder_oom 0\noom_kill 0\n",
+  "fit_and_selected_train_val_prepare": "completed",
+  "automatic_retry": false,
+  "budget_reduced": false,
+  "next_action": "User must adjust instance resources before further real acceptance; preserve failed run and original data."
+}

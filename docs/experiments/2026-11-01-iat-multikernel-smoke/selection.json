@@ -1,0 +1,2756 @@
+{
+  "git_revision": "28776ff0949fdd3778d56d485d97791f4ef21779",
+  "original_base": "/root/autodl-tmp/ant-workspace/data/processed/agentprint-full-v2",
+  "original_manifests": {
+    "train": {
+      "manifest_id": "97e6509b7b81f186c4e447f27ae98a568b7d909efc2f8d2f7fef61cb0fc971d9",
+      "valid_count": 2697
+    },
+    "val": {
+      "manifest_id": "88d8fc08724d28acd727c655ecde68c66ce073a0847739c7704194d7997ed784",
+      "valid_count": 202
+    }
+  },
+  "scope": "smoke",
+  "selected": {
+    "train": [
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 10081766000,
+        "end_ns": 1782278286730569000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::f4ab:f0ff:fef6:a202"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "f6:ab:f0:f6:a2:02"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::f4ab:f0ff:fef6:a202"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "c2:a5:67:70:10:83"
+            ],
+            "fe80::c0a5:67ff:fe70:1083": [
+              "c2:a5:67:70:10:83"
+            ],
+            "fe80::f4ab:f0ff:fef6:a202": [
+              "f6:ab:f0:f6:a2:02"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.206.1": 4,
+            "10.201.206.2": 230,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "160.79.104.10": 15,
+            "202.69.4.22": 6,
+            "202.69.4.23": 6,
+            "220.181.104.191": 185,
+            "220.181.104.192": 6,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::c0a5:67ff:fe70:1083": 6,
+            "fe80::f4ab:f0ff:fef6:a202": 1,
+            "ff02::2": 6,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.206.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.206.2",
+          "syn_candidates": [
+            "10.201.206.2"
+          ]
+        },
+        "engine": "cc_mimo",
+        "episode_id": "A1702",
+        "ip_bytes": [
+          127358,
+          31442
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          120,
+          111
+        ],
+        "pcap_relpath": "train/cc_mimo/artifact_processing/A1702/network.pcap",
+        "quality": {
+          "direction_skipped": 15,
+          "ip_packets": 246,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 250,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 94,
+        "runtime_endpoints": [
+          "10.201.206.2",
+          "fe80::f4ab:f0ff:fef6:a202"
+        ],
+        "sample_id": "scenario:train/cc_mimo/artifact_processing/A1702",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782278276648803000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 9839624000,
+        "end_ns": 1782232696045940000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::a4d7:eaff:fedb:7d73"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "a6:d7:ea:db:7d:73"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::a4d7:eaff:fedb:7d73"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "d2:2e:f3:c1:18:01"
+            ],
+            "fe80::a4d7:eaff:fedb:7d73": [
+              "a6:d7:ea:db:7d:73"
+            ],
+            "fe80::d02e:f3ff:fec1:1801": [
+              "d2:2e:f3:c1:18:01"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.100.1": 4,
+            "10.201.100.2": 206,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "104.24.194.138": 9,
+            "104.24.34.124": 23,
+            "104.25.42.42": 9,
+            "104.26.2.72": 131,
+            "160.79.104.10": 22,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::a4d7:eaff:fedb:7d73": 1,
+            "fe80::d02e:f3ff:fec1:1801": 5,
+            "ff02::2": 5,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.100.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.100.2",
+          "syn_candidates": [
+            "10.201.100.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A1701",
+        "ip_bytes": [
+          162226,
+          27967
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          125,
+          82
+        ],
+        "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1701/network.pcap",
+        "quality": {
+          "direction_skipped": 14,
+          "ip_packets": 221,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 225,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 387,
+        "runtime_endpoints": [
+          "10.201.100.2",
+          "fe80::a4d7:eaff:fedb:7d73"
+        ],
+        "sample_id": "scenario:train/cc_xiaoai/artifact_processing/A1701",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782232686206316000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 9620169000,
+        "end_ns": 1782233563455076000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::4de:66ff:fe94:a288"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "06:de:66:94:a2:88"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::4de:66ff:fe94:a288"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "82:02:5e:59:76:f3"
+            ],
+            "fe80::4de:66ff:fe94:a288": [
+              "06:de:66:94:a2:88"
+            ],
+            "fe80::8002:5eff:fe59:76f3": [
+              "82:02:5e:59:76:f3"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.142.1": 4,
+            "10.201.142.2": 257,
+            "100.100.2.138": 4,
+            "104.21.205.159": 9,
+            "104.25.20.72": 196,
+            "104.25.30.40": 9,
+            "104.27.117.234": 9,
+            "160.79.104.10": 22,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::4de:66ff:fe94:a288": 1,
+            "fe80::8002:5eff:fe59:76f3": 6,
+            "ff02::2": 6,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.142.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.142.2",
+          "syn_candidates": [
+            "10.201.142.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A1722",
+        "ip_bytes": [
+          163838,
+          33171
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          153,
+          105
+        ],
+        "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1722/network.pcap",
+        "quality": {
+          "direction_skipped": 15,
+          "ip_packets": 273,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 277,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 406,
+        "runtime_endpoints": [
+          "10.201.142.2",
+          "fe80::4de:66ff:fe94:a288"
+        ],
+        "sample_id": "scenario:train/cc_xiaoai/artifact_processing/A1722",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782233553834907000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 9474085000,
+        "end_ns": 1782233433059920000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::e854:b7ff:fef1:68bf"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ea:54:b7:f1:68:bf"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::e854:b7ff:fef1:68bf"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "e2:15:44:43:63:04"
+            ],
+            "fe80::e015:44ff:fe43:6304": [
+              "e2:15:44:43:63:04"
+            ],
+            "fe80::e854:b7ff:fef1:68bf": [
+              "ea:54:b7:f1:68:bf"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.193.1": 4,
+            "10.201.193.2": 258,
+            "100.100.2.136": 8,
+            "104.21.51.27": 9,
+            "104.25.145.176": 185,
+            "104.25.92.15": 9,
+            "104.27.31.49": 23,
+            "160.79.104.10": 20,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::e015:44ff:fe43:6304": 6,
+            "fe80::e854:b7ff:fef1:68bf": 2,
+            "ff02::2": 7,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.193.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.193.2",
+          "syn_candidates": [
+            "10.201.193.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A1717",
+        "ip_bytes": [
+          166513,
+          33166
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          150,
+          110
+        ],
+        "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1717/network.pcap",
+        "quality": {
+          "direction_skipped": 15,
+          "ip_packets": 275,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 279,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 401,
+        "runtime_endpoints": [
+          "10.201.193.2",
+          "fe80::e854:b7ff:fef1:68bf"
+        ],
+        "sample_id": "scenario:train/cc_xiaoai/artifact_processing/A1717",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782233423585835000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 15278683000,
+        "end_ns": 1782281425823617000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::bce5:a8ff:fef9:d7a4"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "be:e5:a8:f9:d7:a4"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::bce5:a8ff:fef9:d7a4"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "52:09:be:44:6a:c5"
+            ],
+            "fe80::5009:beff:fe44:6ac5": [
+              "52:09:be:44:6a:c5"
+            ],
+            "fe80::bce5:a8ff:fef9:d7a4": [
+              "be:e5:a8:f9:d7:a4"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 3,
+            "10.201.23.1": 13,
+            "10.201.23.2": 541,
+            "100.100.2.136": 4,
+            "100.100.2.138": 12,
+            "160.79.104.10": 188,
+            "20.205.243.166": 52,
+            "202.69.4.22": 13,
+            "202.69.4.23": 13,
+            "220.181.104.191": 238,
+            "220.181.104.192": 13,
+            "223.5.5.5": 8,
+            "224.0.0.251": 13,
+            "255.255.255.255": 3,
+            "::": 8,
+            "fe80::5009:beff:fe44:6ac5": 18,
+            "fe80::bce5:a8ff:fef9:d7a4": 2,
+            "ff02::16": 8,
+            "ff02::1:ff44:6ac5": 1,
+            "ff02::2": 8,
+            "ff02::fb": 11
+          },
+          "participation_leaders": [
+            "10.201.23.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.23.2",
+          "syn_candidates": [
+            "10.201.23.2"
+          ]
+        },
+        "engine": "cc_mimo",
+        "episode_id": "A2008",
+        "ip_bytes": [
+          399372,
+          54542
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          296,
+          247
+        ],
+        "pcap_relpath": "train/cc_mimo/business_services/A2008/network.pcap",
+        "quality": {
+          "direction_skipped": 42,
+          "ip_packets": 585,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 589,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 147,
+        "runtime_endpoints": [
+          "10.201.23.2",
+          "fe80::bce5:a8ff:fef9:d7a4"
+        ],
+        "sample_id": "scenario:train/cc_mimo/business_services/A2008",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782281410544934000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 47389546000,
+        "end_ns": 1781660856016889000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::ece1:70ff:fec6:d2b5"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ee:e1:70:c6:d2:b5"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::ece1:70ff:fec6:d2b5"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "ca:90:c1:c7:a7:e5"
+            ],
+            "fe80::c890:c1ff:fec7:a7e5": [
+              "ca:90:c1:c7:a7:e5"
+            ],
+            "fe80::ece1:70ff:fec6:d2b5": [
+              "ee:e1:70:c6:d2:b5"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 5,
+            "10.201.9.1": 18,
+            "10.201.9.2": 1684,
+            "100.100.2.136": 8,
+            "100.100.2.138": 24,
+            "161.117.125.33": 27,
+            "161.117.125.35": 27,
+            "161.117.125.72": 25,
+            "161.117.125.94": 25,
+            "223.5.5.5": 16,
+            "224.0.0.251": 14,
+            "255.255.255.255": 5,
+            "39.96.198.249": 598,
+            "39.96.213.166": 930,
+            "::": 3,
+            "fe80::c890:c1ff:fec7:a7e5": 11,
+            "fe80::ece1:70ff:fec6:d2b5": 3,
+            "ff02::16": 2,
+            "ff02::2": 9,
+            "ff02::fb": 6
+          },
+          "participation_leaders": [
+            "10.201.9.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.9.2",
+          "syn_candidates": [
+            "10.201.9.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2016",
+        "ip_bytes": [
+          708444,
+          275724
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          824,
+          863
+        ],
+        "pcap_relpath": "train/qwen/business_services/A2016/network.pcap",
+        "quality": {
+          "direction_skipped": 33,
+          "ip_packets": 1720,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 11,
+          "records": 1731,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 248,
+        "runtime_endpoints": [
+          "10.201.9.2",
+          "fe80::ece1:70ff:fec6:d2b5"
+        ],
+        "sample_id": "scenario:train/qwen/business_services/A2016",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1781660808627343000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 71618895000,
+        "end_ns": 1781772271483266000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::ece1:70ff:fec6:d2b5"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ee:e1:70:c6:d2:b5"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::ece1:70ff:fec6:d2b5"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "ca:90:c1:c7:a7:e5"
+            ],
+            "fe80::c890:c1ff:fec7:a7e5": [
+              "ca:90:c1:c7:a7:e5"
+            ],
+            "fe80::ece1:70ff:fec6:d2b5": [
+              "ee:e1:70:c6:d2:b5"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 5,
+            "10.201.9.1": 15,
+            "10.201.9.2": 2040,
+            "100.100.2.136": 50,
+            "100.100.2.138": 40,
+            "103.233.162.230": 1842,
+            "108.160.169.54": 4,
+            "128.242.240.212": 4,
+            "185.60.216.11": 4,
+            "199.16.156.75": 12,
+            "199.96.63.163": 4,
+            "20.205.243.166": 24,
+            "223.5.5.5": 52,
+            "224.0.0.251": 15,
+            "255.255.255.255": 5,
+            "80.87.199.46": 4,
+            "::": 3,
+            "fe80::c890:c1ff:fec7:a7e5": 13,
+            "fe80::ece1:70ff:fec6:d2b5": 4,
+            "ff02::16": 2,
+            "ff02::2": 11,
+            "ff02::fb": 7
+          },
+          "participation_leaders": [
+            "10.201.9.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.9.2",
+          "syn_candidates": [
+            "10.201.9.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2016",
+        "ip_bytes": [
+          354654,
+          765707
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          986,
+          1058
+        ],
+        "pcap_relpath": "train/codex/business_services/A2016/network.pcap",
+        "quality": {
+          "direction_skipped": 36,
+          "ip_packets": 2080,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 11,
+          "records": 2091,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 822,
+        "runtime_endpoints": [
+          "10.201.9.2",
+          "fe80::ece1:70ff:fec6:d2b5"
+        ],
+        "sample_id": "scenario:train/codex/business_services/A2016",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1781772199864371000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 116950862000,
+        "end_ns": 1781772181883258000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::b44e:7bff:fe89:3913"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "b6:4e:7b:89:39:13"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::b44e:7bff:fe89:3913"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "0a:4f:29:43:d7:ff"
+            ],
+            "fe80::84f:29ff:fe43:d7ff": [
+              "0a:4f:29:43:d7:ff"
+            ],
+            "fe80::b44e:7bff:fe89:3913": [
+              "b6:4e:7b:89:39:13"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 11,
+            "10.201.163.1": 15,
+            "10.201.163.2": 2225,
+            "100.100.2.136": 42,
+            "100.100.2.138": 48,
+            "103.233.162.230": 1955,
+            "104.244.46.165": 8,
+            "128.242.240.180": 4,
+            "199.16.156.75": 4,
+            "199.59.150.39": 4,
+            "20.205.243.166": 94,
+            "223.5.5.5": 54,
+            "224.0.0.251": 15,
+            "255.255.255.255": 11,
+            "65.49.68.152": 4,
+            "80.87.199.46": 8,
+            "::": 3,
+            "fe80::84f:29ff:fe43:d7ff": 13,
+            "fe80::b44e:7bff:fe89:3913": 5,
+            "ff02::16": 2,
+            "ff02::2": 12,
+            "ff02::fb": 7
+          },
+          "participation_leaders": [
+            "10.201.163.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.163.2",
+          "syn_candidates": [
+            "10.201.163.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2015",
+        "ip_bytes": [
+          438504,
+          872705
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          1046,
+          1184
+        ],
+        "pcap_relpath": "train/codex/business_services/A2015/network.pcap",
+        "quality": {
+          "direction_skipped": 42,
+          "ip_packets": 2272,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 15,
+          "records": 2287,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 821,
+        "runtime_endpoints": [
+          "10.201.163.2",
+          "fe80::b44e:7bff:fe89:3913"
+        ],
+        "sample_id": "scenario:train/codex/business_services/A2015",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1781772064932396000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 9688261000,
+        "end_ns": 1782268063953399000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::e8e9:4dff:feae:ed64"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ea:e9:4d:ae:ed:64"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::e8e9:4dff:feae:ed64"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "e2:f6:e7:05:2a:c5"
+            ],
+            "fe80::e0f6:e7ff:fe05:2ac5": [
+              "e2:f6:e7:05:2a:c5"
+            ],
+            "fe80::e8e9:4dff:feae:ed64": [
+              "ea:e9:4d:ae:ed:64"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.75.1": 4,
+            "10.201.75.2": 299,
+            "100.100.2.138": 4,
+            "104.24.231.129": 9,
+            "104.24.233.130": 107,
+            "104.24.45.14": 46,
+            "104.27.21.108": 9,
+            "160.79.104.10": 116,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::e0f6:e7ff:fe05:2ac5": 5,
+            "fe80::e8e9:4dff:feae:ed64": 1,
+            "ff02::2": 5,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.75.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.75.2",
+          "syn_candidates": [
+            "10.201.75.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A2410",
+        "ip_bytes": [
+          291263,
+          28935
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          173,
+          127
+        ],
+        "pcap_relpath": "train/cc_xiaoai/general_knowledge/A2410/network.pcap",
+        "quality": {
+          "direction_skipped": 14,
+          "ip_packets": 314,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 318,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 510,
+        "runtime_endpoints": [
+          "10.201.75.2",
+          "fe80::e8e9:4dff:feae:ed64"
+        ],
+        "sample_id": "scenario:train/cc_xiaoai/general_knowledge/A2410",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782268054265138000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 11722216000,
+        "end_ns": 1782384688232451000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::3c2d:ecff:fe6a:d87f"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "3e:2d:ec:6a:d8:7f"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::3c2d:ecff:fe6a:d87f"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "26:4a:9b:c2:bd:8e"
+            ],
+            "fe80::244a:9bff:fec2:bd8e": [
+              "26:4a:9b:c2:bd:8e"
+            ],
+            "fe80::3c2d:ecff:fe6a:d87f": [
+              "3e:2d:ec:6a:d8:7f"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 3,
+            "10.201.211.1": 5,
+            "10.201.211.2": 307,
+            "100.100.2.136": 4,
+            "100.100.2.138": 8,
+            "104.18.114.234": 9,
+            "104.18.229.144": 9,
+            "104.19.132.65": 153,
+            "104.19.244.7": 9,
+            "160.79.104.10": 115,
+            "224.0.0.251": 5,
+            "255.255.255.255": 3,
+            "::": 3,
+            "fe80::244a:9bff:fec2:bd8e": 6,
+            "fe80::3c2d:ecff:fe6a:d87f": 2,
+            "ff02::2": 7,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.211.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.211.2",
+          "syn_candidates": [
+            "10.201.211.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A2429",
+        "ip_bytes": [
+          294008,
+          30029
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          173,
+          136
+        ],
+        "pcap_relpath": "train/cc_xiaoai/general_knowledge/A2429/network.pcap",
+        "quality": {
+          "direction_skipped": 17,
+          "ip_packets": 326,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 330,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 523,
+        "runtime_endpoints": [
+          "10.201.211.2",
+          "fe80::3c2d:ecff:fe6a:d87f"
+        ],
+        "sample_id": "scenario:train/cc_xiaoai/general_knowledge/A2429",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1782384676510235000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 24744135000,
+        "end_ns": 1781789825911261000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::1462:82ff:fe9f:7eaa"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "16:62:82:9f:7e:aa"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::1462:82ff:fe9f:7eaa"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "0e:03:64:9b:f0:90"
+            ],
+            "fe80::1462:82ff:fe9f:7eaa": [
+              "16:62:82:9f:7e:aa"
+            ],
+            "fe80::c03:64ff:fe9b:f090": [
+              "0e:03:64:9b:f0:90"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 5,
+            "10.201.187.1": 5,
+            "10.201.187.2": 564,
+            "100.100.2.136": 13,
+            "100.100.2.138": 15,
+            "103.233.162.230": 511,
+            "185.60.216.50": 4,
+            "20.205.243.166": 5,
+            "223.5.5.5": 12,
+            "224.0.0.251": 5,
+            "255.255.255.255": 5,
+            "74.86.17.48": 4,
+            "::": 3,
+            "fe80::1462:82ff:fe9f:7eaa": 2,
+            "fe80::c03:64ff:fe9b:f090": 9,
+            "ff02::16": 2,
+            "ff02::2": 7,
+            "ff02::fb": 5
+          },
+          "participation_leaders": [
+            "10.201.187.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.187.2",
+          "syn_candidates": [
+            "10.201.187.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2619",
+        "ip_bytes": [
+          89880,
+          225316
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          276,
+          290
+        ],
+        "pcap_relpath": "train/codex/general_knowledge/A2619/network.pcap",
+        "quality": {
+          "direction_skipped": 22,
+          "ip_packets": 588,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 592,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 955,
+        "runtime_endpoints": [
+          "10.201.187.2",
+          "fe80::1462:82ff:fe9f:7eaa"
+        ],
+        "sample_id": "scenario:train/codex/general_knowledge/A2619",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1781789801167126000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 21985529000,
+        "end_ns": 1781780187255261000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::8888:4ff:fe5a:92d4"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "8a:88:04:5a:92:d4"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::8888:4ff:fe5a:92d4"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "2a:89:6f:25:0e:47"
+            ],
+            "fe80::2889:6fff:fe25:e47": [
+              "2a:89:6f:25:0e:47"
+            ],
+            "fe80::8888:4ff:fe5a:92d4": [
+              "8a:88:04:5a:92:d4"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 5,
+            "10.201.29.1": 5,
+            "10.201.29.2": 624,
+            "100.100.2.136": 10,
+            "100.100.2.138": 16,
+            "103.233.162.230": 573,
+            "162.125.32.6": 4,
+            "20.205.243.166": 5,
+            "202.53.137.209": 4,
+            "223.5.5.5": 12,
+            "224.0.0.251": 5,
+            "255.255.255.255": 5,
+            "::": 3,
+            "fe80::2889:6fff:fe25:e47": 9,
+            "fe80::8888:4ff:fe5a:92d4": 2,
+            "ff02::16": 2,
+            "ff02::2": 7,
+            "ff02::fb": 5
+          },
+          "participation_leaders": [
+            "10.201.29.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.29.2",
+          "syn_candidates": [
+            "10.201.29.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2317",
+        "ip_bytes": [
+          86696,
+          239344
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          299,
+          327
+        ],
+        "pcap_relpath": "train/codex/general_knowledge/A2317/network.pcap",
+        "quality": {
+          "direction_skipped": 22,
+          "ip_packets": 648,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 652,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 875,
+        "runtime_endpoints": [
+          "10.201.29.2",
+          "fe80::8888:4ff:fe5a:92d4"
+        ],
+        "sample_id": "scenario:train/codex/general_knowledge/A2317",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/train/shards/00001.npy",
+        "split": "train",
+        "start_ns": 1781780165269732000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3644030000,
+        "end_ns": 1781631642463556000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::383e:96ff:feef:e8df"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "3a:3e:96:ef:e8:df"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::383e:96ff:feef:e8df"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "8a:0d:4f:e5:a1:bf"
+            ],
+            "fe80::383e:96ff:feef:e8df": [
+              "3a:3e:96:ef:e8:df"
+            ],
+            "fe80::880d:4fff:fee5:a1bf": [
+              "8a:0d:4f:e5:a1:bf"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.135.1": 4,
+            "10.201.135.2": 66,
+            "100.100.2.136": 4,
+            "161.117.125.182": 3,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 1,
+            "39.96.213.166": 51,
+            "::": 1,
+            "fe80::383e:96ff:feef:e8df": 1,
+            "fe80::880d:4fff:fee5:a1bf": 4,
+            "ff02::2": 3,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.135.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.135.2",
+          "syn_candidates": [
+            "10.201.135.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2922",
+        "ip_bytes": [
+          87114,
+          8688
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          30,
+          37
+        ],
+        "pcap_relpath": "train/qwen/scientific_evidence/A2922/network.pcap",
+        "quality": {
+          "direction_skipped": 10,
+          "ip_packets": 77,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 79,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 460,
+        "runtime_endpoints": [
+          "10.201.135.2",
+          "fe80::383e:96ff:feef:e8df"
+        ],
+        "sample_id": "scenario:train/qwen/scientific_evidence/A2922",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1781631638819526000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3126651000,
+        "end_ns": 1781631747007378000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::6c4c:61ff:fe8c:845a"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "6e:4c:61:8c:84:5a"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::6c4c:61ff:fe8c:845a"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "9e:02:00:72:52:c5"
+            ],
+            "fe80::6c4c:61ff:fe8c:845a": [
+              "6e:4c:61:8c:84:5a"
+            ],
+            "fe80::9c02:ff:fe72:52c5": [
+              "9e:02:00:72:52:c5"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.205.1": 4,
+            "10.201.205.2": 65,
+            "100.100.2.136": 4,
+            "161.117.125.94": 6,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 1,
+            "8.140.217.18": 47,
+            "::": 1,
+            "fe80::6c4c:61ff:fe8c:845a": 1,
+            "fe80::9c02:ff:fe72:52c5": 4,
+            "ff02::2": 3,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.205.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.205.2",
+          "syn_candidates": [
+            "10.201.205.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2929",
+        "ip_bytes": [
+          87249,
+          8587
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          32,
+          34
+        ],
+        "pcap_relpath": "train/qwen/scientific_evidence/A2929/network.pcap",
+        "quality": {
+          "direction_skipped": 10,
+          "ip_packets": 76,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 78,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 466,
+        "runtime_endpoints": [
+          "10.201.205.2",
+          "fe80::6c4c:61ff:fe8c:845a"
+        ],
+        "sample_id": "scenario:train/qwen/scientific_evidence/A2929",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1781631743880727000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3835280000,
+        "end_ns": 1781631657362359000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::f0f8:8eff:fe97:3dce"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "f2:f8:8e:97:3d:ce"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::f0f8:8eff:fe97:3dce"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "d6:e6:e4:5c:f7:dc"
+            ],
+            "fe80::d4e6:e4ff:fe5c:f7dc": [
+              "d6:e6:e4:5c:f7:dc"
+            ],
+            "fe80::f0f8:8eff:fe97:3dce": [
+              "f2:f8:8e:97:3d:ce"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.134.1": 4,
+            "10.201.134.2": 69,
+            "100.100.2.136": 4,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 1,
+            "39.96.198.249": 51,
+            "47.88.128.3": 6,
+            "::": 1,
+            "fe80::d4e6:e4ff:fe5c:f7dc": 4,
+            "fe80::f0f8:8eff:fe97:3dce": 1,
+            "ff02::2": 3,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.134.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.134.2",
+          "syn_candidates": [
+            "10.201.134.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2923",
+        "ip_bytes": [
+          87182,
+          8802
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          32,
+          38
+        ],
+        "pcap_relpath": "train/qwen/scientific_evidence/A2923/network.pcap",
+        "quality": {
+          "direction_skipped": 10,
+          "ip_packets": 80,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 82,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 461,
+        "runtime_endpoints": [
+          "10.201.134.2",
+          "fe80::f0f8:8eff:fe97:3dce"
+        ],
+        "sample_id": "scenario:train/qwen/scientific_evidence/A2923",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1781631653527079000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3342899000,
+        "end_ns": 1781631687244146000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::b8f1:52ff:fec7:2972"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ba:f1:52:c7:29:72"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::b8f1:52ff:fec7:2972"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "82:bc:a1:10:1a:1c"
+            ],
+            "fe80::80bc:a1ff:fe10:1a1c": [
+              "82:bc:a1:10:1a:1c"
+            ],
+            "fe80::b8f1:52ff:fec7:2972": [
+              "ba:f1:52:c7:29:72"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.187.1": 3,
+            "10.201.187.2": 73,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "161.117.125.44": 12,
+            "223.5.5.5": 4,
+            "224.0.0.251": 3,
+            "255.255.255.255": 1,
+            "8.140.217.18": 49,
+            "::": 1,
+            "fe80::80bc:a1ff:fe10:1a1c": 3,
+            "fe80::b8f1:52ff:fec7:2972": 1,
+            "ff02::2": 3,
+            "ff02::fb": 2
+          },
+          "participation_leaders": [
+            "10.201.187.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.187.2",
+          "syn_candidates": [
+            "10.201.187.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2925",
+        "ip_bytes": [
+          87664,
+          13354
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          35,
+          39
+        ],
+        "pcap_relpath": "train/qwen/scientific_evidence/A2925/network.pcap",
+        "quality": {
+          "direction_skipped": 8,
+          "ip_packets": 82,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 84,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 463,
+        "runtime_endpoints": [
+          "10.201.187.2",
+          "fe80::b8f1:52ff:fec7:2972"
+        ],
+        "sample_id": "scenario:train/qwen/scientific_evidence/A2925",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1781631683901247000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3084780000,
+        "end_ns": 1783084384675900000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::3874:fcff:fed0:1"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "3a:74:fc:d0:00:01"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::3874:fcff:fed0:1"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::1021:b6ff:feea:192c": [
+              "12:21:b6:ea:19:2c"
+            ],
+            "fe80::3874:fcff:fed0:1": [
+              "3a:74:fc:d0:00:01"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.180.1": 3,
+            "10.201.180.2": 75,
+            "100.100.2.136": 4,
+            "100.100.2.138": 8,
+            "161.117.125.37": 18,
+            "224.0.0.251": 3,
+            "39.96.198.249": 45,
+            "fe80::1021:b6ff:feea:192c": 3,
+            "fe80::3874:fcff:fed0:1": 1,
+            "ff02::2": 2,
+            "ff02::fb": 2
+          },
+          "participation_leaders": [
+            "10.201.180.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.180.2",
+          "syn_candidates": [
+            "10.201.180.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A4060",
+        "ip_bytes": [
+          89964,
+          14634
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          37,
+          39
+        ],
+        "pcap_relpath": "train/qwen/security_testing/A4060/network.pcap",
+        "quality": {
+          "direction_skipped": 6,
+          "ip_packets": 82,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 84,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 622,
+        "runtime_endpoints": [
+          "10.201.180.2",
+          "fe80::3874:fcff:fed0:1"
+        ],
+        "sample_id": "scenario:train/qwen/security_testing/A4060",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1783084381591120000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 4184414000,
+        "end_ns": 1783071196981298000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::24c2:6bff:fe61:11aa"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "26:c2:6b:61:11:aa"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::24c2:6bff:fe61:11aa"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::24c2:6bff:fe61:11aa": [
+              "26:c2:6b:61:11:aa"
+            ],
+            "fe80::3c37:c2ff:fe06:ed3": [
+              "3e:37:c2:06:0e:d3"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.188.1": 3,
+            "10.201.188.2": 85,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "161.117.125.35": 20,
+            "223.5.5.5": 4,
+            "224.0.0.251": 3,
+            "39.96.198.249": 53,
+            "fe80::24c2:6bff:fe61:11aa": 1,
+            "fe80::3c37:c2ff:fe06:ed3": 4,
+            "ff02::2": 2,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.188.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.188.2",
+          "syn_candidates": [
+            "10.201.188.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A4038",
+        "ip_bytes": [
+          90056,
+          15667
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          40,
+          46
+        ],
+        "pcap_relpath": "train/qwen/security_testing/A4038/network.pcap",
+        "quality": {
+          "direction_skipped": 7,
+          "ip_packets": 93,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 95,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 600,
+        "runtime_endpoints": [
+          "10.201.188.2",
+          "fe80::24c2:6bff:fe61:11aa"
+        ],
+        "sample_id": "scenario:train/qwen/security_testing/A4038",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1783071192796884000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3691683000,
+        "end_ns": 1783088087449006000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::202c:f6ff:fedd:cff9"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "22:2c:f6:dd:cf:f9"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::202c:f6ff:fedd:cff9"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::202c:f6ff:fedd:cff9": [
+              "22:2c:f6:dd:cf:f9"
+            ],
+            "fe80::9807:d6ff:fe14:c38c": [
+              "9a:07:d6:14:c3:8c"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.7.1": 4,
+            "10.201.7.2": 107,
+            "100.100.2.136": 8,
+            "100.100.2.138": 4,
+            "161.117.125.37": 19,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "8.140.217.18": 6,
+            "8.152.159.24": 66,
+            "fe80::202c:f6ff:fedd:cff9": 1,
+            "fe80::9807:d6ff:fe14:c38c": 4,
+            "ff02::2": 2,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.7.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.7.2",
+          "syn_candidates": [
+            "10.201.7.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A4068",
+        "ip_bytes": [
+          90724,
+          18922
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          55,
+          53
+        ],
+        "pcap_relpath": "train/qwen/security_testing/A4068/network.pcap",
+        "quality": {
+          "direction_skipped": 8,
+          "ip_packets": 116,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 118,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 629,
+        "runtime_endpoints": [
+          "10.201.7.2",
+          "fe80::202c:f6ff:fedd:cff9"
+        ],
+        "sample_id": "scenario:train/qwen/security_testing/A4068",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1783088083757323000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3459267000,
+        "end_ns": 1783073233489141000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::78d1:f5ff:fe70:c791"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "7a:d1:f5:70:c7:91"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::78d1:f5ff:fe70:c791"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::248d:ddff:fe41:1bd0": [
+              "26:8d:dd:41:1b:d0"
+            ],
+            "fe80::78d1:f5ff:fe70:c791": [
+              "7a:d1:f5:70:c7:91"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.77.1": 4,
+            "10.201.77.2": 93,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "161.117.125.44": 18,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "39.96.213.166": 63,
+            "fe80::248d:ddff:fe41:1bd0": 4,
+            "fe80::78d1:f5ff:fe70:c791": 1,
+            "ff02::2": 2,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.77.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.77.2",
+          "syn_candidates": [
+            "10.201.77.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A4043",
+        "ip_bytes": [
+          97547,
+          15822
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          45,
+          49
+        ],
+        "pcap_relpath": "train/qwen/security_testing/A4043/network.pcap",
+        "quality": {
+          "direction_skipped": 8,
+          "ip_packets": 102,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 104,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 605,
+        "runtime_endpoints": [
+          "10.201.77.2",
+          "fe80::78d1:f5ff:fe70:c791"
+        ],
+        "sample_id": "scenario:train/qwen/security_testing/A4043",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/train/shards/00002.npy",
+        "split": "train",
+        "start_ns": 1783073230029874000,
+        "task": "scenario"
+      }
+    ],
+    "val": [
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 5294794000,
+        "end_ns": 1782278001333603000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::e867:5aff:fe03:abf"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ea:67:5a:03:0a:bf"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::e867:5aff:fe03:abf"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "c6:79:5e:3f:4a:cb"
+            ],
+            "fe80::c479:5eff:fe3f:4acb": [
+              "c6:79:5e:3f:4a:cb"
+            ],
+            "fe80::e867:5aff:fe03:abf": [
+              "ea:67:5a:03:0a:bf"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.84.1": 3,
+            "10.201.84.2": 154,
+            "100.100.2.136": 4,
+            "100.100.2.138": 8,
+            "160.79.104.10": 23,
+            "202.69.4.22": 6,
+            "202.69.4.23": 6,
+            "220.181.104.191": 101,
+            "220.181.104.192": 6,
+            "224.0.0.251": 3,
+            "255.255.255.255": 1,
+            "::": 2,
+            "fe80::c479:5eff:fe3f:4acb": 4,
+            "fe80::e867:5aff:fe03:abf": 1,
+            "ff02::2": 4,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.84.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.84.2",
+          "syn_candidates": [
+            "10.201.84.2"
+          ]
+        },
+        "engine": "cc_mimo",
+        "episode_id": "A1700",
+        "ip_bytes": [
+          134748,
+          23009
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          86,
+          69
+        ],
+        "pcap_relpath": "val/cc_mimo/artifact_processing/A1700/network.pcap",
+        "quality": {
+          "direction_skipped": 10,
+          "ip_packets": 165,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 169,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 75,
+        "runtime_endpoints": [
+          "10.201.84.2",
+          "fe80::e867:5aff:fe03:abf"
+        ],
+        "sample_id": "scenario:val/cc_mimo/artifact_processing/A1700",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1782277996038809000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 10899496000,
+        "end_ns": 1780661887804231000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::e867:5aff:fe03:abf"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ea:67:5a:03:0a:bf"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::e867:5aff:fe03:abf"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "c6:79:5e:3f:4a:cb"
+            ],
+            "fe80::c479:5eff:fe3f:4acb": [
+              "c6:79:5e:3f:4a:cb"
+            ],
+            "fe80::e867:5aff:fe03:abf": [
+              "ea:67:5a:03:0a:bf"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.84.1": 4,
+            "10.201.84.2": 367,
+            "100.100.2.136": 4,
+            "100.100.2.138": 4,
+            "161.117.125.182": 27,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "39.96.213.166": 328,
+            "::": 3,
+            "fe80::c479:5eff:fe3f:4acb": 6,
+            "fe80::e867:5aff:fe03:abf": 2,
+            "ff02::2": 7,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.84.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.84.2",
+          "syn_candidates": [
+            "10.201.84.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A1700",
+        "ip_bytes": [
+          193425,
+          49736
+        ],
+        "label_id": 0,
+        "label_name": "artifact_processing",
+        "packet_count": [
+          182,
+          187
+        ],
+        "pcap_relpath": "val/qwen/artifact_processing/A1700/network.pcap",
+        "quality": {
+          "direction_skipped": 15,
+          "ip_packets": 384,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 0,
+          "records": 384,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 166,
+        "runtime_endpoints": [
+          "10.201.84.2",
+          "fe80::e867:5aff:fe03:abf"
+        ],
+        "sample_id": "scenario:val/qwen/artifact_processing/A1700",
+        "scenario": "artifact_processing",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1780661876904735000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 107320358000,
+        "end_ns": 1781662309814461000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::a474:c8ff:feaa:29a7"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "a6:74:c8:aa:29:a7"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::a474:c8ff:feaa:29a7"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "1e:3a:c3:9b:41:a3"
+            ],
+            "fe80::1c3a:c3ff:fe9b:41a3": [
+              "1e:3a:c3:9b:41:a3"
+            ],
+            "fe80::a474:c8ff:feaa:29a7": [
+              "a6:74:c8:aa:29:a7"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 10,
+            "10.201.228.1": 18,
+            "10.201.228.2": 3472,
+            "100.100.2.136": 28,
+            "100.100.2.138": 32,
+            "161.117.125.216": 54,
+            "161.117.125.35": 52,
+            "223.5.5.5": 12,
+            "224.0.0.251": 14,
+            "255.255.255.255": 10,
+            "39.96.198.249": 2115,
+            "39.96.213.166": 633,
+            "47.88.128.3": 30,
+            "8.152.159.24": 512,
+            "::": 3,
+            "fe80::1c3a:c3ff:fe9b:41a3": 12,
+            "fe80::a474:c8ff:feaa:29a7": 4,
+            "ff02::16": 2,
+            "ff02::2": 11,
+            "ff02::fb": 6
+          },
+          "participation_leaders": [
+            "10.201.228.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.228.2",
+          "syn_candidates": [
+            "10.201.228.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2024",
+        "ip_bytes": [
+          1577572,
+          620794
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          1676,
+          1800
+        ],
+        "pcap_relpath": "val/qwen/business_services/A2024/network.pcap",
+        "quality": {
+          "direction_skipped": 39,
+          "ip_packets": 3515,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 15,
+          "records": 3530,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 173,
+        "runtime_endpoints": [
+          "10.201.228.2",
+          "fe80::a474:c8ff:feaa:29a7"
+        ],
+        "sample_id": "scenario:val/qwen/business_services/A2024",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1781662202494103000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 159487736000,
+        "end_ns": 1780628354631264000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::6c8d:2aff:fe74:6b92"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "6e:8d:2a:74:6b:92"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::6c8d:2aff:fe74:6b92"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "56:18:74:10:79:4c"
+            ],
+            "fe80::5418:74ff:fe10:794c": [
+              "56:18:74:10:79:4c"
+            ],
+            "fe80::6c8d:2aff:fe74:6b92": [
+              "6e:8d:2a:74:6b:92"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 11,
+            "10.201.234.1": 15,
+            "10.201.234.2": 4218,
+            "100.100.2.136": 85,
+            "100.100.2.138": 74,
+            "103.233.162.230": 3843,
+            "108.160.165.141": 4,
+            "108.160.172.204": 4,
+            "118.184.78.78": 4,
+            "148.163.48.215": 4,
+            "157.240.1.33": 4,
+            "157.240.3.8": 8,
+            "157.240.8.50": 4,
+            "185.60.216.36": 4,
+            "198.44.185.131": 8,
+            "20.205.243.166": 74,
+            "223.5.5.5": 86,
+            "224.0.0.251": 15,
+            "255.255.255.255": 11,
+            "31.13.73.9": 8,
+            "31.13.85.34": 4,
+            "::": 3,
+            "fe80::5418:74ff:fe10:794c": 14,
+            "fe80::6c8d:2aff:fe74:6b92": 5,
+            "ff02::16": 2,
+            "ff02::2": 13,
+            "ff02::fb": 7
+          },
+          "participation_leaders": [
+            "10.201.234.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.234.2",
+          "syn_candidates": [
+            "10.201.234.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2006",
+        "ip_bytes": [
+          870249,
+          1586053
+        ],
+        "label_id": 1,
+        "label_name": "business_services",
+        "packet_count": [
+          2038,
+          2185
+        ],
+        "pcap_relpath": "val/codex/business_services/A2006/network.pcap",
+        "quality": {
+          "direction_skipped": 43,
+          "ip_packets": 4266,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 15,
+          "records": 4281,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 138,
+        "runtime_endpoints": [
+          "10.201.234.2",
+          "fe80::6c8d:2aff:fe74:6b92"
+        ],
+        "sample_id": "scenario:val/codex/business_services/A2006",
+        "scenario": "business_services",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1780628195143528000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 11082013000,
+        "end_ns": 1782339605295038000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::3c2d:ecff:fe6a:d87f"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "3e:2d:ec:6a:d8:7f"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::3c2d:ecff:fe6a:d87f"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::244a:9bff:fec2:bd8e": [
+              "26:4a:9b:c2:bd:8e"
+            ],
+            "fe80::3c2d:ecff:fe6a:d87f": [
+              "3e:2d:ec:6a:d8:7f"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.211.1": 4,
+            "10.201.211.2": 369,
+            "100.100.2.136": 8,
+            "100.100.2.138": 4,
+            "160.79.104.10": 80,
+            "202.69.4.22": 6,
+            "202.69.4.23": 6,
+            "220.181.104.191": 258,
+            "220.181.104.192": 7,
+            "224.0.0.251": 4,
+            "fe80::244a:9bff:fec2:bd8e": 5,
+            "fe80::3c2d:ecff:fe6a:d87f": 2,
+            "ff02::2": 4,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.211.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.211.2",
+          "syn_candidates": [
+            "10.201.211.2"
+          ]
+        },
+        "engine": "cc_mimo",
+        "episode_id": "A2429",
+        "ip_bytes": [
+          264220,
+          39298
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          213,
+          158
+        ],
+        "pcap_relpath": "val/cc_mimo/general_knowledge/A2429/network.pcap",
+        "quality": {
+          "direction_skipped": 9,
+          "ip_packets": 380,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 384,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 85,
+        "runtime_endpoints": [
+          "10.201.211.2",
+          "fe80::3c2d:ecff:fe6a:d87f"
+        ],
+        "sample_id": "scenario:val/cc_mimo/general_knowledge/A2429",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1782339594213025000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 42582710000,
+        "end_ns": 1781787886199261000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::b8d2:cdff:fef8:27b3"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "ba:d2:cd:f8:27:b3"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::b8d2:cdff:fef8:27b3"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "36:68:4e:c3:90:79"
+            ],
+            "fe80::3468:4eff:fec3:9079": [
+              "36:68:4e:c3:90:79"
+            ],
+            "fe80::b8d2:cdff:fef8:27b3": [
+              "ba:d2:cd:f8:27:b3"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 5,
+            "10.201.124.1": 13,
+            "10.201.124.2": 710,
+            "100.100.2.136": 14,
+            "100.100.2.138": 14,
+            "103.233.162.230": 656,
+            "128.242.245.93": 4,
+            "199.16.158.104": 4,
+            "20.205.243.166": 6,
+            "223.5.5.5": 12,
+            "224.0.0.251": 13,
+            "255.255.255.255": 5,
+            "::": 3,
+            "fe80::3468:4eff:fec3:9079": 10,
+            "fe80::b8d2:cdff:fef8:27b3": 3,
+            "ff02::16": 2,
+            "ff02::2": 9,
+            "ff02::fb": 5
+          },
+          "participation_leaders": [
+            "10.201.124.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.124.2",
+          "syn_candidates": [
+            "10.201.124.2"
+          ]
+        },
+        "engine": "codex",
+        "episode_id": "A2515",
+        "ip_bytes": [
+          88581,
+          273679
+        ],
+        "label_id": 2,
+        "label_name": "general_knowledge",
+        "packet_count": [
+          341,
+          372
+        ],
+        "pcap_relpath": "val/codex/general_knowledge/A2515/network.pcap",
+        "quality": {
+          "direction_skipped": 31,
+          "ip_packets": 744,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 11,
+          "records": 755,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 146,
+        "runtime_endpoints": [
+          "10.201.124.2",
+          "fe80::b8d2:cdff:fef8:27b3"
+        ],
+        "sample_id": "scenario:val/codex/general_knowledge/A2515",
+        "scenario": "general_knowledge",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1781787843616551000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 3388350000,
+        "end_ns": 1781631702194259000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::a8f9:1dff:fe1d:f5d4"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "aa:f9:1d:1d:f5:d4"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::a8f9:1dff:fe1d:f5d4"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "3e:5d:7a:b7:ce:60"
+            ],
+            "fe80::3c5d:7aff:feb7:ce60": [
+              "3e:5d:7a:b7:ce:60"
+            ],
+            "fe80::a8f9:1dff:fe1d:f5d4": [
+              "aa:f9:1d:1d:f5:d4"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 1,
+            "10.201.183.1": 4,
+            "10.201.183.2": 77,
+            "100.100.2.138": 8,
+            "161.117.125.35": 10,
+            "223.5.5.5": 4,
+            "224.0.0.251": 4,
+            "255.255.255.255": 1,
+            "39.96.198.249": 55,
+            "::": 1,
+            "fe80::3c5d:7aff:feb7:ce60": 4,
+            "fe80::a8f9:1dff:fe1d:f5d4": 1,
+            "ff02::2": 3,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.183.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.183.2",
+          "syn_candidates": [
+            "10.201.183.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A2926",
+        "ip_bytes": [
+          87706,
+          13512
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          35,
+          43
+        ],
+        "pcap_relpath": "val/qwen/scientific_evidence/A2926/network.pcap",
+        "quality": {
+          "direction_skipped": 10,
+          "ip_packets": 88,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 2,
+          "records": 90,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 189,
+        "runtime_endpoints": [
+          "10.201.183.2",
+          "fe80::a8f9:1dff:fe1d:f5d4"
+        ],
+        "sample_id": "scenario:val/qwen/scientific_evidence/A2926",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1781631698805909000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 10061665000,
+        "end_ns": 1782379156327032000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::c43e:79ff:fe4c:46bb"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "c6:3e:79:4c:46:bb"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::c43e:79ff:fe4c:46bb"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "36:f9:21:40:c9:82"
+            ],
+            "fe80::34f9:21ff:fe40:c982": [
+              "36:f9:21:40:c9:82"
+            ],
+            "fe80::c43e:79ff:fe4c:46bb": [
+              "c6:3e:79:4c:46:bb"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 2,
+            "10.201.176.1": 4,
+            "10.201.176.2": 275,
+            "100.100.2.136": 4,
+            "104.17.12.224": 41,
+            "104.17.2.173": 9,
+            "104.17.72.138": 25,
+            "104.21.211.228": 92,
+            "160.79.104.10": 96,
+            "223.5.5.5": 8,
+            "224.0.0.251": 4,
+            "255.255.255.255": 2,
+            "::": 3,
+            "fe80::34f9:21ff:fe40:c982": 6,
+            "fe80::c43e:79ff:fe4c:46bb": 2,
+            "ff02::2": 7,
+            "ff02::fb": 4
+          },
+          "participation_leaders": [
+            "10.201.176.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.176.2",
+          "syn_candidates": [
+            "10.201.176.2"
+          ]
+        },
+        "engine": "cc_xiaoai",
+        "episode_id": "A2921",
+        "ip_bytes": [
+          290224,
+          26851
+        ],
+        "label_id": 3,
+        "label_name": "scientific_evidence",
+        "packet_count": [
+          172,
+          105
+        ],
+        "pcap_relpath": "val/cc_xiaoai/scientific_evidence/A2921/network.pcap",
+        "quality": {
+          "direction_skipped": 15,
+          "ip_packets": 292,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 296,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 123,
+        "runtime_endpoints": [
+          "10.201.176.2",
+          "fe80::c43e:79ff:fe4c:46bb"
+        ],
+        "sample_id": "scenario:val/cc_xiaoai/scientific_evidence/A2921",
+        "scenario": "scientific_evidence",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1782379146265367000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 16308659000,
+        "end_ns": 1782923822128892000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::d876:f4ff:feaa:ee37"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "da:76:f4:aa:ee:37"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::d876:f4ff:feaa:ee37"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "::": [
+              "92:c7:5d:bd:2d:af"
+            ],
+            "fe80::90c7:5dff:febd:2daf": [
+              "92:c7:5d:bd:2d:af"
+            ],
+            "fe80::d876:f4ff:feaa:ee37": [
+              "da:76:f4:aa:ee:37"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "0.0.0.0": 3,
+            "10.201.103.1": 5,
+            "10.201.103.2": 408,
+            "100.100.2.136": 4,
+            "100.100.2.138": 8,
+            "161.117.125.35": 27,
+            "224.0.0.251": 5,
+            "255.255.255.255": 3,
+            "39.96.198.249": 369,
+            "::": 3,
+            "fe80::90c7:5dff:febd:2daf": 9,
+            "fe80::d876:f4ff:feaa:ee37": 2,
+            "ff02::16": 2,
+            "ff02::2": 7,
+            "ff02::fb": 5
+          },
+          "participation_leaders": [
+            "10.201.103.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.103.2",
+          "syn_candidates": [
+            "10.201.103.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A3426",
+        "ip_bytes": [
+          189391,
+          73895
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          202,
+          208
+        ],
+        "pcap_relpath": "val/qwen/security_testing/A3426/network.pcap",
+        "quality": {
+          "direction_skipped": 20,
+          "ip_packets": 430,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 434,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 197,
+        "runtime_endpoints": [
+          "10.201.103.2",
+          "fe80::d876:f4ff:feaa:ee37"
+        ],
+        "sample_id": "scenario:val/qwen/security_testing/A3426",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1782923805820233000,
+        "task": "scenario"
+      },
+      {
+        "annotation_relpath": null,
+        "annotation_row": null,
+        "duration_ns": 8258569000,
+        "end_ns": 1783096460432757000,
+        "endpoint_source": {
+          "associated_ipv6": [
+            "fe80::6012:8fff:fe06:7251"
+          ],
+          "capture_complete": true,
+          "ipv4_source_macs": [
+            "62:12:8f:06:72:51"
+          ],
+          "ipv6_association_status": "source_mac_checked",
+          "ipv6_candidates": [
+            "fe80::6012:8fff:fe06:7251"
+          ],
+          "ipv6_rejections": {},
+          "ipv6_source_macs": {
+            "fe80::6012:8fff:fe06:7251": [
+              "62:12:8f:06:72:51"
+            ],
+            "fe80::90bd:e7ff:fe8e:efb9": [
+              "92:bd:e7:8e:ef:b9"
+            ]
+          },
+          "kind": "inferred",
+          "participation": {
+            "10.201.198.1": 3,
+            "10.201.198.2": 257,
+            "100.100.2.136": 8,
+            "100.100.2.138": 4,
+            "161.117.125.182": 27,
+            "223.5.5.5": 4,
+            "224.0.0.251": 3,
+            "39.96.198.249": 45,
+            "8.140.217.18": 169,
+            "fe80::6012:8fff:fe06:7251": 1,
+            "fe80::90bd:e7ff:fe8e:efb9": 4,
+            "ff02::2": 2,
+            "ff02::fb": 3
+          },
+          "participation_leaders": [
+            "10.201.198.2"
+          ],
+          "rule_version": "rfc1918-syn-participation-ipv6-mac-v2",
+          "selected_ipv4": "10.201.198.2",
+          "syn_candidates": [
+            "10.201.198.2"
+          ]
+        },
+        "engine": "qwen",
+        "episode_id": "A4079",
+        "ip_bytes": [
+          271417,
+          43264
+        ],
+        "label_id": 4,
+        "label_name": "security_testing",
+        "packet_count": [
+          118,
+          140
+        ],
+        "pcap_relpath": "val/qwen/security_testing/A4079/network.pcap",
+        "quality": {
+          "direction_skipped": 7,
+          "ip_packets": 265,
+          "malformed_link_packets": 0,
+          "non_ip_packets": 4,
+          "records": 269,
+          "truncated_packets": 0,
+          "unreadable_ip_packets": 0
+        },
+        "row_index": 201,
+        "runtime_endpoints": [
+          "10.201.198.2",
+          "fe80::6012:8fff:fe06:7251"
+        ],
+        "sample_id": "scenario:val/qwen/security_testing/A4079",
+        "scenario": "security_testing",
+        "shard_relpath": "scenario/val/shards/00000.npy",
+        "split": "val",
+        "start_ns": 1783096452174188000,
+        "task": "scenario"
+      }
+    ]
+  },
+  "selection_rule": "PCAP size ascending then sample_id; max 4 train / 2 val per class",
+  "status": "selected_only",
+  "uses_test": false
+}

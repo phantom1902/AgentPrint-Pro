@@ -1,0 +1,18 @@
+{
+  "configurations": [],
+  "formal_training": false,
+  "full_preprocessing": false,
+  "git_revision": "28776ff0949fdd3778d56d485d97791f4ef21779",
+  "hardware": {
+    "cuda": "13.0",
+    "device": "cpu",
+    "gpu": null,
+    "logical_cpus": 48,
+    "numerical_threads": 4,
+    "platform": "Linux-5.4.0-162-generic-x86_64-with-glibc2.35",
+    "torch": "2.12.1+cu130"
+  },
+  "scope": "smoke",
+  "status": "running",
+  "uses_test": false
+}

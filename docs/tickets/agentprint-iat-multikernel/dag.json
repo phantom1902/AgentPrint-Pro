@@ -148,9 +148,11 @@
         24,
         25
       ],
-      "status": "in_progress",
+      "status": "complete",
       "tracker_issue": null,
-      "owner": "iat_t07_integration"
+      "owner": "iat_t07_integration",
+      "integrated_commit": "746e021",
+      "evidence": "Three integration tests; actual combined epoch recovery; legacy-v1-compatibility.json"
     },
     {
       "id": "T08",
@@ -164,10 +166,11 @@
         27,
         28
       ],
-      "status": "pending_T07_acceptance",
+      "status": "blocked_instance_resources",
       "tracker_issue": null,
       "owner": "iat_t08_acceptance",
-      "note": "Helper preparation may overlap T07; real acceptance waits for T07 verified integration."
+      "note": "Helper and synthetic checks pass; real fit/prepare completed; first train received SIGKILL/137 at container memory cap 2 GiB; no retry or budget reduction.",
+      "integrated_commit": "28776ff"
     }
   ],
   "edges": [
@@ -245,7 +248,9 @@
       "max_train_samples": 20,
       "max_val_samples": 10,
       "serial": true,
-      "read_real_test": false
+      "read_real_test": false,
+      "completed_configurations": 0,
+      "attempted_source_commit": "28776ff0949fdd3778d56d485d97791f4ef21779"
     },
     "full_preprocessing_authorized": false,
     "formal_training_authorized": false
