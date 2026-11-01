@@ -2,7 +2,7 @@
 
 依据：[Issue规格](../../design/2026-11-01-agentprint-iat-multikernel-issue-spec.md)（提交6c89e44）、[完整设计](../../design/2026-11-01-agentprint-iat-multikernel-spec.md)、已确认测试边界、领域术语及ADR 0005。
 
-状态：8张独立ticket正文草稿，等待用户确认拆分粒度和依赖；未发布tracker、未应用标签、未派发agent、未开始实现。项目仍缺少tracker及triage映射，正式发布前按技能运行/setup-matt-pocock-skills。本文档目录不是擅自配置的本地tracker；发布后映射实际issue ID，并应用ready-for-agent标签，不修改或关闭父Issue。
+状态：用户于2026-11-01直接授权按此DAG多agent实现，已开始执行，见[执行记录](execution.md)。8张独立正文尚未发布tracker或应用标签；项目仍缺少tracker及triage映射，正式发布前按技能运行/setup-matt-pocock-skills，此发布待办不阻塞用户直接授权的开发。本文档目录不是擅自配置的本地tracker；发布后映射实际issue ID，并应用ready-for-agent标签，不修改或关闭父Issue。
 
 ## 拆分与独立交付
 
