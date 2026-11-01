@@ -108,9 +108,10 @@
         24,
         25
       ],
-      "status": "in_progress",
+      "status": "complete",
       "tracker_issue": null,
-      "owner": "iat_t05"
+      "owner": "iat_t05",
+      "integrated_commit": "93569f1"
     },
     {
       "id": "T06",
@@ -147,8 +148,9 @@
         24,
         25
       ],
-      "status": "pending",
-      "tracker_issue": null
+      "status": "in_progress",
+      "tracker_issue": null,
+      "owner": "iat_t07_integration"
     },
     {
       "id": "T08",
@@ -162,8 +164,10 @@
         27,
         28
       ],
-      "status": "pending",
-      "tracker_issue": null
+      "status": "pending_T07_acceptance",
+      "tracker_issue": null,
+      "owner": "iat_t08_acceptance",
+      "note": "Helper preparation may overlap T07; real acceptance waits for T07 verified integration."
     }
   ],
   "edges": [

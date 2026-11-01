@@ -1,7 +1,7 @@
 """Version 2 extension boundary, independent of the genuine v1 protocol.
 
-The initial tracer supports disabled IAT and the single-kernel model. Later
-extensions implement the explicit feature and model definitions at these seams.
+Supports explicit IAT features and single, replacement, and prepend models
+without changing the historical v1 configuration or recovery protocol.
 """
 from copy import deepcopy
 from datetime import datetime, timezone

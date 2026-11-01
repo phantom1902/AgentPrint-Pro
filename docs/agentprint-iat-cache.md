@@ -1,7 +1,7 @@
 # Supplemental IAT preparation and ten-channel loading
 
-The v2 public pipeline supports enabled IAT with the existing single and
-replacement model factories. First prepare the original Scenario MTAM with an
+The v2 public pipeline supports enabled IAT with the single, replacement, and
+prepend model factories. First prepare the original Scenario MTAM with an
 IAT-disabled configuration, then enable IAT and run explicit `fit-bins`,
 `prepare`, `train`, and `evaluate`. Enabled preparation never rebuilds MTAM or
 fits boundaries implicitly. A missing/incompatible base cache or fit fails.
