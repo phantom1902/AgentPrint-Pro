@@ -100,7 +100,7 @@ def validate_config(config, overrides=None):
 def supported(config):
     if config['feature']['iat_enabled']:
         raise ConfigError('IAT feature preparation/loading is not implemented yet')
-    if config['model']['variant'] != 'single':
+    if config['model']['variant'] not in ('single', 'replace'):
         raise ConfigError('model variant is not implemented yet: ' + config['model']['variant'])
     if config['mode'] != 'smoke':
         raise ConfigError('v2 formal stopping protocol is not implemented yet; use smoke')
@@ -119,10 +119,13 @@ def build_model(definition, in_channels=2):
     """Public fixed-five-class model interface; disabled defaults preserve RF."""
     from .tuning import DEFAULT_PARAMS, build_model as build_rf
     _fields(definition, SCHEMA_V2['model'], 'model.')
-    if definition['version'] != 1 or definition['variant'] != 'single':
+    if definition['version'] != 1 or definition['variant'] not in ('single', 'replace'):
         raise ConfigError('model definition is not implemented')
     params = dict(DEFAULT_PARAMS, **{name: definition[name] for name in
                                    ('width', 'dropout_2d', 'dropout_1d')})
+    if definition['variant'] == 'replace':
+        from .multikernel import build_replacement_model
+        return build_replacement_model(params, in_channels=in_channels)
     return build_rf(params, in_channels=in_channels)
 
 

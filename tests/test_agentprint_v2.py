@@ -72,7 +72,7 @@ class V2Commands(unittest.TestCase):
         self.assertIn('incompatible checkpoint model', result.stderr)
 
     def test_future_combinations_fail_explicitly_and_v1_rejects_v2_fields(self):
-        for model in ('replace', 'prepend'):
+        for model in ('prepend',):
             self.settings['model'] = {'variant': model}
             self.assertIn('not implemented', self.command('prepare', ok=False).stderr)
         self.settings.pop('model')

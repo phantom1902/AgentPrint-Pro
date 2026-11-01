@@ -37,6 +37,15 @@ creating a training run. Formal stopping, enabled IAT and multikernel execution
 are implemented by the subsequent tickets. A smoke result explicitly records
 `converged: false` and `reason: smoke_budget_exhausted`.
 
+T03 additionally executes `variant: replace` at width 2, with disabled IAT and
+either transform. It replaces the whole original first Conv2d/BatchNorm2d/ReLU
+unit, preserves the 1800 input time slots through the replacement, then retains
+the subsequent RF frontend, pooling, reshape and one-dimensional classifier.
+It has 3,544,771 parameters with 2 input channels and 3,552,403 with 10 input
+channels, at width 2 and the approved dropouts. These are actual parameter
+counts, not a claim of equal capacity to the single model. Ten-channel model
+checks use synthetic tensors; enabled-IAT loading remains a separate extension.
+
 ## Public extension seams
 
 `agentprint.v2.build_model(model_definition, in_channels=2)` accepts 2 or 10
@@ -46,6 +55,18 @@ Unknown fields and unsupported variants fail. At original RF width/dropouts,
 the 2-channel single variant preserves the original initialization and output.
 The optional `in_channels` argument of `tuning.build_model` defaults to 2,
 preserving every existing tuning call.
+
+`agentprint.multikernel.MultiKernelUnit(in_channels, out_channels)` is the shared
+unit for both multikernel integrations. Inputs have 2 or 10 channels; outputs
+may have 64 (replacement) or 2/10 (prepend) channels. It preserves direction
+height and time length: `[N, in_channels, 2, T]` becomes
+`[N, out_channels, 2, T]`. Three Conv2d/BatchNorm2d/ReLU branches use kernels
+`(3, 3)`, `(3, 5)`, `(3, 7)`, padding `(1, 1)`, `(1, 2)`, `(1, 3)`, stride 1,
+and channels 22/21/21. Concatenation feeds a 64-to-output 1x1
+Conv2d/BatchNorm2d/ReLU projection. Convolutions include biases, as in RF.
+The constructor applies RF's Conv2d and BatchNorm2d initialization; the model's
+Conv1d layers keep PyTorch's default initialization. All weights are created
+from scratch. The unit has no residual and performs no cropping.
 
 `v2.loader(config, split, shuffle=False, generator=None)` returns
 `(samples, batches)`. Samples expose `records`, `metadata`, length and indexed
