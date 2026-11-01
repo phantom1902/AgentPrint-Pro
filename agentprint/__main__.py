@@ -9,7 +9,7 @@ from .config import ConfigError, load_config
 def main(argv=None):
     parser = argparse.ArgumentParser(prog='python -m agentprint')
     commands = parser.add_subparsers(dest='command', required=True)
-    for command in ('prepare', 'train', 'evaluate'):
+    for command in ('fit-bins', 'prepare', 'train', 'evaluate'):
         child = commands.add_parser(command)
         child.add_argument('--config', required=True)
         for option in ('data-root', 'cache-root', 'output-root'):
@@ -27,7 +27,13 @@ def main(argv=None):
                                            ('data_root', 'cache_root', 'output_root')})
         if config['schema_version'] == 2:
             from . import v2
-            if args.command == 'prepare':
+            if args.command == 'fit-bins':
+                from .iat import fit_bins
+                result = fit_bins(config)
+                print(json.dumps({'complete': result['complete'],
+                                  'fingerprint': result['fingerprint'],
+                                  'boundaries_ns': result['boundaries_ns']}))
+            elif args.command == 'prepare':
                 result = v2.prepare(config)
                 print(json.dumps({'complete': result['complete'], 'datasets': result['datasets']}))
             elif args.command == 'train':
@@ -35,6 +41,8 @@ def main(argv=None):
             else:
                 print(json.dumps(v2.evaluate(config, args.device, args.checkpoint, args.split)))
             return 0
+        if args.command == 'fit-bins':
+            raise ConfigError('fit-bins requires schema_version=2 and enabled IAT')
         if args.command == 'prepare':
             from .preparation import prepare
             result = prepare(config)
