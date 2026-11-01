@@ -1,0 +1,238 @@
+{
+  "feature": "agentprint-iat-multikernel",
+  "version": 1,
+  "status": "draft-awaiting-user-approval",
+  "source_spec_commit": "6c89e44",
+  "integration_branch": "codex/agentprint-iat-multikernel-dev",
+  "edge_direction": "blocker -> dependent",
+  "tracker": {
+    "configured": false,
+    "publication": "not-published",
+    "intended_label": "ready-for-agent"
+  },
+  "nodes": [
+    {
+      "id": "T01",
+      "title": "跑通兼容旧协议的v2最小闭环",
+      "blocked_by": [],
+      "draft": "drafts/01-v2-tracer.md",
+      "decisions": [
+        1,
+        9,
+        13,
+        16,
+        21,
+        22,
+        23,
+        24
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T02",
+      "title": "通过公共命令拟合并恢复共享IAT桶",
+      "blocked_by": [
+        "T01"
+      ],
+      "draft": "drafts/02-fit-bins.md",
+      "decisions": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        25
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T03",
+      "title": "运行替换首单元的多核模型",
+      "blocked_by": [
+        "T01"
+      ],
+      "draft": "drafts/03-replacement-model.md",
+      "decisions": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T04",
+      "title": "运行无残差的前置多核模型",
+      "blocked_by": [
+        "T03"
+      ],
+      "draft": "drafts/04-prepend-model.md",
+      "decisions": [
+        13,
+        14,
+        15,
+        16
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T05",
+      "title": "跑通可恢复的十通道IAT分类闭环",
+      "blocked_by": [
+        "T02"
+      ],
+      "draft": "drafts/05-iat-tracer.md",
+      "decisions": [
+        2,
+        3,
+        4,
+        7,
+        9,
+        10,
+        11,
+        12,
+        24,
+        25
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T06",
+      "title": "执行可恢复的v2训练与严格停止协议",
+      "blocked_by": [
+        "T01"
+      ],
+      "draft": "drafts/06-training-protocol.md",
+      "decisions": [
+        17,
+        18,
+        19,
+        20,
+        24,
+        25
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T07",
+      "title": "集成十二配置并核验旧产物与恢复",
+      "blocked_by": [
+        "T04",
+        "T05",
+        "T06"
+      ],
+      "draft": "drafts/07-integrated-acceptance.md",
+      "decisions": [
+        13,
+        23,
+        24,
+        25
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    },
+    {
+      "id": "T08",
+      "title": "完成六配置真实小样本验收并交付证据",
+      "blocked_by": [
+        "T07"
+      ],
+      "draft": "drafts/08-bounded-server-acceptance.md",
+      "decisions": [
+        26,
+        27,
+        28
+      ],
+      "status": "draft-awaiting-user-approval",
+      "tracker_issue": null
+    }
+  ],
+  "edges": [
+    {
+      "from": "T01",
+      "to": "T02"
+    },
+    {
+      "from": "T01",
+      "to": "T03"
+    },
+    {
+      "from": "T03",
+      "to": "T04"
+    },
+    {
+      "from": "T02",
+      "to": "T05"
+    },
+    {
+      "from": "T01",
+      "to": "T06"
+    },
+    {
+      "from": "T04",
+      "to": "T07"
+    },
+    {
+      "from": "T05",
+      "to": "T07"
+    },
+    {
+      "from": "T06",
+      "to": "T07"
+    },
+    {
+      "from": "T07",
+      "to": "T08"
+    }
+  ],
+  "execution": {
+    "dispatch_authorized": false,
+    "policy": "Only start a ticket after all blockers are integrated and verified; no dispatch during ticket drafting.",
+    "initial_frontier": [
+      "T01"
+    ],
+    "suggested_lanes": [
+      [
+        "T01"
+      ],
+      [
+        "T02",
+        "T05"
+      ],
+      [
+        "T03",
+        "T04"
+      ],
+      [
+        "T06"
+      ],
+      [
+        "T07"
+      ],
+      [
+        "T08"
+      ]
+    ],
+    "max_parallel_implementation_agents": 3,
+    "real_smoke": {
+      "iat_enabled": true,
+      "configurations": 6,
+      "epochs_per_configuration": 2,
+      "seed": 42,
+      "max_train_samples": 20,
+      "max_val_samples": 10,
+      "serial": true,
+      "read_real_test": false
+    },
+    "full_preprocessing_authorized": false,
+    "formal_training_authorized": false
+  }
+}
