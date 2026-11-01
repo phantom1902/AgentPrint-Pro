@@ -84,9 +84,10 @@
         15,
         16
       ],
-      "status": "in_progress",
+      "status": "complete",
       "tracker_issue": null,
-      "owner": "iat_t04"
+      "owner": "iat_t04",
+      "integrated_commit": "049e08e"
     },
     {
       "id": "T05",
@@ -126,9 +127,10 @@
         24,
         25
       ],
-      "status": "in_progress",
+      "status": "complete",
       "tracker_issue": null,
-      "owner": "iat_t06"
+      "owner": "iat_t06",
+      "integrated_commit": "86e82a9"
     },
     {
       "id": "T07",
