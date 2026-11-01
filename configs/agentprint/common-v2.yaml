@@ -1,0 +1,34 @@
+schema_version: 2
+task: scenario
+transform: raw
+mode: smoke
+seed: 42
+paths:
+  data_root: /root/autodl-tmp/ant-workspace/data/raw/ANT
+  cache_root: /root/autodl-tmp/ant-workspace/data/processed/agentprint
+  output_root: /root/autodl-tmp/ant-workspace/runs/agentprint-iat
+preprocessing:
+  bins: 1800
+  shard_size: 1024
+  splits: [train, val]
+feature:
+  version: 1
+  iat_enabled: false
+  fit_artifact: ''
+  iat_cache_root: ''
+model:
+  version: 1
+  variant: single
+  width: 2.0
+  dropout_2d: 0.05
+  dropout_1d: 0.1
+training:
+  epochs: 2
+  batch_size: 200
+  learning_rate: 0.001
+  weight_decay: 0.001
+  optimizer: adam
+  lr_decay: 0.5
+  min_learning_rate: 0.000001
+  num_workers: 0
+  numerical_threads: 4

@@ -36,19 +36,21 @@ def validate_params(params):
         raise ValueError('invalid width')
 
 
-def build_model(params):
+def build_model(params, in_channels=2):
     validate_params(params)
-    if params['width'] == 1:
+    if type(in_channels) is not int or in_channels not in (2, 10):
+        raise ValueError('input channels must be 2 or 10')
+    if params['width'] == 1 and in_channels == 2:
         model = getRF(5)
     else:
         width = params['width']
         # Preserve RF's reshape topology: 64 channels become 32 with doubled length.
         model = RF.__new__(RF)
         nn.Module.__init__(model)
-        model.first_layer_in_channel = 2
+        model.first_layer_in_channel = in_channels
         model.first_layer_out_channel = int(32 * width)
         layers = []
-        for i, o, pool in [(2, int(32*width), None), (int(32*width), int(32*width), (1, 3)),
+        for i, o, pool in [(in_channels, int(32*width), None), (int(32*width), int(32*width), (1, 3)),
                            (int(32*width), int(64*width), None), (int(64*width), int(64*width), (2, 2))]:
             layers.extend([nn.Conv2d(i, o, (3, 6), padding=(1, 1)), nn.BatchNorm2d(o), nn.ReLU()])
             if pool:

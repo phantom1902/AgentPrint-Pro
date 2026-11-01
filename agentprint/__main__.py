@@ -25,6 +25,16 @@ def main(argv=None):
     try:
         config = load_config(args.config, {key: getattr(args, key) for key in
                                            ('data_root', 'cache_root', 'output_root')})
+        if config['schema_version'] == 2:
+            from . import v2
+            if args.command == 'prepare':
+                result = v2.prepare(config)
+                print(json.dumps({'complete': result['complete'], 'datasets': result['datasets']}))
+            elif args.command == 'train':
+                print(json.dumps({'run_dir': str(v2.train(config, args.device, args.resume))}))
+            else:
+                print(json.dumps(v2.evaluate(config, args.device, args.checkpoint, args.split)))
+            return 0
         if args.command == 'prepare':
             from .preparation import prepare
             result = prepare(config)

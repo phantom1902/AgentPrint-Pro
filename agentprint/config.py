@@ -65,6 +65,9 @@ def _validate_fields(config, schema, prefix=''):
 
 def load_config(path, overrides=None):
     config = _read(path, [])
+    if config.get('schema_version') == 2:
+        from .v2 import validate_config
+        return validate_config(config, overrides)
     _validate_fields(config, SCHEMA)
     if config['schema_version'] != 1:
         raise ConfigError('schema_version must be 1')
