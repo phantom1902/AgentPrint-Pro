@@ -1,7 +1,7 @@
 {
   "feature": "agentprint-iat-multikernel",
   "version": 1,
-  "status": "draft-awaiting-user-approval",
+  "status": "executing-user-authorized-tracker-publication-deferred",
   "source_spec_commit": "6c89e44",
   "integration_branch": "codex/agentprint-iat-multikernel-dev",
   "edge_direction": "blocker -> dependent",
@@ -26,8 +26,9 @@
         23,
         24
       ],
-      "status": "draft-awaiting-user-approval",
-      "tracker_issue": null
+      "status": "in_progress",
+      "tracker_issue": null,
+      "owner": "iat_t01"
     },
     {
       "id": "T02",
@@ -46,7 +47,7 @@
         8,
         25
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -62,7 +63,7 @@
         15,
         16
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -78,7 +79,7 @@
         15,
         16
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -100,7 +101,7 @@
         24,
         25
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -118,7 +119,7 @@
         24,
         25
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -136,7 +137,7 @@
         24,
         25
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     },
     {
@@ -151,7 +152,7 @@
         27,
         28
       ],
-      "status": "draft-awaiting-user-approval",
+      "status": "pending",
       "tracker_issue": null
     }
   ],
@@ -194,7 +195,7 @@
     }
   ],
   "execution": {
-    "dispatch_authorized": false,
+    "dispatch_authorized": true,
     "policy": "Only start a ticket after all blockers are integrated and verified; no dispatch during ticket drafting.",
     "initial_frontier": [
       "T01"
