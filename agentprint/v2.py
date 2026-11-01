@@ -99,8 +99,6 @@ def validate_config(config, overrides=None):
 
 
 def supported(config):
-    if config['feature']['iat_enabled']:
-        raise ConfigError('IAT feature preparation/loading is not implemented yet')
     if config['model']['variant'] not in ('single', 'replace', 'prepend'):
         raise ConfigError('model variant is not implemented yet: ' + config['model']['variant'])
 
@@ -133,6 +131,9 @@ def build_model(definition, in_channels=2):
 
 def prepare(config):
     supported(config)
+    if config['feature']['iat_enabled']:
+        from .iat_cache import prepare as prepare_iat
+        return prepare_iat(config)
     from .preparation import prepare as prepare_base
     return prepare_base(config)
 
@@ -140,20 +141,36 @@ def prepare(config):
 def loader(config, split, shuffle=False, generator=None):
     from .training import loader as base_loader
     supported(config)
-    samples, batches = base_loader(config, split, shuffle, generator)
+    if config['feature']['iat_enabled']:
+        from torch.utils.data import DataLoader, Dataset
+        from .iat_cache import IATSamples
+        class IATDataset(IATSamples, Dataset):
+            """Torch adapter for the aggregate-only supplemental cache module."""
+        samples = IATDataset(config, split)
+        if not samples:
+            raise ConfigError(f'{split} has no valid samples')
+        batches: DataLoader = DataLoader(samples, batch_size=config['training']['batch_size'],
+                             shuffle=shuffle, num_workers=0, generator=generator)
+    else:
+        samples, batches = base_loader(config, split, shuffle, generator)
     if samples.metadata['preprocessing_version'] != PREPROCESSING_VERSION:
         raise ConfigError('incompatible cache preprocessing_version')
     return samples, batches
 
 
 def experiment_identity(config, train_samples, val_samples):
+    enabled = config['feature']['iat_enabled']
+    if enabled and train_samples.fit_fingerprint != val_samples.fit_fingerprint:
+        raise ConfigError('incompatible IAT train/validation fit fingerprints')
     return dict(schema_version=2, task=config['task'], mode=config['mode'], seed=config['seed'],
                 transform=config['transform'], training=deepcopy(config['training']),
                 label_map_id=LABEL_MAP_ID, model_version=MODEL_VERSION,
                 model_extension_version=MODEL_EXTENSION_VERSION,
                 model_definition=deepcopy(config['model']),
                 feature_definition=feature_definition(config),
-                fit_fingerprint=None, iat_cache=None,
+                fit_fingerprint=train_samples.fit_fingerprint if enabled else None,
+                iat_cache={split: deepcopy(samples.iat_metadata) for split, samples in
+                           (('train', train_samples), ('val', val_samples))} if enabled else None,
                 base_cache={split: deepcopy(samples.metadata) for split, samples in
                             (('train', train_samples), ('val', val_samples))})
 
@@ -176,6 +193,17 @@ def validate_checkpoint(saved):
                 'model_definition': config['model'], 'feature_definition': feature_definition(config)}
     if not config['feature']['iat_enabled']:
         expected.update(fit_fingerprint=None, iat_cache=None)
+    else:
+        fit_id, caches = identity.get('fit_fingerprint'), identity.get('iat_cache')
+        if (not isinstance(fit_id, str) or len(fit_id) != 64
+                or not isinstance(caches, dict) or set(caches) != {'train', 'val'}):
+            raise ConfigError('incompatible checkpoint identity IAT fit/cache')
+        for split, metadata in caches.items():
+            if (not isinstance(metadata, dict) or metadata.get('fit_fingerprint') != fit_id
+                    or metadata.get('base_cache_identity') != identity.get('base_cache', {}).get(split)
+                    or metadata.get('scope') != ('smoke' if config['mode'] == 'smoke' else 'full')
+                    or metadata.get('fingerprint') != fingerprint({k: v for k, v in metadata.items() if k != 'fingerprint'})):
+                raise ConfigError('incompatible checkpoint identity IAT cache ' + split)
     for name, value in expected.items():
         if identity.get(name) != value:
             raise ConfigError('incompatible checkpoint identity ' + name)
@@ -325,14 +353,25 @@ def evaluate(config, device, checkpoint, split='val'):
         raise ConfigError('evaluation requires a validation-best checkpoint; use best.pt')
     runtime = deepcopy(saved['config'])
     runtime['paths'] = deepcopy(config['paths'])
-    for field in ('task', 'transform', 'feature', 'model'):
+    for field in ('task', 'transform', 'model'):
         if config[field] != saved['config'][field]:
             raise ConfigError(f'incompatible checkpoint {field}')
+    if any(config['feature'][name] != saved['config']['feature'][name]
+           for name in ('version', 'iat_enabled')):
+        raise ConfigError('incompatible checkpoint feature')
+    runtime['feature'] = deepcopy(config['feature'])
     torch.set_num_threads(runtime['training']['numerical_threads'])
     setup_execution(runtime['seed'])
     samples, batches = loader(runtime, split)
     if split == 'val' and samples.metadata != saved['identity']['base_cache']['val']:
         raise ConfigError('checkpoint validation cache differs from requested cache')
+    if runtime['feature']['iat_enabled']:
+        # Verify the saved fit and both training identities for either eval split.
+        # A synthetic test cache is independently bound to that same verified fit.
+        train_samples, _ = loader(runtime, 'train')
+        val_samples = samples if split == 'val' else loader(runtime, 'val')[0]
+        if experiment_identity(runtime, train_samples, val_samples) != saved['identity']:
+            raise ConfigError('checkpoint IAT fit/cache identity differs from requested cache')
     model = build_model(saved['model_definition'], saved['feature_definition']['in_channels']).to(device)
     model.load_state_dict(saved['model'])
     summary, per_class, matrix = evaluate_model(model, batches, device, 'scenario')

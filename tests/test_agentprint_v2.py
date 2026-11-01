@@ -78,7 +78,7 @@ class V2Commands(unittest.TestCase):
         self.settings['feature'] = {'iat_enabled': True,
                                     'fit_artifact': str(self.root / 'bins.json'),
                                     'iat_cache_root': str(self.root / 'iat')}
-        self.assertIn('not implemented', self.command('prepare', ok=False).stderr)
+        self.assertIn('fit artifact is missing', self.command('prepare', ok=False).stderr)
         self.settings['schema_version'] = 1
         self.assertIn('unknown configuration field', self.command('prepare', ok=False).stderr)
 
