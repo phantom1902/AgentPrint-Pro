@@ -1,0 +1,11 @@
+{
+  "legacy_source_commit": "57883c6e429d864fcf016c39746adf4d80fca418",
+  "legacy_implementation_equals": "a23cf45",
+  "new_commit": "68ebaacf2850080b8d9aa5ac52594e1d087aa49c",
+  "original_partial_checkpoint_sha256": "d83672c928f8898fcdb82c8d338166b2813e2e178cf715bf0a9ea70bede58788",
+  "original_whole_last_sha256": "5f7852275536aa2772777bf7a98d8943ffe9de1f3fff0d60702d3e9b33bd1fc3",
+  "whole_unchanged": true,
+  "evaluation_passed": true,
+  "exact_model_adam_rng_shuffle_best_resume_passed": true,
+  "final_epoch": 1
+}
