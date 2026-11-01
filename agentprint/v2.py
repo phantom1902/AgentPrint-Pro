@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import json
 import math
 from pathlib import Path
+import time
 from typing import Any, cast
 import uuid
 
@@ -102,8 +103,6 @@ def supported(config):
         raise ConfigError('IAT feature preparation/loading is not implemented yet')
     if config['model']['variant'] not in ('single', 'replace', 'prepend'):
         raise ConfigError('model variant is not implemented yet: ' + config['model']['variant'])
-    if config['mode'] != 'smoke':
-        raise ConfigError('v2 formal stopping protocol is not implemented yet; use smoke')
 
 
 def feature_definition(config):
@@ -161,12 +160,14 @@ def experiment_identity(config, train_samples, val_samples):
 
 def validate_checkpoint(saved):
     """Reject inconsistent saved definitions before rebuilding or resuming."""
+    from .v2_protocol import validate_formal
     if saved.get('checkpoint_format') != 2:
         raise ConfigError('incompatible v2 checkpoint format')
     identity = saved.get('identity', {})
     if saved.get('experiment_id') != fingerprint(identity):
         raise ConfigError('incompatible checkpoint identity fingerprint')
     config = validate_config(deepcopy(saved['config']))
+    validate_formal(config)
     for name in ('task', 'mode', 'seed', 'transform', 'training'):
         if identity.get(name) != config[name]:
             raise ConfigError('incompatible checkpoint identity ' + name)
@@ -188,7 +189,9 @@ def train(config, device='cpu', resume=None):
     from .recovery import (append_json, archive_ahead_logs, capture_rng, publish_best,
                            record_runtime, restore_rng, save_checkpoint)
     from .training import evaluate_model, setup_execution, validate_training
+    from .v2_protocol import learning_rate, stop_status, validate_formal
     supported(config)
+    validate_formal(config)
     torch.set_num_threads(config['training']['numerical_threads'])
     setup_execution(config['seed'])
     generator = torch.Generator().manual_seed(config['seed'])
@@ -227,20 +230,37 @@ def train(config, device='cpu', resume=None):
         start_epoch, global_step = saved['epoch'] + 1, saved['global_step']
         best_f1, best_epoch = saved['best_macro_f1'], saved['best_epoch']
         best_checkpoint, rows = saved['best_checkpoint'], saved['rows']
+        if (type(saved['epoch']) is not int or saved['epoch'] < 0
+                or len(rows) != start_epoch or start_epoch > settings['epochs']):
+            raise ConfigError('incompatible recovery epoch history / target total epochs')
+        status = stop_status(rows, config['mode'], settings['epochs'])
+        if saved.get('convergence', status) != status:
+            raise ConfigError('incompatible recovery convergence history')
         publish_best(root, best_checkpoint)
         archive_ahead_logs(root, saved['epoch'], global_step)
+        committed_rows = [json.loads(line) for line in (root / 'metrics.jsonl').read_text().splitlines()
+                          if line.strip()]
+        if committed_rows != rows:
+            raise ConfigError('checkpoint and committed metrics history differ')
         restore_rng(saved['rng'], generator)
     record_runtime(root, config, device, start_epoch - 1 if saved is not None else None)
     write_json(root / 'identity.json', dict(identity=identity, experiment_id=experiment_id))
+    status = stop_status(rows, config['mode'], settings['epochs'])
     write_json(root / 'protocol.json', dict(schema_version=2, precision='float32', amp=False,
         tf32=False, deterministic_algorithms=True, num_workers=0, numerical_threads=4,
+        cudnn_benchmark=False, mode=config['mode'], formal_experiment=config['mode'] == 'formal',
+        convergence_policy=status['policy'],
+        learning_rate_rule='max(min_learning_rate,learning_rate*lr_decay**(epoch/30))',
         selection_split='val', checkpoint_tie_rule='earlier_epoch',
         loss='unweighted_cross_entropy', training=settings, uses_test=False))
+    write_json(root / 'convergence.json', status)
     for epoch in range(start_epoch, settings['epochs']):
-        learning_rate = max(settings['min_learning_rate'],
-                            settings['learning_rate'] * settings['lr_decay'] ** (epoch / 30))
+        if status['stop']:
+            break
+        started = time.monotonic()
+        lr = learning_rate(epoch, settings)
         for group in optimizer.param_groups:
-            group['lr'] = learning_rate
+            group['lr'] = lr
         model.train()
         total, count = 0.0, 0
         for values, labels in train_batches:
@@ -259,8 +279,11 @@ def train(config, device='cpu', resume=None):
         summary, per_class, matrix = evaluate_model(model, val_batches, device, 'scenario')
         row = dict(epoch=epoch, train_loss=total / count, val_loss=summary['loss'],
                    val_accuracy=summary['accuracy'], val_macro_f1=summary['macro_f1'],
-                   learning_rate=learning_rate, global_step=global_step,
+                   learning_rate=lr, global_step=global_step,
+                   elapsed_seconds=time.monotonic() - started,
                    train_samples=len(train_samples), val_samples=len(val_samples))
+        if any(not math.isfinite(value) for value in row.values() if isinstance(value, float)):
+            raise RuntimeError('non-finite epoch metric; execution stopped')
         checkpoint = dict(checkpoint_format=2, identity=identity, experiment_id=experiment_id,
                           config=deepcopy(config), model_definition=definition,
                           feature_definition=features, model=model.state_dict(),
@@ -274,16 +297,19 @@ def train(config, device='cpu', resume=None):
                                                  'per_class': per_class, 'matrix': matrix.tolist()})
             save_checkpoint(root / best_checkpoint, checkpoint)
         rows.append(row)
+        status = stop_status(rows, config['mode'], settings['epochs'])
         append_json(root / 'metrics.jsonl', row)
         checkpoint.update(optimizer=optimizer.state_dict(), global_step=global_step,
                           best_macro_f1=best_f1, best_epoch=best_epoch,
-                          best_checkpoint=best_checkpoint, rows=rows, rng=capture_rng(generator))
+                          best_checkpoint=best_checkpoint, rows=rows, rng=capture_rng(generator),
+                          convergence=status)
         save_checkpoint(root / 'last.pt', checkpoint)
         publish_best(root, best_checkpoint)
+        write_json(root / 'convergence.json', status)
         print(json.dumps(row, sort_keys=True), flush=True)
     write_json(root / 'result.json', dict(experiment_id=experiment_id, epochs=len(rows),
         best_epoch=best_epoch, best_val_macro_f1=best_f1, parameters=sum(p.numel() for p in model.parameters()),
-        converged=False, reason='smoke_budget_exhausted', uses_test=False))
+        converged=status['converged'], reason=status['reason'], uses_test=False))
     return root
 
 
@@ -291,6 +317,7 @@ def evaluate(config, device, checkpoint, split='val'):
     import torch
     from .metrics import write_metrics
     from .training import evaluate_model, setup_execution
+    from .v2_protocol import record_selection
     supported(config)
     saved = torch.load(checkpoint, map_location='cpu', weights_only=False)
     validate_checkpoint(saved)
@@ -309,12 +336,11 @@ def evaluate(config, device, checkpoint, split='val'):
     model = build_model(saved['model_definition'], saved['feature_definition']['in_channels']).to(device)
     model.load_state_dict(saved['model'])
     summary, per_class, matrix = evaluate_model(model, batches, device, 'scenario')
-    selection_path = Path(config['paths']['output_root']) / f"selection-v2-{saved['experiment_id'][:16]}.json"
-    write_json(selection_path, dict(identity=saved['identity'], experiment_id=saved['experiment_id'],
-        selection_split='val', checkpoint=str(Path(checkpoint).resolve()),
-        validation_macro_f1=saved['best_macro_f1'], model_definition=saved['model_definition']))
+    selection_path, selection = record_selection(config['paths']['output_root'], saved, checkpoint)
     summary.update(split=split, epoch=saved['epoch'], task='scenario', transform=runtime['transform'],
                    experiment_id=saved['experiment_id'], manifest_id=samples.metadata['manifest_id'],
-                   validation_macro_f1=saved['best_macro_f1'], selection_artifact=str(selection_path))
+                   validation_macro_f1=saved['best_macro_f1'], selection_artifact=str(selection_path),
+                   validation_selected_transform=selection['selected_transform'],
+                   selection_complete=selection['complete'])
     write_metrics(Path(checkpoint).parent / f'evaluation-{split}', summary, per_class, matrix)
     return summary

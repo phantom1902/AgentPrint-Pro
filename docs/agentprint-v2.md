@@ -31,11 +31,29 @@ weight decay 0.001, batch 200, `lr_decay: 0.5`, `min_learning_rate: 0.000001`,
 workers 0 and numerical threads 4. Learning rate at zero-based epoch e is
 `max(min_learning_rate, learning_rate * lr_decay ** (e / 30))`.
 
-T01 executes only `mode: smoke`, disabled IAT, `variant: single`, raw or log1p.
-Known future combinations parse but fail explicitly before preparing caches or
-creating a training run. Formal stopping, enabled IAT and multikernel execution
-are implemented by the subsequent tickets. A smoke result explicitly records
-`converged: false` and `reason: smoke_budget_exhausted`.
+The trainer supports smoke and formal stopping. Formal **train execution** requires
+seed 42, the exact approved anchor above, and `training.epochs: 200`. Parsing,
+fitting and preparation do not authorize or execute a formal training run. Enabled
+IAT and multikernel execution are implemented by their separate tickets. A smoke
+result explicitly records `converged: false` and `reason: smoke_budget_exhausted`.
+
+Formal stopping reuses `ConvergencePolicy`: the first 30 epochs establish the best
+validation Macro-F1 anchor, followed by at least 30 additional epochs. Convergence
+requires 20 epochs without a cumulative significant gain of at least 0.001 and
+less than 1% relative loss improvement between the latest two 10-epoch windows.
+A zero earlier-window mean gives zero relative improvement. The earliest stop is
+60 total epochs; the cap is 200. At the cap, a run without both plateau conditions
+reports `epoch_cap_reached` with `converged: false`. The significant-gain threshold
+affects only stopping: every actual validation F1 improvement updates best.pt;
+equal scores retain the earlier epoch. This interface does not grant a budget to
+run formal training during smoke acceptance.
+
+`agentprint.v2_protocol.stop_status(rows, mode, epochs)` exposes this assessment
+for complete zero-based synthetic histories, following the existing stopping-rule
+test precedent. `learning_rate(epoch, settings)` applies the v2 schedule, without
+calling the legacy convergence learning-rate function. `protocol.json` records the
+policy and schedule; `convergence.json`, `last.pt` and `result.json` record the
+committed stopping outcome. Metric rows also record per-epoch elapsed seconds.
 
 T03 additionally executes `variant: replace` at width 2, with disabled IAT and
 either transform. It replaces the whole original first Conv2d/BatchNorm2d/ReLU
@@ -98,18 +116,21 @@ the identity), `model_definition`, `feature_definition`, model state and actual
 parameter count. Complete-epoch `last.pt` additionally stores Adam state,
 global step, all metric rows, best checkpoint pointer and Python/NumPy/Torch/
 CUDA/shuffle-generator state. Best snapshots remain immutable and the existing
-publication and ahead-log recovery helpers are reused.
+publication and ahead-log recovery helpers are reused. Recovery checks contiguous
+history, saved stopping status, and exact agreement between checkpoint rows and
+the committed metrics log after ahead/partial rows have been archived. A run
+already stopped by convergence or budget does not execute another epoch.
 
 Evaluation validates the saved definition/identity, reconstructs from the saved
 model definition and verifies the validation cache metadata. Incompatible CLI
 feature/model/transform settings are rejected. The saved training protocol
 governs evaluation; runtime roots may relocate artifacts. Selection artifacts
-are temporarily keyed by the entire experiment identity, including feature/model,
-fit/cache, transform and training settings. Thus future variants cannot enter an
-old raw/log1p-only cohort accidentally. This tracer does not yet aggregate raw
-and log1p candidates: T06 must exclude transform from the shared cohort identity
-and compare the two transforms only within the same feature/model/fit/cache/
-training cohort. Explicit synthetic test evaluation remains
+pair raw and log1p candidates by the entire saved experiment identity **excluding
+only transform**. Feature/model definitions, fit/cache identities, manifest,
+training settings, mode and seed must all agree. Each transform's latest explicitly
+evaluated checkpoint supplies its saved best validation Macro-F1; equal transform
+scores select raw. An artifact is complete only after both candidates exist.
+Candidate fingerprints are checked before aggregation. Explicit synthetic test evaluation remains
 available through `--split test`; training loads train and val only.
 
 Resume requires an existing run with a committed format-2 `last.pt` and an exact
