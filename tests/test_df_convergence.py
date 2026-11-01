@@ -53,8 +53,9 @@ class DFConvergence(unittest.TestCase):
             self.assertTrue(all(float(s['step'])==4 for s in last['optimizer']['state'].values()))
             self.assertEqual(result,run(raw,output,parent,device='cpu',policy=self.policy()))
             self.assertEqual(len(last['rows']),4)
-            data=np.load(raw/'train.npz')
-            np.savez(raw/'train.npz',X=data['X']+1,y=data['y'])
+            with np.load(raw/'train.npz') as data:
+                changed_x, labels = data['X']+1, data['y']
+            np.savez(raw/'train.npz',X=changed_x,y=labels)
             with self.assertRaisesRegex(ValueError,'identity'):
                 run(raw,output,parent,device='cpu',policy=self.policy())
 
