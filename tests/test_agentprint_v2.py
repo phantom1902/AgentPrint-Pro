@@ -71,10 +71,9 @@ class V2Commands(unittest.TestCase):
         result = self.command('evaluate', '--checkpoint', str(run / 'best.pt'), ok=False)
         self.assertIn('incompatible checkpoint model', result.stderr)
 
-    def test_future_combinations_fail_explicitly_and_v1_rejects_v2_fields(self):
-        for model in ('prepend',):
-            self.settings['model'] = {'variant': model}
-            self.assertIn('not implemented', self.command('prepare', ok=False).stderr)
+    def test_invalid_variant_pending_iat_and_v1_reject_v2_fields(self):
+        self.settings['model'] = {'variant': 'replace-and-prepend'}
+        self.assertIn('unknown model.variant', self.command('prepare', ok=False).stderr)
         self.settings.pop('model')
         self.settings['feature'] = {'iat_enabled': True,
                                     'fit_artifact': str(self.root / 'bins.json'),

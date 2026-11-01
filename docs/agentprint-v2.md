@@ -46,6 +46,15 @@ channels, at width 2 and the approved dropouts. These are actual parameter
 counts, not a claim of equal capacity to the single model. Ten-channel model
 checks use synthetic tensors; enabled-IAT loading remains a separate extension.
 
+T04 additionally executes `variant: prepend` at width 2, with disabled IAT and
+either transform. The shared multikernel unit projects its 64 fused channels
+back to the original 2 or 10 input channels, then feeds the complete original
+RF frontend and classifier: `CNN(F(x))`, with no residual. Prepend and replacement
+are independent definitions and checkpoints. Prepend has 3,543,113 parameters
+with 2 input channels and 3,560,497 with 10 input channels at the approved
+width and dropouts. Ten-channel checks remain synthetic model-interface checks
+until enabled-IAT loading is implemented.
+
 ## Public extension seams
 
 `agentprint.v2.build_model(model_definition, in_channels=2)` accepts 2 or 10
