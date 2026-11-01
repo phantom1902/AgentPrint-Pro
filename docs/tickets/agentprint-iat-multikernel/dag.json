@@ -26,9 +26,10 @@
         23,
         24
       ],
-      "status": "in_progress",
+      "status": "complete",
       "tracker_issue": null,
-      "owner": "iat_t01"
+      "owner": "iat_t01",
+      "integrated_commit": "5d0cf48"
     },
     {
       "id": "T02",
@@ -47,8 +48,9 @@
         8,
         25
       ],
-      "status": "pending",
-      "tracker_issue": null
+      "status": "in_progress",
+      "tracker_issue": null,
+      "owner": "iat_t02"
     },
     {
       "id": "T03",
@@ -63,8 +65,9 @@
         15,
         16
       ],
-      "status": "pending",
-      "tracker_issue": null
+      "status": "in_progress",
+      "tracker_issue": null,
+      "owner": "iat_t03"
     },
     {
       "id": "T04",
@@ -119,8 +122,9 @@
         24,
         25
       ],
-      "status": "pending",
-      "tracker_issue": null
+      "status": "in_progress",
+      "tracker_issue": null,
+      "owner": "iat_t06"
     },
     {
       "id": "T07",
