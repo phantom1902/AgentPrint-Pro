@@ -152,6 +152,10 @@ def loader(config, split, shuffle=False, generator=None):
         batches: DataLoader = DataLoader(samples, batch_size=config['training']['batch_size'],
                              shuffle=shuffle, num_workers=0, generator=generator)
     else:
+        # V2 binds the actual base manifest/source/array contract even when the
+        # supplemental feature is disabled. Keep the genuine v1 loader intact.
+        from .iat import selected_base_records
+        selected_base_records(config, split)
         samples, batches = base_loader(config, split, shuffle, generator)
     if samples.metadata['preprocessing_version'] != PREPROCESSING_VERSION:
         raise ConfigError('incompatible cache preprocessing_version')
