@@ -48,3 +48,31 @@ Subsequent calls use a new trial name and explicit params JSON, `--phase search 
 - Final artifact audit: recompute first-stop prefixes, selected checkpoint score/epoch, learning rates, optimizer step counts, ask/tell correspondence, three-seed selection; reload finalist checkpoints and independently evaluate validation metrics.
 
 The final report must distinguish the best seed-42 observation from the selected three-seed mean. Search on 202 validation episodes can overfit validation; no global optimum or fresh-test performance is claimed.
+
+## Full-cache IAT replace/log1p tuning (v2)
+
+`python -m agentprint.iat_tuning` is the separate v2 runner. It does not change the historical scenario/raw runner above. It requires `optim-agent==0.1.1`, full-scope IAT fit/train/validation caches, and a v2 source config. Each candidate fixes replace/log1p, width 2, batch 200, Adam, unweighted cross-entropy, workers 0, numerical threads 4, deterministic FP32 with AMP/TF32 disabled, and a 200-epoch cap. The shared formal joint convergence policy requires at least 60 epochs. Only `learning_rate`, `weight_decay`, `lr_decay`, `dropout_2d`, and `dropout_1d` are optimizer parameters.
+
+The inclusive bounds are respectively `[0.00001, 0.005]`, `[0, 0.01]`, `[0.1, 1]`, `[0, 0.3]`, and `[0, 0.5]`. The required first baseline JSON is:
+
+```json
+{"learning_rate": 0.001, "weight_decay": 0.001, "lr_decay": 0.5, "dropout_2d": 0.05, "dropout_1d": 0.1}
+```
+
+Example on the approved data disk:
+
+```bash
+/root/autodl-tmp/ant-workspace/envs/optim-agent/bin/python -m agentprint.iat_tuning \
+  --study-dir /root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102 \
+  --trial-name trial-00 --params /root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/params/00.json \
+  --phase baseline --seed 42 --rationale baseline-parity \
+  --config configs/agentprint/replace-log1p-tuning-20261102.yaml --device cuda:0
+```
+
+The first baseline fixes a single 3600-second deadline. Proposal files reserve evaluation slots, including failed and pruned evaluations. At most 17 evaluations are admitted: one baseline, 12 search points at seed 42, and four repeats at seeds 43/44. A repeat must match a completed new seed-42 configuration. The session agent should select each next point from completed history and reserve repeats for the leading two new configurations. The runner rejects duplicate point/seed pairs and requires pending trials to be resumed before new proposals. A process-wide study lock prevents concurrent launches. New trials after the deadline are rejected.
+
+Each trial has isolated `config.yaml`, `proposal.json`, `ask.json`, command records, logs, `runs/`, and `result.json`. The proposal records the exact resolved configuration, full train/validation manifest and cache metadata, IAT fit fingerprint, feature/model versions, parameters, seed, rationale, command, and output path before training. The baseline protocol freezes those workload identities; changes fail closed. The source fit/cache roots are preserved, and outputs may not overlap existing source data, caches, fit artifacts, or run roots. The runner only constructs train/validation loaders and invokes public `python -m agentprint train`, then `evaluate --split val` on the immutable validation-best snapshot. Completed objectives must match that independently reloaded validation score.
+
+Both subprocesses share the remaining study deadline. A timeout kills the public subprocess and records `pruned`. Its intermediate score comes exclusively from the latest complete epoch in atomic `last.pt`, never from an ahead metrics-log tail. With no committed epoch the pruning score is null. The last checkpoint and immutable best snapshots remain available. Pruned intermediate values are reported to optim-agent but are excluded from completed rankings. Exceptions are `failed` with no objective. A timeout during final evaluation remains pruned even if training had finished.
+
+Reinvoke the same trial name/config/params to resume a committed epoch or reconcile a saved result after a crash before `tell`; finalized matching invocations are idempotent. An interrupted first epoch without `last.pt` cannot resume and is recorded failed rather than pretending an epoch committed. Optim-agent 0.1.1 persists only terminal trials, so `proposal.json` and `ask.json` preserve the pending ask boundary across process interruption. Never edit the study protocol to reset its deadline. Checkpoints remain ignored under `.optim-agent-runs`; commit only light result summaries.
