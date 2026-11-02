@@ -37,7 +37,7 @@ def learning_rate(epoch: int, settings: dict[str, Any]) -> float:
 
 def stop_status(rows: list[dict[str, Any]], mode: str, epochs: int) -> dict[str, Any]:
     """Assess complete zero-based history with the original 30-epoch anchor."""
-    if mode not in ('formal', 'smoke') or epochs < 1 or (mode == 'formal' and epochs != 200):
+    if mode not in ('formal', 'smoke', 'tuning') or epochs < 1 or (mode == 'formal' and epochs != 200):
         raise ValueError('invalid v2 stopping mode / epoch budget')
     if len(rows) > epochs:
         raise ValueError('history exceeds epoch budget')

@@ -51,8 +51,8 @@ def validate_config(config, overrides=None):
     _fields(config, SCHEMA_V2)
     if config['schema_version'] != 2 or config['task'] != 'scenario':
         raise ConfigError('v2 requires schema_version=2 and task=scenario')
-    if config['transform'] not in ('raw', 'log1p') or config['mode'] not in ('smoke', 'formal'):
-        raise ConfigError('v2 requires raw/log1p and smoke/formal')
+    if config['transform'] not in ('raw', 'log1p') or config['mode'] not in ('smoke', 'formal', 'tuning'):
+        raise ConfigError('v2 requires raw/log1p and smoke/formal/tuning')
     if not 0 <= config['seed'] < 2**32:
         raise ConfigError('seed must be an integer in [0, 2**32)')
     prep, feature, model, settings = (config[name] for name in

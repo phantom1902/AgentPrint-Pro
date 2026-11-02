@@ -52,6 +52,20 @@ class V2StoppingProtocol(unittest.TestCase):
         self.assertEqual(stop_status(self.rows(2), 'smoke', 2)['reason'], 'smoke_budget_exhausted')
         self.assertFalse(stop_status(self.rows(60), 'smoke', 60)['converged'])
 
+    def test_tuning_uses_joint_convergence_policy_while_smoke_stays_nonconverged(self):
+        from agentprint.v2_protocol import stop_status
+        self.assertTrue(stop_status(self.rows(60), 'tuning', 200)['converged'])
+        self.assertFalse(stop_status(self.rows(60), 'smoke', 200)['converged'])
+
+    def test_tuning_requires_all_five_training_classes(self):
+        from agentprint.config import load_config
+        from agentprint.training import validate_training
+        config = load_config(REPO / 'configs/agentprint/common-v2.yaml')
+        config['mode'] = 'tuning'
+        samples = type('Samples', (), {'records': [{'label_id': 0}]})()
+        with self.assertRaisesRegex(ValueError, 'missing_training_classes'):
+            validate_training(config, samples)
+
     def test_history_must_be_complete_contiguous_and_finite_including_baseline(self):
         from agentprint.v2_protocol import stop_status
         for field, value in [('epoch', 5), ('val_macro_f1', float('nan')),

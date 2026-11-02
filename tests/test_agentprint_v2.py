@@ -82,6 +82,21 @@ class V2Commands(unittest.TestCase):
         self.settings['schema_version'] = 1
         self.assertIn('unknown configuration field', self.command('prepare', ok=False).stderr)
 
+    def test_tuning_config_accepts_non_anchor_candidate_values(self):
+        from copy import deepcopy
+        from agentprint.config import load_config
+        from agentprint.v2 import validate_config
+        config = load_config(REPO / 'configs/agentprint/common-v2.yaml')
+        config['mode'] = 'tuning'
+        config['training'].update(epochs=60, batch_size=64, learning_rate=0.0007)
+        config['model'].update(width=1, dropout_1d=0.2)
+        tuning = validate_config(deepcopy(config))
+        self.assertEqual(tuning['mode'], 'tuning')
+        config['mode'] = 'formal'
+        with self.assertRaisesRegex(ValueError, 'formal'):
+            from agentprint.v2_protocol import validate_formal
+            validate_formal(config)
+
     def test_evaluation_rejects_checkpoint_identity_that_no_longer_matches_saved_definition(self):
         import torch
         self.command('prepare')

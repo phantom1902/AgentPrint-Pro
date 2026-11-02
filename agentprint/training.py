@@ -47,7 +47,7 @@ def validate_training(config, train_samples):
     for record in train_samples.records:
         support[record['label_id']] += 1
     missing = [name for name, index in LABEL_MAP[config['task']].items() if not support[index]]
-    if config['mode'] == 'formal' and missing:
+    if config['mode'] in ('formal', 'tuning') and missing:
         raise ConfigError(json.dumps({'reason': 'missing_training_classes',
                                       'task': config['task'], 'support': support,
                                       'missing_classes': missing}, sort_keys=True))
