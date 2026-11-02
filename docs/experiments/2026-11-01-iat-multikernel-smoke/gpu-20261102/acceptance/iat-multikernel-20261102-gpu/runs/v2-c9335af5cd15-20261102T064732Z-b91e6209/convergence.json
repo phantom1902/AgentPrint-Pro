@@ -1,0 +1,23 @@
+{
+  "additional_epochs": 0,
+  "converged": false,
+  "epochs_without_significant_gain": 0,
+  "last_significant_epoch": 1,
+  "loss_plateau": false,
+  "policy": {
+    "baseline_epochs": 30,
+    "f1_min_delta": 0.001,
+    "loss_relative_delta": 0.01,
+    "loss_window": 10,
+    "max_total_epochs": 200,
+    "min_additional_epochs": 30,
+    "patience": 20
+  },
+  "previous_mean_val_loss": null,
+  "reason": "smoke_budget_exhausted",
+  "recent_mean_val_loss": null,
+  "relative_val_loss_improvement": null,
+  "significant_best_macro_f1": 0.08888888888888888,
+  "stop": true,
+  "total_epochs": 2
+}

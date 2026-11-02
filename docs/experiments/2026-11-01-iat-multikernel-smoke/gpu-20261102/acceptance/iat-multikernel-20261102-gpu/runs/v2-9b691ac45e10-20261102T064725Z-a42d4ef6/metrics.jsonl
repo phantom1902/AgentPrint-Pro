@@ -1,0 +1,2 @@
+{"elapsed_seconds": 0.19902998814359307, "epoch": 0, "global_step": 1, "learning_rate": 0.001, "train_loss": 1.6045554876327515, "train_samples": 20, "val_accuracy": 0.2, "val_loss": 1.4301121234893799, "val_macro_f1": 0.06666666666666667, "val_samples": 10}
+{"elapsed_seconds": 0.062321510165929794, "epoch": 1, "global_step": 2, "learning_rate": 0.000977159968434246, "train_loss": 1.3922227621078491, "train_samples": 20, "val_accuracy": 0.2, "val_loss": 1.439039945602417, "val_macro_f1": 0.06666666666666667, "val_samples": 10}

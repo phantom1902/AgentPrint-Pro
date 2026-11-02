@@ -1,0 +1,880 @@
+{
+  "configurations": [
+    {
+      "artifact_sha256": {
+        "best.pt": "9d6cfc643a5624eaa2d9fe5338963b109af622cd2e130189219ca4a05285f71e",
+        "last.pt": "e206cdfa5733f621a1d07995e7a3022ddff9e197d55036e0df2a77234c8273ab",
+        "metrics.jsonl": "63a202992ed546bc98e81ebfbf4e2e6e8625bf3cc6c1f80e9d28bc72837053c6",
+        "result.json": "ef2ec28c86380db6f0550dca5f0c610c84428d2841e482c9adf967baf597de7e"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/single-raw.yaml",
+      "name": "single-raw",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.06666666666666667,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "f1391a17096f510370fd065651d89955299d43d61d559f2cc9a575a8bf9ebbae",
+        "parameters": 3550095,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-f1391a17096f-20261102T064720Z-0c2aad42",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "f1391a17096f510370fd065651d89955299d43d61d559f2cc9a575a8bf9ebbae",
+        "loss": 1.4460052251815796,
+        "macro_f1": 0.06666666666666667,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-62d5c323d6184132.json",
+        "selection_complete": false,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "raw",
+        "validation_macro_f1": 0.06666666666666667,
+        "validation_selected_transform": "raw"
+      }
+    },
+    {
+      "artifact_sha256": {
+        "best.pt": "17faac608920de87920c0ae28bd7a64f61e53a800e8ec5bcbc3a8cb6399bb45d",
+        "last.pt": "cf8541791423e1ce1fcfec05c03f0e902fdf532d9e338b0ec1a19a878e5ffcd4",
+        "metrics.jsonl": "882947490a29a9e9ffe8d0f41d760e9fdac5bceffc2b6e6420b9d13c3de510f0",
+        "result.json": "d714c8af62db2b296995366f2e2e120bf378e9267649924020794c50eeb63dd8"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/single-log1p.yaml",
+      "name": "single-log1p",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.07272727272727272,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "38fdec1078ae392c388d34a3703194b08857652fa7d0eafd3e56d598b7c119cd",
+        "parameters": 3550095,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-38fdec1078ae-20261102T064724Z-ad97aa1b",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "38fdec1078ae392c388d34a3703194b08857652fa7d0eafd3e56d598b7c119cd",
+        "loss": 1.5989277362823486,
+        "macro_f1": 0.07272727272727272,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-62d5c323d6184132.json",
+        "selection_complete": true,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "log1p",
+        "validation_macro_f1": 0.07272727272727272,
+        "validation_selected_transform": "log1p"
+      }
+    },
+    {
+      "artifact_sha256": {
+        "best.pt": "d0df75d77107ee155c34721009023e4523eee45d98379152410e332e0a9547ae",
+        "last.pt": "debe4367e33b6c5c356d0a058684f5a012ff567077aa9ca0139449031803ab31",
+        "metrics.jsonl": "13333e4ca5aa354e900d723ad6d679317f5aee82c14b5e81522c8b6919ca3897",
+        "result.json": "b755d69f706b7a84cc567a1970d0ec480b9f045aa84b6f3233338da0a72b17a1"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/replace-raw.yaml",
+      "name": "replace-raw",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.06666666666666667,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "9b691ac45e1009d5305d7cc7c0029e8494b8cfe38ce66aec3a40fc9359c3da27",
+        "parameters": 3552403,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-9b691ac45e10-20261102T064725Z-a42d4ef6",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "9b691ac45e1009d5305d7cc7c0029e8494b8cfe38ce66aec3a40fc9359c3da27",
+        "loss": 1.4301121234893799,
+        "macro_f1": 0.06666666666666667,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-234cb3bb4cee0d29.json",
+        "selection_complete": false,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "raw",
+        "validation_macro_f1": 0.06666666666666667,
+        "validation_selected_transform": "raw"
+      }
+    },
+    {
+      "artifact_sha256": {
+        "best.pt": "a33f73956be2d71cfc3099d1f5c90af5bcb17fa8dc693749deee9e06e9f868f6",
+        "last.pt": "b8c49ace1d9a23d999c5e29a21ef21eadb32ad42c13e1fdc18e48becd8389fdb",
+        "metrics.jsonl": "93bc0de940415d93e5d6c71ec36d5e2072a03efa53704d4767a44d20c5da7f4d",
+        "result.json": "206bca3c79a397792d67d4d73e623eaba94a178644c56a6f68e16315ee205f20"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/replace-log1p.yaml",
+      "name": "replace-log1p",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.07272727272727272,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "f7cdeddad7cab697b3e51e50e6d438fc2ca834c9901867b8cb233f543ec83e66",
+        "parameters": 3552403,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-f7cdeddad7ca-20261102T064728Z-4f9bee14",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "f7cdeddad7cab697b3e51e50e6d438fc2ca834c9901867b8cb233f543ec83e66",
+        "loss": 1.593411922454834,
+        "macro_f1": 0.07272727272727272,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-234cb3bb4cee0d29.json",
+        "selection_complete": true,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "log1p",
+        "validation_macro_f1": 0.07272727272727272,
+        "validation_selected_transform": "log1p"
+      }
+    },
+    {
+      "artifact_sha256": {
+        "best.pt": "85a913b74aedaaa0173c6d848d4d458520d8edd22de242d0906aef07de6da633",
+        "last.pt": "880c48440a439a256580ebc8b83bc2b12d6da50dd7126b4a644ca49c8c200a88",
+        "metrics.jsonl": "0d5eeaf78984876aa0a1b2bf00b943760d9d40c0d61f730ddf8752c74828df4c",
+        "result.json": "91f497391e80326faa7966bb9b7070bcb661dce7739ee2d9b50aa61868ec95ac"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/prepend-raw.yaml",
+      "name": "prepend-raw",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.06666666666666667,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "9116ff4cdf8aba9727daa2dd30b4b25fa94bc9c9b2bc2a8887bddbf289d36fa4",
+        "parameters": 3560497,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-9116ff4cdf8a-20261102T064730Z-9a3ca940",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "9116ff4cdf8aba9727daa2dd30b4b25fa94bc9c9b2bc2a8887bddbf289d36fa4",
+        "loss": 1.394793152809143,
+        "macro_f1": 0.06666666666666667,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-242dd65cab6a839e.json",
+        "selection_complete": false,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "raw",
+        "validation_macro_f1": 0.06666666666666667,
+        "validation_selected_transform": "raw"
+      }
+    },
+    {
+      "artifact_sha256": {
+        "best.pt": "925e53daf5b4ccee32263eec0337622cb3e659424ee8416e620ddafc11c589d4",
+        "last.pt": "1644d11b0b0e1202081ab4ed9592b4222e34832aef25b5aa356f8b8e4371c375",
+        "metrics.jsonl": "d2a1272181c414bee9db1a7aa64f3eb23609414ca6fe5545e36d5cfc50026759",
+        "result.json": "fba3feebaad1c86e25e1d420b4e568719b681d3404da931375e1963db6f0cbcc"
+      },
+      "config": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/configs/prepend-log1p.yaml",
+      "name": "prepend-log1p",
+      "result": {
+        "best_epoch": 0,
+        "best_val_macro_f1": 0.08888888888888888,
+        "converged": false,
+        "epochs": 2,
+        "experiment_id": "c9335af5cd152cd47821f2820333ab733c4683b96de8ef3495349c8603b9569e",
+        "parameters": 3560497,
+        "reason": "smoke_budget_exhausted",
+        "uses_test": false
+      },
+      "resume_unchanged": true,
+      "run_dir": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/v2-c9335af5cd15-20261102T064732Z-b91e6209",
+      "validation": {
+        "accuracy": 0.2,
+        "coverage": {
+          "class_fraction": 1.0,
+          "expected_class_count": 5,
+          "missing_classes": [],
+          "supported_class_count": 5
+        },
+        "epoch": 0,
+        "evaluated_classes": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "experiment_id": "c9335af5cd152cd47821f2820333ab733c4683b96de8ef3495349c8603b9569e",
+        "loss": 1.599023461341858,
+        "macro_f1": 0.08888888888888888,
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "sample_count": 10,
+        "selection_artifact": "/root/autodl-tmp/ant-workspace/acceptance/iat-multikernel-20261102-gpu/runs/selection-v2-242dd65cab6a839e.json",
+        "selection_complete": true,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "transform": "log1p",
+        "validation_macro_f1": 0.08888888888888888,
+        "validation_selected_transform": "log1p"
+      }
+    }
+  ],
+  "fit_fingerprint": "59ed4f4d9da958487e51cb43fe09ef28583cf609ade9ef282e33a821875116f1",
+  "formal_training": false,
+  "full_preprocessing": false,
+  "git_revision": "28776ff0949fdd3778d56d485d97791f4ef21779",
+  "hardware": {
+    "cuda": "13.0",
+    "device": "cuda",
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "logical_cpus": 48,
+    "numerical_threads": 4,
+    "platform": "Linux-5.4.0-162-generic-x86_64-with-glibc2.35",
+    "torch": "2.12.1+cu130"
+  },
+  "iat_cache": {
+    "train": {
+      "base_cache_identity": {
+        "cache_recovery_version": 1,
+        "complete": true,
+        "config_fingerprint": "872bf9b9fbb7f6258ff72fe8e33ade6bfc6399c610fabaf72de4fdb5e2dd114c",
+        "excluded_count": 0,
+        "exclusion_reasons": {},
+        "format_version": "agentprint-manifest-v1",
+        "label_map_id": "361430e4fa96b2e33d9edf52ab2176fd95e29c39215d45b928ddf1add4b43dc2",
+        "manifest_id": "829d89c2438f85953605deba335f30adf5895821cf52a40150d3f3105fb787d6",
+        "preprocessing_version": "agentprint-mtam-v2",
+        "shards": 2,
+        "split": "train",
+        "support": [
+          4,
+          4,
+          4,
+          4,
+          4
+        ],
+        "task": "scenario",
+        "valid_count": 20
+      },
+      "complete": true,
+      "fingerprint": "e439269a87a070c0d3a9ee35b161d34ae9a8281f6ebcb5e62ddd2b8413b189e1",
+      "fit_fingerprint": "59ed4f4d9da958487e51cb43fe09ef28583cf609ade9ef282e33a821875116f1",
+      "format_version": 1,
+      "kind": "agentprint-iat-cache",
+      "manifest_id": "c94fd14879a181b58751b3f28a7f57f55ccd01516cb04f745dbffa6ab4d10864",
+      "rules": {
+        "attribution": "current_packet_time_and_direction",
+        "boundary_side": "right",
+        "capture_bounds": "original_base_record",
+        "dtype": "uint64",
+        "first_packet": "no_interval",
+        "predecessor": "all_effective_packets",
+        "shape": [
+          8,
+          2,
+          1800
+        ],
+        "shard_size": 256,
+        "version": 1,
+        "zero_bucket": 0
+      },
+      "sample_ids": [
+        "scenario:train/cc_mimo/artifact_processing/A1702",
+        "scenario:train/cc_mimo/business_services/A2008",
+        "scenario:train/cc_xiaoai/artifact_processing/A1701",
+        "scenario:train/cc_xiaoai/artifact_processing/A1717",
+        "scenario:train/cc_xiaoai/artifact_processing/A1722",
+        "scenario:train/cc_xiaoai/general_knowledge/A2410",
+        "scenario:train/cc_xiaoai/general_knowledge/A2429",
+        "scenario:train/codex/business_services/A2015",
+        "scenario:train/codex/business_services/A2016",
+        "scenario:train/codex/general_knowledge/A2317",
+        "scenario:train/codex/general_knowledge/A2619",
+        "scenario:train/qwen/business_services/A2016",
+        "scenario:train/qwen/scientific_evidence/A2922",
+        "scenario:train/qwen/scientific_evidence/A2923",
+        "scenario:train/qwen/scientific_evidence/A2925",
+        "scenario:train/qwen/scientific_evidence/A2929",
+        "scenario:train/qwen/security_testing/A4038",
+        "scenario:train/qwen/security_testing/A4043",
+        "scenario:train/qwen/security_testing/A4060",
+        "scenario:train/qwen/security_testing/A4068"
+      ],
+      "scope": "smoke",
+      "shards": [
+        {
+          "sha256": "99301443576734fe2c9aa904859ceadb620196cba7117681f86345655a1cbd33",
+          "shard_relpath": "scenario/train/shards/00000.npy"
+        }
+      ],
+      "sources": [
+        {
+          "annotation_relpath": "train/cc_mimo/artifact_processing/A1702/messages.jsonl",
+          "annotation_sha256": "17cd50b500620ee85e952016eedbeea3d1c0410a488043cab22850b59afaeb22",
+          "endpoint_metadata": [],
+          "engine": "cc_mimo",
+          "episode_id": "A1702",
+          "mtime_ns": 1793208393269063884,
+          "pcap_relpath": "train/cc_mimo/artifact_processing/A1702/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 168999,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_mimo/business_services/A2008/messages.jsonl",
+          "annotation_sha256": "32f629fb96a74b3fa660261b785bc97e0e71b2dd88fbc0360311330aa2628136",
+          "endpoint_metadata": [],
+          "engine": "cc_mimo",
+          "episode_id": "A2008",
+          "mtime_ns": 1793208634671060839,
+          "pcap_relpath": "train/cc_mimo/business_services/A2008/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 478308,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_xiaoai/artifact_processing/A1701/messages.jsonl",
+          "annotation_sha256": "e8f29246f512ecf857660f2cfb16762fc00e22d82ad5484077681c3e062aa98b",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A1701",
+          "mtime_ns": 1793209630845722050,
+          "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1701/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 199586,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_xiaoai/artifact_processing/A1717/messages.jsonl",
+          "annotation_sha256": "15c2d4ca6a6140b906905db6f255ff53c2c9d59533af1896e523ef643e27fc83",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A1717",
+          "mtime_ns": 1793209659469377754,
+          "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1717/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 210748,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_xiaoai/artifact_processing/A1722/messages.jsonl",
+          "annotation_sha256": "a5659129f30948440df7cec5577f516e30f2acd031086f94021d11ff6ca4112d",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A1722",
+          "mtime_ns": 1793209668741269800,
+          "pcap_relpath": "train/cc_xiaoai/artifact_processing/A1722/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 208018,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_xiaoai/general_knowledge/A2410/messages.jsonl",
+          "annotation_sha256": "f5fb3ca075fdcd17d9e8ce06385545fc41d72381692219a11d10ddc26ab61eff",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A2410",
+          "mtime_ns": 1793209981958448639,
+          "pcap_relpath": "train/cc_xiaoai/general_knowledge/A2410/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 332380,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/cc_xiaoai/general_knowledge/A2429/messages.jsonl",
+          "annotation_sha256": "0a505e05a4792fdff9e17c0080d191752d044b93897c1216d01065bfbf3ea12d",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A2429",
+          "mtime_ns": 1793210018882199816,
+          "pcap_relpath": "train/cc_xiaoai/general_knowledge/A2429/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 337285,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/codex/business_services/A2015/messages.jsonl",
+          "annotation_sha256": "b7a0f550b4381dbc5dcbcaaa238cda4f5202d18e61c568ad6fa976209a958491",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2015",
+          "mtime_ns": 1793210828950002513,
+          "pcap_relpath": "train/codex/business_services/A2015/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 1389822,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/codex/business_services/A2016/messages.jsonl",
+          "annotation_sha256": "a29d5868b2c8192cc6aa317b082d6cbfeed0ee6c5d6da85e1235e47dca2e8f9b",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2016",
+          "mtime_ns": 1793210833921990072,
+          "pcap_relpath": "train/codex/business_services/A2016/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 1189530,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/codex/general_knowledge/A2317/messages.jsonl",
+          "annotation_sha256": "e3759e93370e7dd8ffe02caee3df00cf992b25738d0475f3547e678ce1ba5667",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2317",
+          "mtime_ns": 1793210989269624238,
+          "pcap_relpath": "train/codex/general_knowledge/A2317/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 350344,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/codex/general_knowledge/A2619/messages.jsonl",
+          "annotation_sha256": "67c3447c16e1f70d1b9f039b7e3803142db9831df48de23c846f136d935318db",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2619",
+          "mtime_ns": 1793211167599252715,
+          "pcap_relpath": "train/codex/general_knowledge/A2619/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 337701,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": "train/qwen/business_services/A2016/messages.jsonl",
+          "annotation_sha256": "521017e44c806eabaeb05eb30db6cdc78354e07521f232a1f7e0003131ccbae4",
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2016",
+          "mtime_ns": 1793212312566903143,
+          "pcap_relpath": "train/qwen/business_services/A2016/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 1042309,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2922",
+          "mtime_ns": 1793212651097551247,
+          "pcap_relpath": "train/qwen/scientific_evidence/A2922/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 99994,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2923",
+          "mtime_ns": 1793212650393553892,
+          "pcap_relpath": "train/qwen/scientific_evidence/A2923/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 100266,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2925",
+          "mtime_ns": 1793212652453546154,
+          "pcap_relpath": "train/qwen/scientific_evidence/A2925/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 104974,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2929",
+          "mtime_ns": 1793212654601538089,
+          "pcap_relpath": "train/qwen/scientific_evidence/A2929/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 99998,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A4038",
+          "mtime_ns": 1793212853764809739,
+          "pcap_relpath": "train/qwen/security_testing/A4038/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 109478,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A4043",
+          "mtime_ns": 1793212860144786962,
+          "pcap_relpath": "train/qwen/security_testing/A4043/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 117686,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A4060",
+          "mtime_ns": 1793212889444682738,
+          "pcap_relpath": "train/qwen/security_testing/A4060/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 107930,
+          "split": "train"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A4068",
+          "mtime_ns": 1793212906604621976,
+          "pcap_relpath": "train/qwen/security_testing/A4068/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 114382,
+          "split": "train"
+        }
+      ],
+      "split": "train",
+      "task": "scenario",
+      "valid_count": 20
+    },
+    "val": {
+      "base_cache_identity": {
+        "cache_recovery_version": 1,
+        "complete": true,
+        "config_fingerprint": "872bf9b9fbb7f6258ff72fe8e33ade6bfc6399c610fabaf72de4fdb5e2dd114c",
+        "excluded_count": 0,
+        "exclusion_reasons": {},
+        "format_version": "agentprint-manifest-v1",
+        "label_map_id": "361430e4fa96b2e33d9edf52ab2176fd95e29c39215d45b928ddf1add4b43dc2",
+        "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+        "preprocessing_version": "agentprint-mtam-v2",
+        "shards": 1,
+        "split": "val",
+        "support": [
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        "task": "scenario",
+        "valid_count": 10
+      },
+      "complete": true,
+      "fingerprint": "16fc56ed1870ae03828ff7311a7bcfbbc97e0bafa233077bde70a784a0d9f20b",
+      "fit_fingerprint": "59ed4f4d9da958487e51cb43fe09ef28583cf609ade9ef282e33a821875116f1",
+      "format_version": 1,
+      "kind": "agentprint-iat-cache",
+      "manifest_id": "0199922a05cfe7ea12a7883a4fd2ea412ce1095764a615ecb9d4d4b5dae96aff",
+      "rules": {
+        "attribution": "current_packet_time_and_direction",
+        "boundary_side": "right",
+        "capture_bounds": "original_base_record",
+        "dtype": "uint64",
+        "first_packet": "no_interval",
+        "predecessor": "all_effective_packets",
+        "shape": [
+          8,
+          2,
+          1800
+        ],
+        "shard_size": 256,
+        "version": 1,
+        "zero_bucket": 0
+      },
+      "sample_ids": [
+        "scenario:val/cc_mimo/artifact_processing/A1700",
+        "scenario:val/cc_mimo/general_knowledge/A2429",
+        "scenario:val/cc_xiaoai/scientific_evidence/A2921",
+        "scenario:val/codex/business_services/A2006",
+        "scenario:val/codex/general_knowledge/A2515",
+        "scenario:val/qwen/artifact_processing/A1700",
+        "scenario:val/qwen/business_services/A2024",
+        "scenario:val/qwen/scientific_evidence/A2926",
+        "scenario:val/qwen/security_testing/A3426",
+        "scenario:val/qwen/security_testing/A4079"
+      ],
+      "scope": "smoke",
+      "shards": [
+        {
+          "sha256": "dfc1243ecfa3d463d90160f5519185bb9ef12abf84dd1e80b941fae56a504147",
+          "shard_relpath": "scenario/val/shards/00000.npy"
+        }
+      ],
+      "sources": [
+        {
+          "annotation_relpath": "val/cc_mimo/artifact_processing/A1700/messages.jsonl",
+          "annotation_sha256": "b2123fb307f864e91bca861663396083e92459296890884684eb2e28ae99f383",
+          "endpoint_metadata": [],
+          "engine": "cc_mimo",
+          "episode_id": "A1700",
+          "mtime_ns": 1793213232575627765,
+          "pcap_relpath": "val/cc_mimo/artifact_processing/A1700/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 164459,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/cc_mimo/general_knowledge/A2429/messages.jsonl",
+          "annotation_sha256": "ec1648e94dc2937b57f8280cdb35e42132b3a8e6e6f686008de38b5d195b16fb",
+          "endpoint_metadata": [],
+          "engine": "cc_mimo",
+          "episode_id": "A2429",
+          "mtime_ns": 1793213252252362469,
+          "pcap_relpath": "val/cc_mimo/general_knowledge/A2429/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 316128,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/cc_xiaoai/scientific_evidence/A2921/messages.jsonl",
+          "annotation_sha256": "8dd659461de6601f19791fbdf28508a55c2a5c0a66ba88ce70b2410b66468b75",
+          "endpoint_metadata": [],
+          "engine": "cc_xiaoai",
+          "episode_id": "A2921",
+          "mtime_ns": 1793213320650723604,
+          "pcap_relpath": "val/cc_xiaoai/scientific_evidence/A2921/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 328654,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/codex/business_services/A2006/messages.jsonl",
+          "annotation_sha256": "0e34ff4d3be3f301e2af853e2d2e71f7629582a004e8c220ecfe59f7ede0dd7d",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2006",
+          "mtime_ns": 1793213347031560028,
+          "pcap_relpath": "val/codex/business_services/A2006/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 2594565,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/codex/general_knowledge/A2515/messages.jsonl",
+          "annotation_sha256": "e1608104831f69a5e86c991d658782ea76b7e886c980333840982cc74c6660a6",
+          "endpoint_metadata": [],
+          "engine": "codex",
+          "episode_id": "A2515",
+          "mtime_ns": 1793213360823981998,
+          "pcap_relpath": "val/codex/general_knowledge/A2515/network.pcap",
+          "scenario": "general_knowledge",
+          "size_bytes": 390743,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A1700",
+          "mtime_ns": 1793213406789316452,
+          "pcap_relpath": "val/qwen/artifact_processing/A1700/network.pcap",
+          "scenario": "artifact_processing",
+          "size_bytes": 257267,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/qwen/business_services/A2024/messages.jsonl",
+          "annotation_sha256": "9a8f716f12d7bc4f042532b24978ffa1b851de75e5f49e75d1a0b2da9ccd9fc3",
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2024",
+          "mtime_ns": 1793213435794104838,
+          "pcap_relpath": "val/qwen/business_services/A2024/network.pcap",
+          "scenario": "business_services",
+          "size_bytes": 2313301,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A2926",
+          "mtime_ns": 1793213478291190488,
+          "pcap_relpath": "val/qwen/scientific_evidence/A2926/network.pcap",
+          "scenario": "scientific_evidence",
+          "size_bytes": 105740,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": "val/qwen/security_testing/A3426/messages.jsonl",
+          "annotation_sha256": "6819b6e108846b1a1fc93dfb318a78ed5c5d2309c5b3459572300aa9b9544461",
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A3426",
+          "mtime_ns": 1793213489863472571,
+          "pcap_relpath": "val/qwen/security_testing/A3426/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 279899,
+          "split": "val"
+        },
+        {
+          "annotation_relpath": null,
+          "annotation_sha256": null,
+          "endpoint_metadata": [],
+          "engine": "qwen",
+          "episode_id": "A4079",
+          "mtime_ns": 1793213494287578936,
+          "pcap_relpath": "val/qwen/security_testing/A4079/network.pcap",
+          "scenario": "security_testing",
+          "size_bytes": 323712,
+          "split": "val"
+        }
+      ],
+      "split": "val",
+      "task": "scenario",
+      "valid_count": 10
+    }
+  },
+  "scope": "smoke",
+  "status": "passed",
+  "uses_test": false
+}

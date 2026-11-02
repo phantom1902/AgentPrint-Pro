@@ -1,0 +1,37 @@
+{
+  "amp": false,
+  "checkpoint_tie_rule": "earlier_epoch",
+  "convergence_policy": {
+    "baseline_epochs": 30,
+    "f1_min_delta": 0.001,
+    "loss_relative_delta": 0.01,
+    "loss_window": 10,
+    "max_total_epochs": 200,
+    "min_additional_epochs": 30,
+    "patience": 20
+  },
+  "cudnn_benchmark": false,
+  "deterministic_algorithms": true,
+  "formal_experiment": false,
+  "learning_rate_rule": "max(min_learning_rate,learning_rate*lr_decay**(epoch/30))",
+  "loss": "unweighted_cross_entropy",
+  "mode": "smoke",
+  "num_workers": 0,
+  "numerical_threads": 4,
+  "precision": "float32",
+  "schema_version": 2,
+  "selection_split": "val",
+  "tf32": false,
+  "training": {
+    "batch_size": 200,
+    "epochs": 2,
+    "learning_rate": 0.001,
+    "lr_decay": 0.5,
+    "min_learning_rate": 1e-06,
+    "num_workers": 0,
+    "numerical_threads": 4,
+    "optimizer": "adam",
+    "weight_decay": 0.001
+  },
+  "uses_test": false
+}

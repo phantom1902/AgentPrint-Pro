@@ -1,0 +1,190 @@
+{
+  "base_cache_identity": {
+    "cache_recovery_version": 1,
+    "complete": true,
+    "config_fingerprint": "872bf9b9fbb7f6258ff72fe8e33ade6bfc6399c610fabaf72de4fdb5e2dd114c",
+    "excluded_count": 0,
+    "exclusion_reasons": {},
+    "format_version": "agentprint-manifest-v1",
+    "label_map_id": "361430e4fa96b2e33d9edf52ab2176fd95e29c39215d45b928ddf1add4b43dc2",
+    "manifest_id": "cb3e7b0939e2487f93bedc1f2d469125d09ead72302fb3b2a9d153635d46f58a",
+    "preprocessing_version": "agentprint-mtam-v2",
+    "shards": 1,
+    "split": "val",
+    "support": [
+      2,
+      2,
+      2,
+      2,
+      2
+    ],
+    "task": "scenario",
+    "valid_count": 10
+  },
+  "complete": true,
+  "fingerprint": "16fc56ed1870ae03828ff7311a7bcfbbc97e0bafa233077bde70a784a0d9f20b",
+  "fit_fingerprint": "59ed4f4d9da958487e51cb43fe09ef28583cf609ade9ef282e33a821875116f1",
+  "format_version": 1,
+  "kind": "agentprint-iat-cache",
+  "manifest_id": "0199922a05cfe7ea12a7883a4fd2ea412ce1095764a615ecb9d4d4b5dae96aff",
+  "rules": {
+    "attribution": "current_packet_time_and_direction",
+    "boundary_side": "right",
+    "capture_bounds": "original_base_record",
+    "dtype": "uint64",
+    "first_packet": "no_interval",
+    "predecessor": "all_effective_packets",
+    "shape": [
+      8,
+      2,
+      1800
+    ],
+    "shard_size": 256,
+    "version": 1,
+    "zero_bucket": 0
+  },
+  "sample_ids": [
+    "scenario:val/cc_mimo/artifact_processing/A1700",
+    "scenario:val/cc_mimo/general_knowledge/A2429",
+    "scenario:val/cc_xiaoai/scientific_evidence/A2921",
+    "scenario:val/codex/business_services/A2006",
+    "scenario:val/codex/general_knowledge/A2515",
+    "scenario:val/qwen/artifact_processing/A1700",
+    "scenario:val/qwen/business_services/A2024",
+    "scenario:val/qwen/scientific_evidence/A2926",
+    "scenario:val/qwen/security_testing/A3426",
+    "scenario:val/qwen/security_testing/A4079"
+  ],
+  "scope": "smoke",
+  "shards": [
+    {
+      "sha256": "dfc1243ecfa3d463d90160f5519185bb9ef12abf84dd1e80b941fae56a504147",
+      "shard_relpath": "scenario/val/shards/00000.npy"
+    }
+  ],
+  "sources": [
+    {
+      "annotation_relpath": "val/cc_mimo/artifact_processing/A1700/messages.jsonl",
+      "annotation_sha256": "b2123fb307f864e91bca861663396083e92459296890884684eb2e28ae99f383",
+      "endpoint_metadata": [],
+      "engine": "cc_mimo",
+      "episode_id": "A1700",
+      "mtime_ns": 1793213232575627765,
+      "pcap_relpath": "val/cc_mimo/artifact_processing/A1700/network.pcap",
+      "scenario": "artifact_processing",
+      "size_bytes": 164459,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/cc_mimo/general_knowledge/A2429/messages.jsonl",
+      "annotation_sha256": "ec1648e94dc2937b57f8280cdb35e42132b3a8e6e6f686008de38b5d195b16fb",
+      "endpoint_metadata": [],
+      "engine": "cc_mimo",
+      "episode_id": "A2429",
+      "mtime_ns": 1793213252252362469,
+      "pcap_relpath": "val/cc_mimo/general_knowledge/A2429/network.pcap",
+      "scenario": "general_knowledge",
+      "size_bytes": 316128,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/cc_xiaoai/scientific_evidence/A2921/messages.jsonl",
+      "annotation_sha256": "8dd659461de6601f19791fbdf28508a55c2a5c0a66ba88ce70b2410b66468b75",
+      "endpoint_metadata": [],
+      "engine": "cc_xiaoai",
+      "episode_id": "A2921",
+      "mtime_ns": 1793213320650723604,
+      "pcap_relpath": "val/cc_xiaoai/scientific_evidence/A2921/network.pcap",
+      "scenario": "scientific_evidence",
+      "size_bytes": 328654,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/codex/business_services/A2006/messages.jsonl",
+      "annotation_sha256": "0e34ff4d3be3f301e2af853e2d2e71f7629582a004e8c220ecfe59f7ede0dd7d",
+      "endpoint_metadata": [],
+      "engine": "codex",
+      "episode_id": "A2006",
+      "mtime_ns": 1793213347031560028,
+      "pcap_relpath": "val/codex/business_services/A2006/network.pcap",
+      "scenario": "business_services",
+      "size_bytes": 2594565,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/codex/general_knowledge/A2515/messages.jsonl",
+      "annotation_sha256": "e1608104831f69a5e86c991d658782ea76b7e886c980333840982cc74c6660a6",
+      "endpoint_metadata": [],
+      "engine": "codex",
+      "episode_id": "A2515",
+      "mtime_ns": 1793213360823981998,
+      "pcap_relpath": "val/codex/general_knowledge/A2515/network.pcap",
+      "scenario": "general_knowledge",
+      "size_bytes": 390743,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": null,
+      "annotation_sha256": null,
+      "endpoint_metadata": [],
+      "engine": "qwen",
+      "episode_id": "A1700",
+      "mtime_ns": 1793213406789316452,
+      "pcap_relpath": "val/qwen/artifact_processing/A1700/network.pcap",
+      "scenario": "artifact_processing",
+      "size_bytes": 257267,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/qwen/business_services/A2024/messages.jsonl",
+      "annotation_sha256": "9a8f716f12d7bc4f042532b24978ffa1b851de75e5f49e75d1a0b2da9ccd9fc3",
+      "endpoint_metadata": [],
+      "engine": "qwen",
+      "episode_id": "A2024",
+      "mtime_ns": 1793213435794104838,
+      "pcap_relpath": "val/qwen/business_services/A2024/network.pcap",
+      "scenario": "business_services",
+      "size_bytes": 2313301,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": null,
+      "annotation_sha256": null,
+      "endpoint_metadata": [],
+      "engine": "qwen",
+      "episode_id": "A2926",
+      "mtime_ns": 1793213478291190488,
+      "pcap_relpath": "val/qwen/scientific_evidence/A2926/network.pcap",
+      "scenario": "scientific_evidence",
+      "size_bytes": 105740,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": "val/qwen/security_testing/A3426/messages.jsonl",
+      "annotation_sha256": "6819b6e108846b1a1fc93dfb318a78ed5c5d2309c5b3459572300aa9b9544461",
+      "endpoint_metadata": [],
+      "engine": "qwen",
+      "episode_id": "A3426",
+      "mtime_ns": 1793213489863472571,
+      "pcap_relpath": "val/qwen/security_testing/A3426/network.pcap",
+      "scenario": "security_testing",
+      "size_bytes": 279899,
+      "split": "val"
+    },
+    {
+      "annotation_relpath": null,
+      "annotation_sha256": null,
+      "endpoint_metadata": [],
+      "engine": "qwen",
+      "episode_id": "A4079",
+      "mtime_ns": 1793213494287578936,
+      "pcap_relpath": "val/qwen/security_testing/A4079/network.pcap",
+      "scenario": "security_testing",
+      "size_bytes": 323712,
+      "split": "val"
+    }
+  ],
+  "split": "val",
+  "task": "scenario",
+  "valid_count": 10
+}

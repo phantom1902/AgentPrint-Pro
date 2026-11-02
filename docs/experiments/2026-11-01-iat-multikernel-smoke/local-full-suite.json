@@ -1,0 +1,53 @@
+{
+  "kind": "local_complete_cpu_regression",
+  "status": "failed_environment_permission",
+  "command": "python -m unittest discover -s tests -q",
+  "working_directory": "D:/AllenLeeSpace/studyziliao/paper_code/ant-main-suite-7BC0",
+  "environment": {
+    "platform": "Windows",
+    "python": "3.12.10",
+    "torch": "2.15.0+cpu",
+    "PYTHONPATH": "tests;.",
+    "OMP_NUM_THREADS": "4",
+    "MKL_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "temporary_directory": "D:/AllenLeeSpace/iat-tests-20261101",
+    "environment_provenance": "execution session record; unittest log does not echo environment"
+  },
+  "result": {
+    "tests_run": 122,
+    "passed": 116,
+    "failures": 0,
+    "errors": 1,
+    "skipped": 5,
+    "elapsed_seconds": 1761.429,
+    "exit_code": 1,
+    "all_passed": false
+  },
+  "error": {
+    "test": "test_protocol.ProtocolTests.test_public_splits_and_duplicate_rejection",
+    "file": "tests/test_protocol.py",
+    "line": 24,
+    "exception": "OSError",
+    "winerror": 1314,
+    "reason": "Windows process lacks permission to create the fixture symbolic link; failed before the duplicate-rejection assertion"
+  },
+  "skipped": {
+    "count": 5,
+    "reason": "Windows individual-file symbolic-link permission unavailable",
+    "source_guard": "tests/test_agentprint_cpu_acceptance.py:47 require_symlinks",
+    "limitation": "The quiet unittest log reports only the skip count; skipped identities are inferred from the five require_symlinks call sites, not listed by this run."
+  },
+  "evidence": {
+    "log_path": "D:/AllenLeeSpace/studyziliao/paper_code/.agentprint-worktrees/reports/iat-local-full-suite.log",
+    "log_bytes": 17363,
+    "log_sha256": "c61493868f3bc770a825ffd2310f334edf62dca36dc2ce285ee6a9d23e220789",
+    "exit_path": "D:/AllenLeeSpace/studyziliao/paper_code/.agentprint-worktrees/reports/iat-local-full-suite.exit",
+    "summary_excerpt": "Ran 122 tests in 1761.429s\nFAILED (errors=1, skipped=5)"
+  },
+  "limitations": [
+    "This is a synthetic automated CPU regression suite, not six-configuration real-data GPU acceptance or research metrics.",
+    "Windows run is not all green. The error and five skipped checks require execution on a host supporting symbolic links.",
+    "The prior remote full-suite run has no retrieved final exit/log and is not counted as passing."
+  ]
+}

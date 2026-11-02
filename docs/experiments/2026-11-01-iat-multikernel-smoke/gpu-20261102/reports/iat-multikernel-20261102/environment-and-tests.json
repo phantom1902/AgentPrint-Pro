@@ -1,0 +1,15 @@
+{
+  "recorded_at_utc": "2026-11-02T06:47:35.499920+00:00",
+  "source_commit": "28776ff0949fdd3778d56d485d97791f4ef21779",
+  "memory_limit_bytes": 96636764160,
+  "cpu_quota_us": 1200000,
+  "cpu_period_us": 100000,
+  "gpu": "name, memory.total [MiB], driver_version\nNVIDIA GeForce RTX 3080 Ti, 12288 MiB, 580.76.05",
+  "cublas_workspace_config": ":4096:8",
+  "test_command": "PYTHONPATH=tests:. CUDA_VISIBLE_DEVICES= python -m unittest test_protocol.ProtocolTests.test_public_splits_and_duplicate_rejection test_agentprint_cpu_acceptance -v",
+  "test_exit": 0,
+  "test_count": 9,
+  "test_passed": 9,
+  "test_skipped": 0,
+  "old_remote_full_suite_result": "unknown; no exit file or output after previous instance stopped"
+}

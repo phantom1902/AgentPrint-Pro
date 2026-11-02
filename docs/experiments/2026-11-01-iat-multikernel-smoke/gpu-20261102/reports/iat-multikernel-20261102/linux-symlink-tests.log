@@ -1,0 +1,14 @@
+test_public_splits_and_duplicate_rejection (test_protocol.ProtocolTests.test_public_splits_and_duplicate_rejection) ... ok
+test_annotation_budget_does_not_truncate_boundaries (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_annotation_budget_does_not_truncate_boundaries) ... ok
+test_budget_selection_is_deterministic_and_preserves_feasible_five_class_coverage (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_budget_selection_is_deterministic_and_preserves_feasible_five_class_coverage) ... ok
+test_complete_annotation_budget_limits_episode_count_without_changing_rows (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_complete_annotation_budget_limits_episode_count_without_changing_rows) ... ok
+test_environment_probe_public_command_records_import_and_tensor_evidence (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_environment_probe_public_command_records_import_and_tensor_evidence) ... ok
+test_prepare_public_cli_does_not_retain_probe_frameworks_in_parent (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_prepare_public_cli_does_not_retain_probe_frameworks_in_parent) ... ok
+test_prepare_public_cli_verifies_full_uint64_provenance_and_detects_tamper (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_prepare_public_cli_verifies_full_uint64_provenance_and_detects_tamper) ... ok
+test_selection_caps_whole_files_and_ignores_test (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_selection_caps_whole_files_and_ignores_test) ... ok
+test_zero_valid_primitive_reports_incomplete_without_training (test_agentprint_cpu_acceptance.CPUAcceptanceHelper.test_zero_valid_primitive_reports_incomplete_without_training) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 16.603s
+
+OK

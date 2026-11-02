@@ -1,0 +1,10 @@
+{
+  "best_epoch": 0,
+  "best_val_macro_f1": 0.06666666666666667,
+  "converged": false,
+  "epochs": 2,
+  "experiment_id": "9116ff4cdf8aba9727daa2dd30b4b25fa94bc9c9b2bc2a8887bddbf289d36fa4",
+  "parameters": 3560497,
+  "reason": "smoke_budget_exhausted",
+  "uses_test": false
+}
