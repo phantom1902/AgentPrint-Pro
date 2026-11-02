@@ -42,7 +42,7 @@ Add tests asserting a tuning config with non-anchor candidate values loads, a fo
 
 - [ ] **Step 2: Verify the tests fail for the missing mode**
 
-Run: `python -m unittest tests.test_agentprint_v2 tests.test_agentprint_v2_protocol -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_v2 test_agentprint_v2_protocol -v`
 
 Expected: tuning-mode config is rejected and `stop_status` raises for mode `tuning`.
 
@@ -52,7 +52,7 @@ Extend v2 mode validation to `('smoke', 'formal', 'tuning')`; keep `validate_for
 
 - [ ] **Step 4: Run the targeted tests**
 
-Run: `python -m unittest tests.test_agentprint_v2 tests.test_agentprint_v2_protocol -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_v2 test_agentprint_v2_protocol -v`
 
 Expected: all targeted tests pass and existing formal-anchor/smoke assertions remain unchanged.
 
@@ -83,7 +83,7 @@ Test legal endpoints, reject unknown/missing/non-finite/out-of-range values, and
 
 - [ ] **Step 2: Verify the new tests fail before implementation**
 
-Run: `python -m unittest tests.test_agentprint_iat_tuning -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_iat_tuning -v`
 
 Expected: import fails because `agentprint.iat_tuning` does not exist.
 
@@ -93,7 +93,7 @@ Build each trial's config under its own output directory. Persist `proposal.json
 
 - [ ] **Step 4: Verify isolated synthetic/public behavior**
 
-Run: `python -m unittest tests.test_agentprint_iat_tuning -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_iat_tuning -v`
 
 Expected: parameter bounds, fixed workload, study identity, baseline rule, and trial-limit tests pass without loading real test data.
 
@@ -120,13 +120,13 @@ Use a synthetic full-scope fixture and a two-epoch tuning test override to prove
 
 - [ ] **Step 2: Run targeted v2/IAT tests**
 
-Run: `python -m unittest tests.test_agentprint_v2 tests.test_agentprint_v2_protocol tests.test_agentprint_iat_tuning tests.test_agentprint_iat_integration -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_v2 test_agentprint_v2_protocol test_agentprint_iat_tuning test_agentprint_iat_integration -v`
 
 Expected: all targeted tests pass; no test cache or checkpoint is used as a substitute for measured study values.
 
 - [ ] **Step 3: Run local targeted regression and static checks**
 
-Run: `python -m unittest tests.test_agentprint_v2 tests.test_agentprint_v2_protocol tests.test_agentprint_iat_fit tests.test_agentprint_iat_cache tests.test_agentprint_iat_integration -v`
+Run: `PYTHONPATH=tests:. python -m unittest test_agentprint_v2 test_agentprint_v2_protocol test_agentprint_iat_fit test_agentprint_iat_cache test_agentprint_iat_integration -v`
 
 Expected: existing formal/smoke/cache behavior remains green.
 
