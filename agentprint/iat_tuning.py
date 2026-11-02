@@ -1,4 +1,4 @@
-"""Sequential validation-only optim-agent trials for full-cache replace/log1p."""
+"""Sequential validation-only optim-agent trials for full-cache IAT variants."""
 from contextlib import contextmanager
 from copy import deepcopy
 import json
@@ -37,10 +37,10 @@ def build_trial_config(config, params, seed, output_root):
     if config.get('schema_version') != 2 or not config['feature']['iat_enabled']:
         raise ValueError('requires v2 enabled IAT and existing full-scope caches')
     candidate = deepcopy(config)
-    candidate.update(task='scenario', transform='log1p', mode='tuning', seed=seed)
+    candidate.update(task='scenario', transform=config['transform'], mode='tuning', seed=seed)
     candidate['preprocessing']['splits'] = ['train', 'val']
     candidate['paths']['output_root'] = str(Path(output_root).resolve())
-    candidate['model'].update(variant='replace', width=2.0,
+    candidate['model'].update(variant=config['model']['variant'], width=2.0,
         dropout_2d=params['dropout_2d'], dropout_1d=params['dropout_1d'])
     candidate['training'].update(epochs=200, batch_size=200, optimizer='adam',
         min_learning_rate=1e-6, num_workers=0, numerical_threads=4,

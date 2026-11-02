@@ -33,6 +33,21 @@ class IATTuningTests(unittest.TestCase):
         self.assertEqual(candidate['preprocessing']['splits'], ['train', 'val'])
         self.assertEqual(candidate['training']['lr_decay'], 0.7)
 
+    def test_trial_preserves_requested_model_and_transform(self):
+        for name, variant, transform in (
+            ('single-log1p', 'single', 'log1p'),
+            ('replace-raw', 'replace', 'raw'),
+        ):
+            with self.subTest(name=name):
+                source = load_config(f'configs/agentprint/iat-full-20261102/{name}.yaml')
+                original = copy.deepcopy(source)
+                candidate = build_trial_config(source, BASELINE_PARAMS, 42, Path('isolated'))
+                self.assertEqual((candidate['model']['variant'], candidate['transform']),
+                                 (variant, transform))
+                self.assertEqual(candidate['feature'], original['feature'])
+                self.assertEqual(candidate['paths']['cache_root'], original['paths']['cache_root'])
+                self.assertEqual(source, original)
+
 
 if __name__ == '__main__':
     unittest.main()
