@@ -1,0 +1,38 @@
+{
+  "commands": [
+    {
+      "argv": [
+        "/root/autodl-tmp/ant-workspace/envs/optim-agent/bin/python",
+        "-u",
+        "-m",
+        "agentprint",
+        "fit-bins",
+        "--config",
+        "/root/autodl-tmp/ant-workspace/src/AgentPrint-Pro-IAT/configs/agentprint/iat-full-20261102/single-raw.yaml"
+      ],
+      "log": "/root/autodl-tmp/ant-workspace/reports/iat-full-20261102/fit-bins.log",
+      "started_utc": "2026-11-02T07:00:57.334207+00:00"
+    }
+  ],
+  "configurations": [],
+  "git_revision": "12a31d4081ef40f6b26a1cc797fba042e07e9654",
+  "pid": 2151,
+  "preflight": {
+    "cublas_workspace_config": ":4096:8",
+    "cuda": "13.0",
+    "expected_iat_array_bytes": 667929600,
+    "free_disk_bytes": 22306988032,
+    "gpu": "NVIDIA GeForce RTX 3080 Ti",
+    "sample_counts": {
+      "train": 2697,
+      "val": 202
+    },
+    "torch": "2.12.1+cu130"
+  },
+  "scope": "full_train_val",
+  "stage": "fit-bins",
+  "started_utc": "2026-11-02T07:00:54.196495+00:00",
+  "status": "running",
+  "updated_utc": "2026-11-02T07:00:57.334258+00:00",
+  "uses_test": false
+}
