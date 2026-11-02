@@ -78,6 +78,9 @@ def study_lock(root):
         else:
             import fcntl
             fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            # Keep the same flock alive until the public child has actually
+            # exited, closing the brief parent-death signal delivery window.
+            os.set_inheritable(lock.fileno(), True)
         try:
             yield
         finally:
@@ -119,6 +122,22 @@ def validate_phase(params, seed, phase, prior):
 
 def command_result(command, log, deadline):
     """Bound both public commands by the original study deadline."""
+    if sys.platform != 'linux':
+        raise RuntimeError('public tuning commands require Linux parent-death protection')
+    import ctypes
+    import signal
+    libc = ctypes.CDLL(None, use_errno=True)
+    parent_pid = os.getpid()
+
+    def protect_child():
+        # Training uses no worker children. Kill this public command even when
+        # SIGKILL prevents the runner from cleaning it up or retaining its lock.
+        if libc.prctl(1, signal.SIGKILL, 0, 0, 0) != 0:  # PR_SET_PDEATHSIG
+            os._exit(127)
+        # The runner may have died between fork and installing the signal.
+        if os.getppid() != parent_pid:
+            os._exit(127)
+
     remaining = deadline - time.time()
     if remaining <= 0:
         raise subprocess.TimeoutExpired(command, 0)
@@ -126,7 +145,8 @@ def command_result(command, log, deadline):
                OPENBLAS_NUM_THREADS='4', CUBLAS_WORKSPACE_CONFIG=':4096:8')
     with Path(log).open('a', encoding='utf-8') as output:
         subprocess.run(command, stdout=output, stderr=subprocess.STDOUT,
-                       timeout=remaining, check=True, env=env)
+                       timeout=remaining, check=True, env=env, preexec_fn=protect_child,
+                       close_fds=False)
     for line in reversed(Path(log).read_text(encoding='utf-8').splitlines()):
         try:
             value = json.loads(line)
@@ -186,7 +206,7 @@ def execute_trial(root, config, identity, deadline, device):
         write_json(root / 'evaluate-command.json', dict(command=evaluate, output=str(root / 'evaluate.log')))
         evaluated = command_result(evaluate, root / 'evaluate.log', deadline)
         score = evaluated['macro_f1']
-        if not math.isfinite(score) or not math.isclose(score, metrics['best_val_macro_f1'], abs_tol=1e-12):
+        if not math.isfinite(score) or not math.isclose(score, metrics['best_val_macro_f1'], rel_tol=0, abs_tol=1e-12):
             raise ValueError('reloaded validation result differs from committed best score')
         return dict(metrics, state='complete', reason='public_validation_verified',
                     objective=score, evaluation=evaluated, run_dir=str(run_dir), uses_test=False)

@@ -218,3 +218,84 @@ class StudyTests(unittest.TestCase):
         self.assertEqual(len(study.trials), 1)
         self.assertEqual(study.best_value, 0.4)
 
+
+class CommandLifecycleTests(unittest.TestCase):
+    def test_unsupported_platform_fails_before_launch(self):
+        import time
+        from agentprint.iat_tuning import command_result
+        with tempfile.TemporaryDirectory() as tmp, patch('agentprint.iat_tuning.sys.platform', 'win32'), patch('agentprint.iat_tuning.subprocess.run') as launch:
+            with self.assertRaisesRegex(RuntimeError, 'Linux'):
+                command_result(['expensive'], Path(tmp) / 'log', time.time() + 10)
+            launch.assert_not_called()
+
+    @unittest.skipUnless(__import__('sys').platform == 'linux', 'Linux parent-death contract')
+    def test_supervisor_sigkill_stops_writer_before_recovery(self):
+        import os
+        import signal
+        import subprocess
+        import sys
+        import time
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            writer = root / 'writer.py'
+            writer.write_text('''import fcntl, os, sys, time
+from pathlib import Path
+root = Path(sys.argv[1])
+with (root / "writer.lock").open("a") as lock:
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    (root / "pid").write_text(str(os.getpid()))
+    while True:
+        with (root / "checkpoint").open("a") as checkpoint:
+            checkpoint.write("committed\\n")
+        time.sleep(0.01)
+''')
+            supervisor = subprocess.Popen([sys.executable, '-c',
+                'import sys,time; from pathlib import Path; from agentprint.iat_tuning import command_result,study_lock; '
+                'root=Path(sys.argv[1]); '
+                'exec("with study_lock(root):\\n command_result([sys.executable, str(root / \'writer.py\'), str(root)], root / \'log\', time.time()+30)")', str(root)])
+            child_pid = None
+            try:
+                deadline = time.monotonic() + 10
+                while not (root / 'checkpoint').exists() and time.monotonic() < deadline:
+                    if supervisor.poll() is not None:
+                        self.fail('supervisor exited before writer started')
+                    time.sleep(0.01)
+                self.assertTrue((root / 'checkpoint').exists())
+                child_pid = int((root / 'pid').read_text())
+                supervisor.kill()
+                supervisor.wait(timeout=5)
+                # Recover immediately: the new writer must acquire the exclusive
+                # writer lock, proving the previous process cannot still write.
+                recovered = subprocess.run([sys.executable, '-c',
+                    'import fcntl,sys; from pathlib import Path; from agentprint.iat_tuning import study_lock; '
+                    'root=Path(sys.argv[1]); '
+                    'exec("with study_lock(root):\\n with (root / \'writer.lock\').open(\'a\') as lock:\\n  fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)")', str(root)],
+                    capture_output=True, text=True, timeout=5)
+                self.assertEqual(recovered.returncode, 0, recovered.stderr)
+                committed = (root / 'checkpoint').read_bytes()
+                time.sleep(0.15)
+                self.assertEqual((root / 'checkpoint').read_bytes(), committed)
+                status = Path('/proc') / str(child_pid) / 'status'
+                self.assertTrue(not status.exists() or '\nState:\tZ' in status.read_text())
+            finally:
+                if supervisor.poll() is None:
+                    supervisor.kill()
+                    supervisor.wait(timeout=5)
+                if child_pid is not None:
+                    try:
+                        os.kill(child_pid, signal.SIGKILL)
+                    except ProcessLookupError:
+                        pass
+
+    @unittest.skipUnless(__import__('sys').platform == 'linux', 'Linux public commands')
+    def test_original_deadline_kills_command(self):
+        import subprocess
+        import sys
+        import time
+        from agentprint.iat_tuning import command_result
+        with tempfile.TemporaryDirectory() as tmp:
+            started = time.monotonic()
+            with self.assertRaises(subprocess.TimeoutExpired):
+                command_result([sys.executable, '-c', 'import time; time.sleep(30)'],
+                               Path(tmp) / 'log', time.time() + 0.2)
+            self.assertLess(time.monotonic() - started, 3)
