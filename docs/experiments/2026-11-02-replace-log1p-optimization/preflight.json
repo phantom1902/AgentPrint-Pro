@@ -1,0 +1,32 @@
+{
+  "anchor_result": {
+    "best_epoch": 77,
+    "best_val_macro_f1": 0.8342599314377898,
+    "converged": true,
+    "epochs": 108,
+    "experiment_id": "8702dfd14536424120c106cecaadbb203160be77c78268d2be6ef9d1af3fa0c0",
+    "parameters": 3552403,
+    "reason": "validation_plateau",
+    "uses_test": false
+  },
+  "base_manifests": {
+    "train": "97e6509b7b81f186c4e447f27ae98a568b7d909efc2f8d2f7fef61cb0fc971d9",
+    "val": "88d8fc08724d28acd727c655ecde68c66ce073a0847739c7704194d7997ed784"
+  },
+  "cuda": "13.0",
+  "fit_fingerprint": "ef0f58da8da8c059bf07e9bfc89c877163e1650f6a6adaeaa2e7d72cae889173",
+  "free_disk_bytes": 19801288704,
+  "gpu": "NVIDIA GeForce RTX 3080 Ti",
+  "iat_cache_fingerprints": {
+    "train": "f11922e06d85251752f3bb71ef4b315a6f704eb443a86dd415b0dd5b0ac21b25",
+    "val": "4416f1d32ded4389f3d7e910e214d98648ac554c0fc63fb0ac0f1852f0b80517"
+  },
+  "matches_formal_workload": true,
+  "sample_counts": {
+    "train": 2697,
+    "val": 202
+  },
+  "source_revision": "42e9b6ff1b982f12d9ac7f68fcd94831518ef804",
+  "torch": "2.12.1+cu130",
+  "uses_test": false
+}

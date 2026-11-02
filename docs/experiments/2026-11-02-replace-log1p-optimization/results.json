@@ -1,0 +1,242 @@
+{
+  "baseline": {
+    "accuracy": 0.8415841584158416,
+    "best_epoch": 77,
+    "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347/checkpoints/best-epoch-00077-2bb0c31c.pt",
+    "converged": true,
+    "epochs": 108,
+    "finished_unix": 1793612652.127753,
+    "name": "trial-00",
+    "objective": 0.8342599314377898,
+    "params": {
+      "dropout_1d": 0.1,
+      "dropout_2d": 0.05,
+      "learning_rate": 0.001,
+      "lr_decay": 0.5,
+      "weight_decay": 0.001
+    },
+    "phase": "baseline",
+    "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347",
+    "seed": 42,
+    "state": "complete",
+    "stop_reason": "validation_plateau"
+  },
+  "best_seed42": {
+    "accuracy": 0.8415841584158416,
+    "best_epoch": 77,
+    "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347/checkpoints/best-epoch-00077-2bb0c31c.pt",
+    "converged": true,
+    "epochs": 108,
+    "finished_unix": 1793612652.127753,
+    "name": "trial-00",
+    "objective": 0.8342599314377898,
+    "params": {
+      "dropout_1d": 0.1,
+      "dropout_2d": 0.05,
+      "learning_rate": 0.001,
+      "lr_decay": 0.5,
+      "weight_decay": 0.001
+    },
+    "phase": "baseline",
+    "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347",
+    "seed": 42,
+    "state": "complete",
+    "stop_reason": "validation_plateau"
+  },
+  "counts": {
+    "complete": 6,
+    "failed": 0,
+    "pruned": 1
+  },
+  "deadline_unix": 1793615675.4361014,
+  "elapsed_to_last_result": 3600.3248670101166,
+  "finalists": [
+    {
+      "mean": 0.8241504451720567,
+      "params": {
+        "dropout_1d": 0.25,
+        "dropout_2d": 0.1,
+        "learning_rate": 0.001,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "seeds": [
+        42,
+        43
+      ],
+      "three_seed_complete": false
+    },
+    {
+      "mean": 0.809985213546915,
+      "params": {
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0005,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "seeds": [
+        42,
+        43
+      ],
+      "three_seed_complete": false
+    }
+  ],
+  "replicated_comparison_complete": false,
+  "trial_count": 7,
+  "trials": [
+    {
+      "accuracy": 0.8415841584158416,
+      "best_epoch": 77,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347/checkpoints/best-epoch-00077-2bb0c31c.pt",
+      "converged": true,
+      "epochs": 108,
+      "finished_unix": 1793612652.127753,
+      "name": "trial-00",
+      "objective": 0.8342599314377898,
+      "params": {
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.001,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "baseline",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "accuracy": 0.801980198019802,
+      "best_epoch": 48,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-01/runs/v2-7a1c89a0776d-20261102T094455Z-9306913f/checkpoints/best-epoch-00048-fbed8ea5.pt",
+      "converged": true,
+      "epochs": 69,
+      "finished_unix": 1793613054.3477745,
+      "name": "trial-01",
+      "objective": 0.8190533304776183,
+      "params": {
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0005,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "search",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-01/runs/v2-7a1c89a0776d-20261102T094455Z-9306913f",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "accuracy": 0.8217821782178217,
+      "best_epoch": 68,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-02/runs/v2-5edd8e5d2d37-20261102T095215Z-5c2427c3/checkpoints/best-epoch-00068-cddda0e5.pt",
+      "converged": true,
+      "epochs": 106,
+      "finished_unix": 1793613683.101787,
+      "name": "trial-02",
+      "objective": 0.8308965145526409,
+      "params": {
+        "dropout_1d": 0.25,
+        "dropout_2d": 0.1,
+        "learning_rate": 0.001,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "search",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-02/runs/v2-5edd8e5d2d37-20261102T095215Z-5c2427c3",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "accuracy": 0.7821782178217822,
+      "best_epoch": 56,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-03/runs/v2-9c247e58702b-20261102T100235Z-be209860/checkpoints/best-epoch-00056-f3064203.pt",
+      "converged": true,
+      "epochs": 85,
+      "finished_unix": 1793614192.88761,
+      "name": "trial-03",
+      "objective": 0.8099658091377837,
+      "params": {
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.001,
+        "lr_decay": 0.7,
+        "weight_decay": 0.003
+      },
+      "phase": "search",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-03/runs/v2-9c247e58702b-20261102T100235Z-be209860",
+      "seed": 42,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "accuracy": 0.801980198019802,
+      "best_epoch": 46,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-04/runs/v2-a8f2644d9e98-20261102T101105Z-141eefa9/checkpoints/best-epoch-00046-af82365c.pt",
+      "converged": true,
+      "epochs": 84,
+      "finished_unix": 1793614701.3551934,
+      "name": "trial-04",
+      "objective": 0.8174043757914724,
+      "params": {
+        "dropout_1d": 0.25,
+        "dropout_2d": 0.1,
+        "learning_rate": 0.001,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "repeat",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-04/runs/v2-a8f2644d9e98-20261102T101105Z-141eefa9",
+      "seed": 43,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "accuracy": 0.7871287128712872,
+      "best_epoch": 50,
+      "checkpoint": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-05/runs/v2-88681e54207d-20261102T101929Z-1914a706/checkpoints/best-epoch-00050-0e2f2034.pt",
+      "converged": true,
+      "epochs": 71,
+      "finished_unix": 1793615137.1718707,
+      "name": "trial-05",
+      "objective": 0.8009170966162117,
+      "params": {
+        "dropout_1d": 0.1,
+        "dropout_2d": 0.05,
+        "learning_rate": 0.0005,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "repeat",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-05/runs/v2-88681e54207d-20261102T101929Z-1914a706",
+      "seed": 43,
+      "state": "complete",
+      "stop_reason": "validation_plateau"
+    },
+    {
+      "best_epoch": 79,
+      "converged": false,
+      "epochs": 91,
+      "finished_unix": 1793615675.7609684,
+      "name": "trial-06",
+      "objective": null,
+      "params": {
+        "dropout_1d": 0.25,
+        "dropout_2d": 0.1,
+        "learning_rate": 0.001,
+        "lr_decay": 0.5,
+        "weight_decay": 0.001
+      },
+      "phase": "repeat",
+      "run_dir": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-06/runs/v2-ac7779a3c49e-20261102T102657Z-2a0c2afc",
+      "seed": 44,
+      "state": "pruned",
+      "stop_reason": "running"
+    }
+  ],
+  "uses_test": false
+}

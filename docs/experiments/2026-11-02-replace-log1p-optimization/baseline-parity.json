@@ -1,0 +1,42 @@
+{
+  "epochs": 108,
+  "fields": [
+    "epoch",
+    "train_loss",
+    "val_loss",
+    "val_accuracy",
+    "val_macro_f1",
+    "learning_rate",
+    "global_step",
+    "train_samples",
+    "val_samples"
+  ],
+  "all_rows_exact": true,
+  "reference": "/root/autodl-tmp/ant-workspace/runs/agentprint-iat-full-20261102/v2-8702dfd14536-20261102T075319Z-307705d3",
+  "baseline": "/root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/trial-00/runs/v2-65f4bf386ae5-20261102T093500Z-30924347",
+  "objective": 0.8342599314377898,
+  "convergence": {
+    "additional_epochs": 78,
+    "converged": true,
+    "epochs_without_significant_gain": 30,
+    "last_significant_epoch": 77,
+    "loss_plateau": true,
+    "policy": {
+      "baseline_epochs": 30,
+      "f1_min_delta": 0.001,
+      "loss_relative_delta": 0.01,
+      "loss_window": 10,
+      "max_total_epochs": 200,
+      "min_additional_epochs": 30,
+      "patience": 20
+    },
+    "previous_mean_val_loss": 0.7301074816448854,
+    "reason": "validation_plateau",
+    "recent_mean_val_loss": 0.7292708236392181,
+    "relative_val_loss_improvement": 0.0011459381347281878,
+    "significant_best_macro_f1": 0.8342599314377898,
+    "stop": true,
+    "total_epochs": 108
+  },
+  "uses_test": false
+}
