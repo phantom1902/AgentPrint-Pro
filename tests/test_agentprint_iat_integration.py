@@ -50,6 +50,86 @@ class IATMultikernelIntegration(unittest.TestCase):
         self.command('fit-bins')
         self.command('prepare')
 
+    def test_public_tuning_replace_log1p_uses_full_iat_and_reloads_best_checkpoint(self):
+        import math
+        import torch
+        from agentprint.v2 import build_model, loader
+
+        for split in ('train', 'val'):
+            for index, scenario in enumerate(('general_knowledge', 'scientific_evidence',
+                                               'security_testing')):
+                nano_capture(self.root / 'data' / split / 'engine' / scenario /
+                             f'tuning{index}/network.pcap', [0, 10, 15 + index, 30, 1000])
+        # This synthetic integration cap is deliberately shorter than the production
+        # tuning runner's fixed 200 epochs, without changing the convergence policy.
+        self.settings.update(mode='tuning', transform='log1p',
+                             model=dict(variant='replace', width=2,
+                                        dropout_2d=0.12, dropout_1d=0.23))
+        self.settings['training'].update(epochs=2, batch_size=200,
+            learning_rate=0.0007, weight_decay=0.002, lr_decay=0.7)
+        self.prepare_iat()
+        fit_bytes = (self.root / 'fit.json').read_bytes()
+        fit = json.loads(fit_bytes)
+        self.assertEqual(fit['scope'], 'full')
+        self.assertEqual(len(fit['train_manifest']), 5)
+        caches = {split: (self.root / f'iat/scenario/{split}/metadata.json').read_bytes()
+                  for split in ('train', 'val')}
+
+        run = Path(self.command('train', '--device', 'cpu')['run_dir'])
+        saved = torch.load(run / 'best.pt', map_location='cpu', weights_only=False)
+        last = torch.load(run / 'last.pt', map_location='cpu', weights_only=False)
+        self.assertEqual(saved['config']['mode'], 'tuning')
+        self.assertEqual(saved['identity']['transform'], 'log1p')
+        self.assertEqual(saved['model_definition'], load_config(self.config)['model'])
+        self.assertEqual(saved['feature_definition']['in_channels'], 10)
+        self.assertEqual(saved['identity']['fit_fingerprint'], fit['fingerprint'])
+        self.assertEqual(last['epoch'], 1)
+        self.assertEqual(len(last['rows']), 2)
+        for row in last['rows']:
+            self.assertEqual((row['train_samples'], row['val_samples']), (5, 5))
+            self.assertTrue(all(math.isfinite(row[key]) for key in
+                                ('train_loss', 'val_loss', 'val_macro_f1')))
+        for split, raw in caches.items():
+            metadata = json.loads(raw)
+            self.assertEqual(metadata['scope'], 'full')
+            self.assertEqual(len(metadata['sample_ids']), 5)
+            self.assertEqual(saved['identity']['iat_cache'][split], metadata)
+        protocol = json.loads((run / 'protocol.json').read_text())
+        self.assertFalse(protocol['formal_experiment'])
+        self.assertFalse(protocol['uses_test'])
+        result = json.loads((run / 'result.json').read_text())
+        self.assertFalse(result['converged'])
+        self.assertFalse(result['uses_test'])
+
+        summary = self.command('evaluate', '--checkpoint', str(run / 'best.pt'),
+                               '--split', 'val', '--device', 'cpu')
+        self.assertEqual(summary['support'], [1, 1, 1, 1, 1])
+        self.assertEqual(summary['experiment_id'], saved['experiment_id'])
+        self.assertEqual(summary['manifest_id'], saved['identity']['base_cache']['val']['manifest_id'])
+        self.assertEqual(summary['macro_f1'], saved['best_macro_f1'])
+        self.assertEqual(summary['macro_f1'], result['best_val_macro_f1'])
+        self.assertAlmostEqual(summary['loss'], saved['validation_result']['summary']['loss'])
+        rebuilt = build_model(saved['model_definition'], 10).eval()
+        rebuilt.load_state_dict(saved['model'])
+        samples, batches = loader(load_config(self.config), 'val')
+        try:
+            values, labels = next(iter(batches))
+            with torch.no_grad():
+                predictions = rebuilt(values).argmax(1).tolist()
+            expected = np.zeros((5, 5), dtype=int)
+            for truth, predicted in zip(labels.tolist(), predictions):
+                expected[truth, predicted] += 1
+            with (run / 'evaluation-val/confusion_matrix.csv').open(newline='', encoding='utf-8') as handle:
+                rows = list(csv.reader(handle))[1:]
+            np.testing.assert_array_equal(np.asarray([[int(x) for x in row[1:]] for row in rows]), expected)
+        finally:
+            samples._iat_shard = samples._shard = None
+        self.assertEqual((self.root / 'fit.json').read_bytes(), fit_bytes)
+        for split, raw in caches.items():
+            self.assertEqual((self.root / f'iat/scenario/{split}/metadata.json').read_bytes(), raw)
+        for path in ('data/test', 'cache/scenario/test', 'iat/scenario/test', 'output/test'):
+            self.assertFalse((self.root / path).exists())
+
     def test_six_iat_commands_share_fit_and_cache_and_isolate_three_transform_pairs(self):
         import torch
         from agentprint.v2 import build_model, loader
