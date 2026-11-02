@@ -1,4 +1,2 @@
 extends: iat-full-20261102/replace-log1p.yaml
 mode: tuning
-paths:
-  output_root: /root/autodl-tmp/ant-workspace/.optim-agent-runs/replace-log1p-20261102/unused-anchor-output
