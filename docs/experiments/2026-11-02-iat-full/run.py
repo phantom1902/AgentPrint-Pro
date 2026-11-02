@@ -23,6 +23,7 @@ def now():
 
 
 def main():
+    sys.path.insert(0, str(REPOSITORY))
     REPORT.mkdir(parents=True, exist_ok=True)
     state_path = REPORT / 'state.json'
     if state_path.exists():
